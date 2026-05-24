@@ -1,8 +1,8 @@
 {
   "version": "v2026.05.25",
   "generatedAt": "2026-05-25T00:00:00+08:00",
-  "source": "workbuddy auto-build",
-  "note": "Phase1 dynamic data - all JSON files served from /data/",
+  "source": "WorkBuddy Auto-Build | 手动维护 + 爬虫自动更新",
+  "note": "Phase2 — 动态数据加载 + 定时爬虫 + Service Worker",
   "files": [
     "savings.json",
     "companies.json",
@@ -12,5 +12,65 @@
     "premium.json",
     "dividend.json",
     "promotions.json"
+  ],
+  "updateLog": [
+    {
+      "date": "2026-05-25",
+      "version": "v2026.05.25",
+      "summary": "数据动态化架构上线：拆分JSON + fetch加载 + 定时爬虫 + Service Worker",
+      "changes": [
+        "架构：数据从硬编码 JS 数组拆分为 8 个独立 JSON 文件",
+        "前端：页面启动时异步加载数据，内嵌 fallback 确保离线可用",
+        "爬虫：Node.js 定时爬取优惠信息 + 分红实现率，GitHub Actions 每天自动运行",
+        "缓存：Service Worker 实现离线访问，Network First 策略保证数据新鲜",
+        "UI：新增数据版本号、刷新按钮、Toast 提示、更新横幅"
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "version": "v2026.05.24",
+      "summary": "Bug修复：Tab切换失效 + 产品列表为空 + 预期单利数据修正",
+      "changes": [
+        "修复 Tab 切换失效（premiumData 变量缺失 + renderAllTabs 函数名错误）",
+        "修复 22 个储蓄产品预期单利数据（基于 IRR 复利终值公式重新计算）",
+        "修复公司筛选联动逻辑 Bug（全选时仍被过滤）",
+        "统一 23 家公司名称（产品数据中的短名统一为标准名）"
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "version": "v2026.05.23",
+      "summary": "数据扩展：23 家公司全覆盖 + 产品大幅补充",
+      "changes": [
+        "保险公司从 20 家扩展到 23 家（新增苏黎世人寿、保泰人寿、恒安标准人寿）",
+        "储蓄险产品新增 6 个（薪粹传承、汇承世代、瑞盈储蓄等）",
+        "保费测算从 5 个产品扩展到 16 个产品",
+        "高端医疗 + VHIS + 危疾险产品数据全面补充",
+        "分红实现率、优惠数据同步扩展"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "version": "v2026.05.22",
+      "summary": "功能增强：FNA 录入 + 多维度筛选 + 产品详情弹窗",
+      "changes": [
+        "新增 FNA 财务需求分析录入页（年龄/收入/支出/负债/已有保险等）",
+        "储蓄/分红险新增公司、产品、缴费年限三维筛选",
+        "医疗/VHIS/危疾险独立分组筛选",
+        "产品名称可点击弹出详情 Modal（IRR/特色/亮点/适合人群/注意事项）",
+        "分红实现率页面支持公司多选筛选"
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "version": "v2026.05.21",
+      "summary": "初始发布：香港保险对比 Web 应用 V1",
+      "changes": [
+        "11 个 Tab 页：储蓄分红险/保险公司/医疗危疾险/分红实现率/优惠/保费测算/市场趋势/FNA/产品详情",
+        "覆盖前 10 大保险公司 + 8 家扩展公司",
+        "交互式 HTML 单页应用，部署至 Vercel",
+        "支持排序、筛选、搜索"
+      ]
+    }
   ]
 }

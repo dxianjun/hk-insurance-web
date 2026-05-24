@@ -240,6 +240,34 @@ tr:nth-child(even) { background:#fafafa; }
     }
     .btn-update-now { background: #fff; color: #f97316; font-weight: 600; }
     .btn-dismiss    { background: rgba(255,255,255,0.22); color: #fff; }
+    /* 版本号可点击 */
+    .version-clickable { cursor: pointer; text-decoration: underline dotted; transition: color 0.2s; }
+    .version-clickable:hover { color: #fff; }
+    /* 更新日志 Modal */
+    .changelog-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10001; align-items: center; justify-content: center; }
+    .changelog-dialog { background: var(--card); border-radius: 16px; max-width: 560px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .changelog-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 12px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--card); border-radius: 16px 16px 0 0; }
+    .changelog-header h2 { font-size: 1.1rem; }
+    .changelog-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary); padding: 0 4px; }
+    .changelog-body { padding: 16px 24px 24px; }
+    .cl-entry { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .cl-entry:last-child { border-bottom: none; }
+    .cl-latest { background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(99,102,241,0.03)); margin: -16px -24px; padding: 16px 24px; border-radius: 0; }
+    .cl-date { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 2px; }
+    .cl-version { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-bottom: 6px; }
+    .cl-summary { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+    .cl-changes { margin: 0; padding-left: 18px; font-size: 0.85rem; color: var(--text-secondary); }
+    .cl-changes li { margin-bottom: 3px; }
+    .cl-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; padding: 1px 7px; border-radius: 8px; }
+    
+    /* 骨架屏 Skeleton Loading */
+    .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skeleton-row { display: flex; gap: 10px; padding: 10px 12px; align-items: center; border-bottom: 1px solid #f1f5f9; }
+    .skeleton-cell { height: 15px; border-radius: 4px; flex-shrink: 0; }
+    .skeleton-cell.w100 { width: 100px; } .skeleton-cell.w60 { width: 60px; }
+    .skeleton-cell.w80 { width: 80px; } .skeleton-cell.w120 { width: 120px; }
+    .skeleton-cell.w140 { width: 140px; } .skeleton-cell.flex1 { flex: 1; }
   </style>
 
 </head>
@@ -1289,8 +1317,55 @@ function updateVersionUI() {
   if (!el) return;
   let txt = '数据版本：' + dataVersion;
   if (dataLoadTime) txt += '（' + new Date(dataLoadTime).toLocaleString('zh-CN') + '）';
-  el.textContent = txt;
+  el.innerHTML = '<span class="version-clickable" onclick="showChangelog()" title="点击查看更新日志">' + txt + ' 📋</span>';
 }
+
+// ── 更新日志 Modal ──────────────────────────────────
+let changelogData = null;
+
+async function showChangelog() {
+  // 创建 Modal（如果不存在）
+  let modal = document.getElementById('changelog-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'changelog-modal';
+    modal.className = 'changelog-overlay';
+    modal.innerHTML = '<div class="changelog-dialog"><div class="changelog-header"><h2>📋 数据更新日志</h2><button onclick="closeChangelog()" class="changelog-close">&times;</button></div><div class="changelog-body" id="changelog-body">加载中…</div></div>';
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeChangelog(); });
+    document.body.appendChild(modal);
+  }
+  modal.style.display = 'flex';
+
+  // 加载数据
+  if (!changelogData) {
+    try {
+      const res = await fetch('/data/metadata.json');
+      const meta = await res.json();
+      changelogData = meta.updateLog || [];
+    } catch (e) {
+      changelogData = [];
+    }
+  }
+
+  const body = document.getElementById('changelog-body');
+  if (changelogData.length === 0) {
+    body.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:40px;">暂无更新日志</p>';
+  } else {
+    body.innerHTML = changelogData.map((entry, i) => '<div class="cl-entry ' + (i === 0 ? 'cl-latest' : '') + '"><div class="cl-date">' + entry.date + (i === 0 ? ' <span class="cl-badge">最新</span>' : '') + '</div><div class="cl-version">' + entry.version + '</div><div class="cl-summary">' + entry.summary + '</div><ul class="cl-changes">' + (entry.changes || []).map(c => '<li>' + c + '</li>').join('') + '</ul></div>').join('');
+  }
+}
+
+function closeChangelog() {
+  const modal = document.getElementById('changelog-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeChangelog();
+    closeProductModal();
+  }
+});
 
 // ── 初始化所有多选下拉 ──────────────────────────────
 function initAllSelects() {
@@ -2601,8 +2676,25 @@ document.getElementById('dividend-trend-title').textContent = companyCount + '�
 document.getElementById('footer-info').textContent = '数据截止：2025年Q3-2026年5月 | ' + companyCount + '家保险公司 · 9大功能模块';
 document.getElementById('stat-company-count').textContent = companyCount;
 
+// ── 骨架屏 ─────────────────────────────────────────
+function showSkeletons() {
+  const targets = {
+    'savings-tbody': [100,60,80,120,140,80,80,100],
+    'company-tbody': [40,120,60,80,60,80,80],
+    'health-medical-tbody': [100,80,80,60,80],
+    'health-vhis-tbody': [100,80,80,60,80],
+    'health-ci-tbody': [100,80,80,60,80],
+  };
+  for (const [id, widths] of Object.entries(targets)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    el.innerHTML = Array.from({length: 5}, () => '<div class="skeleton-row">' + widths.map((w, i) => '<div class="skeleton skeleton-cell w' + w + '" style="animation-delay:' + (i*0.1) + 's"></div>').join('') + '</div>').join('');
+  }
+}
+
 // ── 动态数据启动 ────────────────────────────────────
 (async function bootData() {
+  showSkeletons();
   showDataToast('正在加载最新数据…', 'info');
   try {
     await loadDataFromServer();
@@ -2626,6 +2718,19 @@ document.getElementById('stat-company-count').textContent = companyCount;
   <div id="data-toast"></div>
   <button id="btn-refresh-data" onclick="userRefreshData()">🔄 刷新数据</button>
   <div id="data-version"></div>
+
+  <!-- Service Worker 注册 -->
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(reg => {
+          console.log('[SW] Service Worker 已注册');
+        })
+        .catch(err => console.warn('[SW] 注册失败:', err));
+    });
+  }
+  </script>
 
   </body>
 </html>
