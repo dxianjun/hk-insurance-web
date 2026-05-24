@@ -1,0 +1,71 @@
+name: Daily Data Crawl
+
+on:
+  schedule:
+    # 每天 HKT 06:00 = UTC 22:00 (前一天)
+    - cron: '0 22 * * *'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: '爬取目标'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - promotions
+          - dividend
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: crawler/package.json
+
+      - name: Install dependencies
+        run: cd crawler && npm ci
+
+      - name: Run crawler
+        run: |
+          TARGET="${{ inputs.target || 'all' }}"
+          if [ "$TARGET" = "all" ]; then
+            cd crawler && node cron.js
+          else
+            cd crawler && node cron.js $TARGET
+          fi
+        env:
+          CI: true
+          GITHUB_ACTIONS: true
+
+      - name: Upload crawl report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crawl-report
+          path: crawler/reports/
+          retention-days: 30
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ 数据爬虫运行失败 — ' + new Date().toISOString().slice(0,10),
+              body: '自动数据爬虫在 ' + new Date().toISOString() + ' 运行失败。\n\n请检查 [Actions 日志](' + process.env.GITHUB_SERVER_URL + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId + ')',
+              labels: ['bug', 'automation']
+            });

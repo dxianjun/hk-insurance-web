@@ -1,0 +1,16 @@
+{
+  "name": "hk-insurance-crawler",
+  "version": "1.0.0",
+  "description": "香港保险数据定时爬虫 — 自动更新分红实现率、优惠信息、产品参数",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "crawl": "node cron.js",
+    "crawl:promotions": "node sources/promotions.js",
+    "crawl:dividend": "node sources/dividend-checker.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

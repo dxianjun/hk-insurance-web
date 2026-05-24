@@ -4,3 +4,6 @@ _*.txt
 _*.html
 *.bak
 *.tmp
+crawler/reports/
+crawler/node_modules/
+data/.bak/
