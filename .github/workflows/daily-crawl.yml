@@ -15,6 +15,7 @@ on:
           - all
           - promotions
           - dividend
+          - ratings
 
 jobs:
   crawl:

@@ -1,63 +1,49 @@
 /**
- * sources/dividend-checker.js — 分红实现率爬虫
+ * sources/dividend-checker.js — 分红实现率爬虫（23家公司全覆盖）
  *
- * 数据来源：
- * 各保险公司官网"分红实现率"专栏
- * 每年年报/中期报告发布后更新
- *
- * P1 策略：
- * - 检查首页是否有新的"分红实现率"公告
- * - 若有更新，通过已知 URL 尝试获取表格数据
- * - 如果页面结构变化，记录并输出 diff 日志（人工审核）
+ * v2 改进：
+ * - 从 company-urls.json 读取全部 23 家 URL
+ * - manual=true 的公司跳过自动爬取（输出人工维护提示）
+ * - 支持并发批处理 + 频控
+ * - 自动检测页面结构变化
  */
 import * as cheerio from 'cheerio';
 import path from 'node:path';
+import fs from 'node:fs';
 import { fetchWithRetry, stripHtml, extractNumber } from '../utils/fetchWithRetry.js';
 import { diffArrays, readDataFile, writeDataFile, updateMetadata } from '../utils/diffDetector.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '..', '..', 'data');
+const __dirname = import.meta.dirname;
+
+// 加载公司 URL 配置
+function loadCompanyConfig() {
+  const configPath = path.join(__dirname, 'company-urls.json');
+  return JSON.parse(fs.readFileSync(configPath, 'utf8'));
+}
 
 /**
- * 各保险公司分红实现率页面 URL（已知公开页面）
- */
-const DIVIDEND_URLS = {
-  '友邦保险': 'https://www.aia.com.hk/zh-hk/dividend-fulfillment-ratio',
-  '宏利':     'https://www.manulife.com.hk/zh-hk/individual/dividend.html',
-  '保诚保险':  'https://www.prudential.com.hk/zh-hk/dividend/',
-  '安盛保险':  'https://www.axa.com.hk/zh/dividend-fulfillment-ratio',
-  '汇丰人寿':  'https://www.hsbc.com.hk/zh-hk/insurance/dividend-history/',
-  '中银人寿':  'https://www.bocgroup.com.hk/zh-hk/life/dividend.html',
-  '富卫人寿':  'https://www.fwd.com.hk/zh-hk/dividend-fulfillment-ratio/',
-  '永明金融':  'https://www.sunlife.com.hk/zh-hk/dividend-fulfillment-ratio/',
-  '中国人寿海外': 'https://www.chinalife.com.hk/zh-hk/dividend-fulfillment-ratio',
-  '恒生保险':  'https://www.hangseng.com/zh-hk/insurance/dividend-fulfillment/',
-};
-
-/**
- * 通用表格解析器：尝试从 HTML 提取分红实现率数据
- * 适配多种表格格式
+ * 解析分红实现率 HTML 表格
+ * 支持页面结构变化时自适应不同表格格式
  */
 function parseDividendTable(html, companyName) {
   const $ = cheerio.load(html);
   const results = [];
 
-  // 策略1：标准的 <table> 标签
+  // 策略1：标准 <table> 标签
   $('table').each((_i, table) => {
-    // 找到表头
     const headers = [];
     $(table).find('thead th, thead td, tr:first-child th, tr:first-child td').each((_j, th) => {
       headers.push(stripHtml($(th).text()));
     });
 
-    // 判断是否是分红实现率表格
     const headerText = headers.join(' ');
     const isDividendTable =
-      /分红|实现率|fulfillment|dividend/i.test(headerText) ||
-      /产品名称|product/i.test(headerText);
+      /分红|实现率|fulfillment|dividend|履行比率/i.test(headerText) ||
+      /产品名称|product|plan name/i.test(headerText);
 
     if (!isDividendTable) return;
 
-    // 解析数据行
     $(table).find('tbody tr, tr').each((_j, row) => {
       const cells = [];
       $(row).find('td, th').each((_k, cell) => {
@@ -65,7 +51,7 @@ function parseDividendTable(html, companyName) {
       });
 
       if (cells.length < 2) return;
-      if (/产品|product|合计|total/i.test(cells[0])) return; // 跳过页眉
+      if (/产品|product|合计|total|年份|year/i.test(cells[0])) return;
 
       const product = cells[0];
       const rates = cells.slice(1).map(extractNumber).filter(Boolean);
@@ -82,11 +68,11 @@ function parseDividendTable(html, companyName) {
     });
   });
 
-  // 策略2：div/ul/li 结构（部分现代网站）
+  // 策略2：div/卡片结构（现代网站）
   if (results.length === 0) {
-    $('.dividend-item, .product-row, [data-dividend]').each((_i, el) => {
-      const product = stripHtml($(el).find('.product-name, h3, h4').first().text());
-      const rate = extractNumber($(el).find('.rate, .percentage, .value').first().text());
+    $('.dividend-item, .product-row, [data-dividend], .card-dividend, .ratio-item').each((_i, el) => {
+      const product = stripHtml($(el).find('.product-name, h3, h4, .name').first().text());
+      const rate = extractNumber($(el).find('.rate, .percentage, .value, .ratio').first().text());
       if (product && rate !== null) {
         results.push({ company: companyName, product, latestYear: rate });
       }
@@ -97,30 +83,60 @@ function parseDividendTable(html, companyName) {
 }
 
 /**
- * 爬取单家公司分红实现率
+ * 爬取单家公司
+ * @returns {{success: boolean, data?: Array, error?: string, manual?: boolean}}
  */
-async function crawlOneCompany(companyName, url) {
+async function crawlOneCompany(companyName, config) {
+  // 标记为手动维护的公司
+  if (config.manual) {
+    console.log(`  [${companyName}] ⚐ 人工维护 — ${config.manualNote || '无API端点'}`);
+    return { success: false, manual: true, reason: config.manualNote || '需人工维护' };
+  }
+
+  if (!config.dividendUrl) {
+    console.log(`  [${companyName}] ⚐ 无分红URL`);
+    return { success: false, manual: true, reason: '无公开分红页面URL' };
+  }
+
   try {
-    console.log(`  [${companyName}] 正在获取…`);
-    const res = await fetchWithRetry(url, { retries: 2, timeout: 15000 });
+    console.log(`  [${companyName}] 爬取中…`);
+    const res = await fetchWithRetry(config.dividendUrl, {
+      retries: 2,
+      timeout: 15000,
+    });
+
     if (!res.ok) {
-      console.warn(`  [${companyName}] HTTP ${res.status}`);
-      return null;
+      console.warn(`  [${companyName}] HTTP ${res.status} — 可能需要更新URL`);
+      // 尝试 HTTPS → HTTP fallback
+      if (config.dividendUrl.startsWith('https://')) {
+        const httpUrl = config.dividendUrl.replace('https://', 'http://');
+        try {
+          const httpRes = await fetchWithRetry(httpUrl, { retries: 1, timeout: 10000 });
+          if (httpRes.ok) {
+            const html = await httpRes.text();
+            const data = parseDividendTable(html, companyName);
+            console.log(`  [${companyName}] ✅ HTTP fallback成功，${data.length}条`);
+            return { success: true, data };
+          }
+        } catch (_) {}
+      }
+      return { success: false, reason: `HTTP ${res.status}` };
     }
+
     const html = await res.text();
 
-    // 检查页面是否包含"暂无更新"/"维护中"等
-    if (/暂无|维护中|coming soon|page not found/i.test(html.substring(0, 500))) {
-      console.warn(`  [${companyName}] 页面不可用`);
-      return null;
+    // 检查空/占位页面
+    if (/暂无|维护中|coming soon|page not found|404/i.test(html.substring(0, 500))) {
+      console.warn(`  [${companyName}] 页面暂不可用`);
+      return { success: false, reason: '页面暂不可用' };
     }
 
     const data = parseDividendTable(html, companyName);
-    console.log(`  [${companyName}] 提取 ${data.length} 条数据`);
-    return data;
+    console.log(`  [${companyName}] ✅ ${data.length}条数据`);
+    return { success: data.length > 0, data, reason: data.length === 0 ? '未提取到数据（页面结构可能已变化）' : null };
   } catch (err) {
-    console.warn(`  [${companyName}] 错误:`, err.message);
-    return null;
+    console.warn(`  [${companyName}] ❌ ${err.message}`);
+    return { success: false, reason: err.message };
   }
 }
 
@@ -129,50 +145,80 @@ async function crawlOneCompany(companyName, url) {
  */
 export async function checkDividendUpdates(options = {}) {
   const dryRun = options.dryRun || false;
-  console.log('\n======== 分红实现率检查 ========');
 
+  console.log('\n======== 分红实现率检查（23家全覆盖）========');
+
+  const config = loadCompanyConfig();
+  const entries = Object.entries(config.companies);
+
+  let autoSuccess = 0;
+  let autoFail = 0;
+  let manualCount = 0;
   const allNewData = [];
+  const failedCompanies = [];
+  const manualCompanies = [];
 
-  // 限制并发数，避免被 ban
-  const entries = Object.entries(DIVIDEND_URLS);
-  const concurrency = 3;
+  // 并发批处理（每批3家，批次间延迟5秒）
+  const CONCURRENCY = 3;
+  const BATCH_DELAY = 5000;
 
-  for (let i = 0; i < entries.length; i += concurrency) {
-    const batch = entries.slice(i, i + concurrency);
-    const results = await Promise.all(
-      batch.map(([name, url]) => crawlOneCompany(name, url))
+  for (let i = 0; i < entries.length; i += CONCURRENCY) {
+    const batch = entries.slice(i, i + CONCURRENCY);
+    const batchResults = await Promise.all(
+      batch.map(([name, cfg]) => crawlOneCompany(name, cfg))
     );
-    results.forEach((data, idx) => {
-      if (data && data.length > 0) {
-        allNewData.push(...data);
+
+    batchResults.forEach((result, idx) => {
+      const companyName = batch[idx][0];
+      if (result.manual) {
+        manualCount++;
+        manualCompanies.push({ company: companyName, reason: result.reason });
+      } else if (result.success && result.data && result.data.length > 0) {
+        autoSuccess++;
+        allNewData.push(...result.data);
       } else {
-        console.log(`  [${batch[idx][0]}] 无数据（页面可能改版或不可用）`);
+        autoFail++;
+        failedCompanies.push({ company: companyName, reason: result.reason });
       }
     });
 
     // 批次间延迟
-    if (i + concurrency < entries.length) {
-      await new Promise(r => setTimeout(r, 3000));
+    if (i + CONCURRENCY < entries.length) {
+      await new Promise(r => setTimeout(r, BATCH_DELAY));
     }
   }
 
+  console.log(`\n[分红] 汇总: ${autoSuccess}家成功, ${autoFail}家失败, ${manualCount}家人工维护`);
+
+  // 生成状态报告
+  const statusReport = {
+    timestamp: new Date().toISOString(),
+    total: entries.length,
+    autoSuccess,
+    autoFail,
+    manualCount,
+    failedCompanies: failedCompanies.map(f => f.company),
+    manualCompanies: manualCompanies.map(f => f.company),
+  };
+
+  if (failedCompanies.length > 0) {
+    console.log('[分红] 失败的公司:');
+    failedCompanies.forEach(f => console.log(`  - ${f.company}: ${f.reason}`));
+  }
+
   if (allNewData.length === 0) {
-    console.log('[分红] 所有公司均无数据，保持现有数据不变');
+    console.log('[分红] 所有自动公司均无数据，保持现有数据不变');
     return {
       changed: false,
-      error: '无公司可获取分红数据',
-      checked: entries.length,
-      successCount: 0,
+      statusReport,
+      error: autoFail === entries.length - manualCount ? '全部自动爬取失败' : '无新数据',
     };
   }
 
-  console.log(`[分红] 成功获取 ${allNewData.length} 条分红数据`);
-
-  // 读取当前数据做对比
+  // 对比新旧数据
   const current = readDataFile(DATA_DIR, 'dividend.json');
   const oldProducts = current?.products || [];
 
-  // 对比（按 company + product 作为主键）
   const oldWithKey = oldProducts.map(p => ({ ...p, _key: `${p.company}|${p.product}` }));
   const newWithKey = allNewData.map(p => ({ ...p, _key: `${p.company}|${p.product}` }));
 
@@ -180,40 +226,43 @@ export async function checkDividendUpdates(options = {}) {
 
   if (!diff.hasChanges) {
     console.log('[分红] ✅ 数据无变化');
-    return { changed: false, summary: '无变化', checked: entries.length, successCount: allNewData.length };
+    return { changed: false, statusReport, summary: '无变化' };
   }
 
   console.log(`[分红] 🔄 有更新: ${diff.summary}`);
 
   if (!dryRun) {
-    // 写入更新
     const updated = {
       ...current,
       version: new Date().toISOString().slice(0, 10),
       lastUpdated: new Date().toISOString(),
-      source: '各保险公司官网（自动爬取）',
+      source: '各保险公司官网（自动爬取，23家全覆盖）',
       products: allNewData,
+      statusReport,
     };
     writeDataFile(DATA_DIR, 'dividend.json', updated);
     updateMetadata(DATA_DIR, { version: updated.version, dividendUpdated: true });
-    console.log(`[分红] ✅ 已更新`);
+    console.log(`[分红] ✅ 已更新（${allNewData.length}条）`);
   } else {
-    console.log(`[分红] 🔍 干跑模式：检测到变化但不写入文件`);
+    console.log(`[分红] 🔍 干跑模式：检测到变化但不写入`);
   }
 
   return {
     changed: true,
+    statusReport,
     summary: diff.summary,
     added: diff.added,
     changed: diff.changed,
-    checked: entries.length,
-    successCount: allNewData.length,
   };
 }
 
 // 直接运行
 if (import.meta.url === `file://${process.argv[1]}`) {
   checkDividendUpdates().then(r => {
-    console.log('\n完成:', JSON.stringify({ changed: r.changed, summary: r.summary }, null, 2));
+    console.log('\n完成:', JSON.stringify({
+      changed: r.changed,
+      summary: r.summary,
+      status: r.statusReport,
+    }, null, 2));
   });
 }

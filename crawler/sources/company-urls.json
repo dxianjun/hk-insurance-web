@@ -1,0 +1,155 @@
+{
+  "version": "2026-05-25",
+  "note": "分红实现率/产品信息页面 URL。manual=true 表示需人工维护。",
+  "companies": {
+    "友邦保险": {
+      "dividendUrl": "https://www.aia.com.hk/zh-hk/dividend-fulfillment-ratio",
+      "productUrl": "https://www.aia.com.hk/zh-hk/products",
+      "promoUrl": "https://www.aia.com.hk/zh-hk/promotions",
+      "manual": false
+    },
+    "宏利": {
+      "dividendUrl": "https://www.manulife.com.hk/zh-hk/individual/dividend-history.html",
+      "productUrl": "https://www.manulife.com.hk/zh-hk/individual/products.html",
+      "promoUrl": "https://www.manulife.com.hk/zh-hk/individual/promotions.html",
+      "manual": false
+    },
+    "保诚保险": {
+      "dividendUrl": "https://www.prudential.com.hk/zh-hk/about-us/dividend-announcement/",
+      "productUrl": "https://www.prudential.com.hk/zh-hk/products/",
+      "promoUrl": "https://www.prudential.com.hk/zh-hk/promotions/",
+      "manual": false
+    },
+    "安盛保险": {
+      "dividendUrl": "https://www.axa.com.hk/zh/dividend-fulfillment-ratio",
+      "productUrl": "https://www.axa.com.hk/zh/insurance-products",
+      "promoUrl": "https://www.axa.com.hk/zh/promotions",
+      "manual": false
+    },
+    "汇丰人寿": {
+      "dividendUrl": "https://www.hsbc.com.hk/zh-hk/insurance/dividend-history/",
+      "productUrl": "https://www.hsbc.com.hk/zh-hk/insurance/products/",
+      "promoUrl": "https://www.hsbc.com.hk/zh-hk/insurance/promotions/",
+      "manual": false
+    },
+    "中银人寿": {
+      "dividendUrl": "https://www.bocgroup.com.hk/zh-hk/life/dividend-fulfillment-ratios.html",
+      "productUrl": "https://www.bocgroup.com.hk/zh-hk/life/products.html",
+      "promoUrl": "https://www.bocgroup.com.hk/zh-hk/life/promotions.html",
+      "manual": false
+    },
+    "富卫人寿": {
+      "dividendUrl": "https://www.fwd.com.hk/zh-hk/dividend-fulfillment-ratio/",
+      "productUrl": "https://www.fwd.com.hk/zh-hk/insurance/",
+      "promoUrl": "https://www.fwd.com.hk/zh-hk/promotions/",
+      "manual": false
+    },
+    "永明金融": {
+      "dividendUrl": "https://www.sunlife.com.hk/zh-hk/investments/dividend-fulfillment-ratio/",
+      "productUrl": "https://www.sunlife.com.hk/zh-hk/products/",
+      "promoUrl": "https://www.sunlife.com.hk/zh-hk/promotions/",
+      "manual": false
+    },
+    "中国人寿海外": {
+      "dividendUrl": "https://www.chinalife.com.hk/zh-hk/dividend-fulfillment-ratio",
+      "productUrl": "https://www.chinalife.com.hk/zh-hk/products",
+      "promoUrl": "https://www.chinalife.com.hk/zh-hk/promotions",
+      "manual": false
+    },
+    "恒生保险": {
+      "dividendUrl": "https://www.hangseng.com/zh-hk/insurance/dividend-fulfillment/",
+      "productUrl": "https://www.hangseng.com/zh-hk/insurance/products/",
+      "promoUrl": "https://www.hangseng.com/zh-hk/insurance/promotions/",
+      "manual": false
+    },
+    "周大福人寿": {
+      "dividendUrl": "https://www.ctflife.com.hk/zh-hk/dividend-fulfillment-ratio",
+      "productUrl": "https://www.ctflife.com.hk/zh-hk/products",
+      "promoUrl": "https://www.ctflife.com.hk/zh-hk/promotions",
+      "manual": true,
+      "manualNote": "2014年成立，分红实现率数据需人工核实"
+    },
+    "太寿香港": {
+      "dividendUrl": "https://www.ctpl.hk/zh-hk/dividend-fulfillment",
+      "productUrl": "https://www.ctpl.hk/zh-hk/products",
+      "promoUrl": "https://www.ctpl.hk/zh-hk/promotions",
+      "manual": true,
+      "manualNote": "央企背景，页面结构可能不同"
+    },
+    "安达人寿": {
+      "dividendUrl": "https://www.chubb.com/hk-zh/personal/dividend-ratio.html",
+      "productUrl": "https://www.chubb.com/hk-zh/personal/products.html",
+      "promoUrl": "https://www.chubb.com/hk-zh/personal/promotions.html",
+      "manual": true
+    },
+    "万通保险": {
+      "dividendUrl": "https://www.yflife.com/zh-hk/dividend-fulfillment-ratio",
+      "productUrl": "https://www.yflife.com/zh-hk/products",
+      "promoUrl": "https://www.yflife.com/zh-hk/promotions",
+      "manual": true,
+      "manualNote": "原美国万通亚洲，2023年更名"
+    },
+    "太保寿险香港": {
+      "dividendUrl": "https://www.cpic.com.hk/zh-hk/dividend-fulfillment",
+      "productUrl": "https://www.cpic.com.hk/zh-hk/products",
+      "promoUrl": "https://www.cpic.com.hk/zh-hk/promotions",
+      "manual": true,
+      "manualNote": "中国太保集团，2022年进入香港"
+    },
+    "香港年金公司": {
+      "dividendUrl": "",
+      "productUrl": "https://www.hkmca.hk/zh-hk/products",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "政府全资拥有，仅年金产品，无分红机制"
+    },
+    "忠意人寿": {
+      "dividendUrl": "https://www.generali.com.hk/zh-hk/dividend-fulfillment",
+      "productUrl": "https://www.generali.com.hk/zh-hk/products",
+      "promoUrl": "https://www.generali.com.hk/zh-hk/promotions",
+      "manual": true,
+      "manualNote": "意大利Generali集团，产品以万用寿险为主"
+    },
+    "香港富邦人寿": {
+      "dividendUrl": "https://www.fubon.com/hk/life/dividend",
+      "productUrl": "https://www.fubon.com/hk/life/products",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "台湾富邦金控子公司"
+    },
+    "香港人寿": {
+      "dividendUrl": "https://www.hklife.com.hk/zh-hk/dividend-fulfillment",
+      "productUrl": "https://www.hklife.com.hk/zh-hk/products",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "本地中小型保险公司"
+    },
+    "立桥人寿": {
+      "dividendUrl": "https://www.welllinklife.com/zh-hk/dividend",
+      "productUrl": "https://www.welllinklife.com/zh-hk/products",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "2019年获得牌照，专注保证型产品"
+    },
+    "苏黎世人寿": {
+      "dividendUrl": "https://www.zurich.com.hk/zh-hk/life/dividend-fulfillment",
+      "productUrl": "https://www.zurich.com.hk/zh-hk/life/products",
+      "promoUrl": "https://www.zurich.com.hk/zh-hk/life/promotions",
+      "manual": false
+    },
+    "保泰人寿": {
+      "dividendUrl": "",
+      "productUrl": "https://www.bowtie.com.hk/zh-hk/insurance",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "虚拟保险公司（无中介），数字化产品为主"
+    },
+    "恒安标准人寿(亚洲)": {
+      "dividendUrl": "https://www.hengansl.com.hk/zh-hk/dividend",
+      "productUrl": "https://www.hengansl.com.hk/zh-hk/products",
+      "promoUrl": "",
+      "manual": true,
+      "manualNote": "中英合资，2021年进入香港"
+    }
+  }
+}
