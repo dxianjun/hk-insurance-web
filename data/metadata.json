@@ -1,0 +1,16 @@
+{
+  "version": "v2026.05.25",
+  "generatedAt": "2026-05-25T00:00:00+08:00",
+  "source": "workbuddy auto-build",
+  "note": "Phase1 dynamic data - all JSON files served from /data/",
+  "files": [
+    "savings.json",
+    "companies.json",
+    "medical.json",
+    "vhis.json",
+    "ci.json",
+    "premium.json",
+    "dividend.json",
+    "promotions.json"
+  ]
+}

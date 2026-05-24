@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港保险新产品对比分析</title>
+<style>
+:root {
+  --primary: #1a237e;
+  --primary-light: #3949ab;
+  --accent: #ff6f00;
+  --accent-light: #ffa726;
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #212121;
+  --text-secondary: #757575;
+  --border: #e0e0e0;
+  --success: #2e7d32;
+  --warning: #f57f17;
+  --danger: #c62828;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+
+/* Header */
+.header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color:#fff; padding:24px 0; box-shadow: var(--shadow); position:sticky; top:0; z-index:100; }
+.header-inner { max-width:1280px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.header h1 { font-size:1.5rem; font-weight:700; }
+.header .subtitle { font-size:0.85rem; opacity:0.85; margin-top:4px; }
+.badge { display:inline-block; background:var(--accent); color:#fff; padding:2px 10px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+
+/* Tab Navigation */
+.tab-nav { background:#fff; border-bottom:2px solid var(--border); overflow-x:auto; white-space:nowrap; position:sticky; top:72px; z-index:99; }
+.tab-nav-inner { max-width:1280px; margin:0 auto; padding:0 16px; display:flex; gap:0; }
+.tab-btn { padding:12px 20px; border:none; background:transparent; cursor:pointer; font-size:0.9rem; font-weight:500; color:var(--text-secondary); border-bottom:3px solid transparent; transition:all 0.2s; white-space:nowrap; }
+.tab-btn:hover { color:var(--primary); background:rgba(26,35,126,0.04); }
+.tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); font-weight:600; }
+
+/* Main Content */
+.main { max-width:1280px; margin:0 auto; padding:24px; }
+.tab-content { display:none; animation: fadeIn 0.3s ease; }
+.tab-content.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* Cards */
+.section-title { font-size:1.2rem; font-weight:700; margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--primary); display:inline-block; }
+.card { background:var(--card); border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:var(--shadow); }
+.card h3 { font-size:1.05rem; margin-bottom:12px; color:var(--primary); }
+
+/* Tables */
+.table-wrap { overflow-x:auto; margin:0 -4px; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; min-width:600px; }
+th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); }
+th { background:var(--primary); color:#fff; font-weight:600; position:sticky; top:0; }
+th a { color:#fff; cursor:pointer; text-decoration:underline; }
+tr:hover { background:rgba(26,35,126,0.03); }
+tr:nth-child(even) { background:#fafafa; }
+.highlight { color:var(--accent); font-weight:700; }
+.best { background:#e8f5e9; font-weight:700; }
+.warn { color:var(--warning); }
+.danger { color:var(--danger); }
+.tag { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.72rem; font-weight:600; }
+.tag-green { background:#e8f5e9; color:#2e7d32; }
+.tag-blue { background:#e3f2fd; color:#1565c0; }
+.tag-orange { background:#fff3e0; color:#e65100; }
+.tag-red { background:#fce4ec; color:#c62828; }
+.tag-purple { background:#f3e5f5; color:#6a1b9a; }
+
+/* Filter Bar */
+.filter-bar { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+.filter-bar label { font-size:0.82rem; font-weight:600; color:var(--text-secondary); }
+.filter-bar select, .filter-bar input { padding:6px 12px; border:1px solid var(--border); border-radius:6px; font-size:0.82rem; outline:none; }
+.filter-bar select:focus, .filter-bar input:focus { border-color:var(--primary); box-shadow:0 0 0 2px rgba(26,35,126,0.15); }
+
+/* Multi-select Dropdown */
+.ms-dropdown { position:relative; display:inline-block; min-width:180px; }
+.ms-btn { padding:6px 12px; border:1px solid var(--border); border-radius:6px; font-size:0.82rem; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:6px; min-height:34px; user-select:none; }
+.ms-btn:hover { border-color:var(--primary); }
+.ms-btn .ms-count { background:var(--primary); color:#fff; border-radius:10px; padding:1px 7px; font-size:0.72rem; }
+.ms-panel { display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.15); z-index:200; min-width:240px; max-height:320px; overflow-y:auto; margin-top:4px; }
+.ms-panel.show { display:block; }
+.ms-panel .ms-header { padding:8px 12px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; gap:8px; }
+.ms-panel .ms-header button { background:none; border:none; color:var(--primary); cursor:pointer; font-size:0.78rem; font-weight:600; }
+.ms-panel .ms-search { width:100%; padding:6px 10px; border:1px solid var(--border); border-radius:4px; font-size:0.82rem; margin-bottom:4px; outline:none; }
+.ms-panel .ms-search:focus { border-color:var(--primary); }
+.ms-panel .ms-list { padding:4px 0; }
+.ms-panel .ms-item { padding:6px 12px; cursor:pointer; font-size:0.82rem; display:flex; align-items:center; gap:6px; transition:background 0.1s; }
+.ms-panel .ms-item:hover { background:rgba(26,35,126,0.05); }
+.ms-panel .ms-item input[type="checkbox"] { accent-color:var(--primary); }
+.ms-panel .ms-item.selected { background:rgba(26,35,126,0.06); }
+
+/* Search */
+.search-box { width:100%; max-width:400px; padding:10px 16px; border:2px solid var(--border); border-radius:24px; font-size:0.9rem; outline:none; transition:border-color 0.2s; }
+.search-box:focus { border-color:var(--primary); }
+
+/* Stat Cards */
+.stat-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
+.stat-card { background:var(--card); border-radius:10px; padding:16px; text-align:center; box-shadow:var(--shadow); border-left:4px solid var(--primary); }
+.stat-card .stat-val { font-size:1.5rem; font-weight:700; color:var(--primary); }
+.stat-card .stat-label { font-size:0.78rem; color:var(--text-secondary); margin-top:4px; }
+
+/* Product Cards Grid */
+.product-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:16px; }
+.product-card { background:var(--card); border-radius:10px; padding:16px; box-shadow:var(--shadow); border-top:3px solid var(--primary); transition:transform 0.2s,box-shadow 0.2s; }
+.product-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.15); }
+.product-card h4 { font-size:0.95rem; color:var(--primary); margin-bottom:4px; }
+.product-card .company { font-size:0.8rem; color:var(--text-secondary); margin-bottom:10px; }
+.product-card .meta { display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.8rem; }
+.product-card .meta-item { display:flex; flex-direction:column; }
+.product-card .meta-item .label { font-size:0.7rem; color:var(--text-secondary); }
+.product-card .meta-item .value { font-weight:600; }
+
+/* Timeline */
+.timeline { position:relative; padding-left:24px; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--primary); }
+.timeline-item { position:relative; margin-bottom:16px; padding-left:16px; }
+.timeline-item::before { content:''; position:absolute; left:-20px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid #fff; }
+.timeline-item .date { font-size:0.78rem; color:var(--accent); font-weight:600; }
+.timeline-item .desc { font-size:0.88rem; }
+
+/* FNA Form */
+.fna-form { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:16px; }
+.fna-group { background:#fafafa; border-radius:8px; padding:16px; border:1px solid var(--border); }
+.fna-group h4 { font-size:0.95rem; color:var(--primary); margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+.fna-field { margin-bottom:10px; }
+.fna-field label { display:block; font-size:0.82rem; font-weight:600; color:var(--text-secondary); margin-bottom:4px; }
+.fna-field label .required { color:var(--danger); }
+.fna-field input, .fna-field select { width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:6px; font-size:0.88rem; outline:none; }
+.fna-field input:focus, .fna-field select:focus { border-color:var(--primary); box-shadow:0 0 0 2px rgba(26,35,126,0.12); }
+.fna-field .computed { background:#e8f5e9; padding:8px 12px; border-radius:6px; font-size:0.88rem; font-weight:600; }
+.fna-field .computed.warn-val { background:#fff3e0; color:var(--warning); }
+.fna-field .computed.danger-val { background:#fce4ec; color:var(--danger); }
+.fna-field .computed.ok-val { background:#e8f5e9; color:var(--success); }
+.fna-checkbox-group { display:flex; flex-direction:column; gap:8px; }
+.fna-checkbox-group label { display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer; padding:4px 0; white-space:nowrap; width:fit-content; }
+.fna-checkbox-group input[type="checkbox"] { accent-color:var(--primary); }
+.fna-radio-group { display:flex; gap:12px; flex-wrap:wrap; }
+.fna-radio-group label { display:flex; align-items:center; gap:4px; font-size:0.85rem; cursor:pointer; padding:6px 12px; border:1px solid var(--border); border-radius:6px; transition:all 0.2s; }
+.fna-radio-group label:has(input:checked) { background:var(--primary); color:#fff; border-color:var(--primary); }
+.fna-radio-group input[type="radio"] { display:none; }
+.fna-result { margin-top:16px; }
+.fna-result-item { background:#fff; border-radius:8px; padding:12px; margin-bottom:8px; border-left:4px solid var(--primary); }
+.fna-result-item .gap-label { font-size:0.82rem; color:var(--text-secondary); }
+.fna-result-item .gap-value { font-size:1.1rem; font-weight:700; }
+.fna-result-item .gap-value.positive { color:var(--danger); }
+.fna-result-item .gap-value.zero { color:var(--success); }
+
+/* Disclaimer */
+.disclaimer { background:#fff3e0; border-radius:8px; padding:12px 16px; margin-top:20px; font-size:0.78rem; color:#e65100; line-height:1.5; }
+
+/* Footer */
+.footer { text-align:center; padding:24px; color:var(--text-secondary); font-size:0.78rem; margin-top:32px; border-top:1px solid var(--border); }
+
+/* Responsive */
+@media(max-width:768px) {
+  .header h1 { font-size:1.2rem; }
+  .main { padding:12px; }
+  .tab-btn { padding:10px 12px; font-size:0.8rem; }
+  table { font-size:0.72rem; }
+  th,td { padding:6px 6px; }
+  .product-grid { grid-template-columns:1fr; }
+  .stat-grid { grid-template-columns:repeat(2,1fr); }
+  .fna-form { grid-template-columns:1fr; }
+  .filter-bar { gap:8px; }
+  .ms-dropdown { min-width:140px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { height:6px; width:6px; }
+::-webkit-scrollbar-track { background:#f1f1f1; }
+::-webkit-scrollbar-thumb { background:#bbb; border-radius:3px; }
+
+/* Product Detail Modal */
+.modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:flex-start; padding:40px 16px; overflow-y:auto; }
+.modal-overlay.show { display:flex; }
+.modal { background:#fff; border-radius:16px; max-width:720px; width:100%; box-shadow:0 8px 32px rgba(0,0,0,0.25); animation:modalIn 0.25s ease; }
+@keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.modal-header { display:flex; justify-content:space-between; align-items:flex-start; padding:20px 24px 12px; border-bottom:1px solid var(--border); }
+.modal-header h2 { font-size:1.15rem; color:var(--primary); margin:0; }
+.modal-header .modal-company { font-size:0.85rem; color:var(--text-secondary); margin-top:4px; }
+.modal-close { background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-secondary); line-height:1; padding:0 4px; }
+.modal-close:hover { color:var(--danger); }
+.modal-body { padding:20px 24px 24px; }
+.modal-section { margin-bottom:16px; }
+.modal-section h3 { font-size:0.92rem; color:var(--primary); margin-bottom:8px; padding-bottom:4px; border-bottom:1px dashed var(--border); }
+.modal-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.modal-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+.modal-item { background:#f8f9fa; border-radius:8px; padding:10px 12px; }
+.modal-item .mi-label { font-size:0.72rem; color:var(--text-secondary); }
+.modal-item .mi-value { font-size:0.92rem; font-weight:600; margin-top:2px; }
+.modal-item .mi-value.highlight-val { color:var(--accent); }
+.modal-features { display:flex; flex-wrap:wrap; gap:6px; }
+.modal-feature-tag { display:inline-block; padding:4px 12px; border-radius:16px; font-size:0.78rem; font-weight:600; }
+.product-link { color:var(--primary); cursor:pointer; text-decoration:none; font-weight:600; transition:color 0.15s; }
+.product-link:hover { color:var(--accent); text-decoration:underline; }
+</style>
+
+  <style id="data-refresh-style">
+    #data-version {
+      position: fixed; bottom: 8px; left: 12px; z-index: 999;
+      font-size: 11px; color: #94a3b8;
+      background: rgba(15,23,42,0.75); padding: 3px 10px;
+      border-radius: 6px; backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+    #btn-refresh-data {
+      position: fixed; bottom: 8px; right: 12px; z-index: 999;
+      font-size: 12px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: #fff; border: none; border-radius: 8px;
+      padding: 5px 14px; cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.3);
+      transition: all 0.2s;
+    }
+    #btn-refresh-data:hover:not(:disabled) { transform: scale(1.04); box-shadow: 0 4px 16px rgba(99,102,241,0.5); }
+    #btn-refresh-data:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .data-toast {
+      position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+      padding: 8px 22px; border-radius: 10px; font-size: 13px;
+      z-index: 9999; opacity: 0; transition: opacity 0.3s;
+      pointer-events: none; white-space: nowrap;
+    }
+    .data-toast.show { opacity: 1; }
+    .data-toast.info    { background: #1e40af; color: #fff; }
+    .data-toast.success { background: #166534; color: #fff; }
+    .data-toast.error   { background: #991b1b; color: #fff; }
+    #data-update-banner {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0;
+      background: linear-gradient(90deg, #f59e0b, #f97316);
+      color: #fff; font-size: 13px;
+      padding: 8px 18px; z-index: 10000;
+      align-items: center; justify-content: center; gap: 12px;
+      box-shadow: 0 2px 12px rgba(245,158,11,0.4);
+    }
+    #data-update-banner button {
+      font-size: 12px; border: none; border-radius: 6px;
+      padding: 3px 12px; cursor: pointer; transition: all 0.15s;
+    }
+    .btn-update-now { background: #fff; color: #f97316; font-weight: 600; }
+    .btn-dismiss    { background: rgba(255,255,255,0.22); color: #fff; }
+  </style>
+
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <h1>香港保险新产品对比分析</h1>
+      <div class="subtitle" id="header-subtitle">保险公司 · 储蓄/医疗/危疾全线对比 · IRR+单利双指标</div>
+    </div>
+    <div>
+      <span class="badge">数据仅供参考</span>
+      <span class="badge" style="background:#2e7d32;margin-left:4px;">2025-2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="savings">储蓄/分红险</button>
+    <button class="tab-btn" data-tab="companies">保险公司</button>
+    <button class="tab-btn" data-tab="health">医疗/危疾险</button>
+    <button class="tab-btn" data-tab="dividend">分红实现率</button>
+    <button class="tab-btn" data-tab="promotions">优惠信息</button>
+    <button class="tab-btn" data-tab="premium">保费测算</button>
+    <button class="tab-btn" data-tab="market">市场趋势</button>
+    <button class="tab-btn" data-tab="fna-input">FNA录入</button>
+    <button class="tab-btn" data-tab="fna">FNA推荐</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ============ TAB: 储蓄/分红险 ============ -->
+<div id="tab-savings" class="tab-content active">
+  <h2 class="section-title">热门储蓄/分红险对比</h2>
+  <p style="margin-bottom:12px;font-size:0.82rem;color:var(--text-secondary);padding:8px 12px;background:#f0f4ff;border-radius:6px;line-height:1.6;">📋 <strong>说明：</strong>IRR = 预期复利，单利 = 预期单利</p>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-savings-company"></div>
+    <label>保险产品：</label>
+    <div class="ms-dropdown" id="ms-savings-product"></div>
+    <label>缴费年限：</label>
+    <div class="ms-dropdown" id="ms-savings-payperiod"></div>
+    <label>排序：</label>
+    <select id="savings-sort">
+      <option value="irr30">30年IRR ↓</option>
+      <option value="irr20">20年IRR ↓</option>
+      <option value="irr10">10年IRR ↓</option>
+      <option value="simple30">30年预期单利 ↓</option>
+      <option value="simple20">20年预期单利 ↓</option>
+      <option value="payback">预期回本 ↑</option>
+    </select>
+    <label>筛选：</label>
+    <select id="savings-filter">
+      <option value="all">全部产品</option>
+      <option value="6.5">30年IRR≥6.5%</option>
+      <option value="6.0">30年IRR≥6.0%</option>
+      <option value="fast">预期回本≤6年</option>
+      <option value="guarantee13">保证回本≤13年</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="savings-table">
+        <thead>
+          <tr>
+            <th>产品</th>
+            <th>公司</th>
+            <th>缴费年限</th>
+            <th>10年IRR</th>
+            <th>20年IRR</th>
+            <th>30年IRR</th>
+            <th>20年预期单利</th>
+            <th>30年预期单利</th>
+            <th>预期回本</th>
+            <th>保证回本</th>
+            <th>货币</th>
+            <th>核心标签</th>
+          </tr>
+        </thead>
+        <tbody id="savings-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin:20px 0 12px;font-size:1.05rem;color:var(--primary);">按需求推荐</h3>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>需求场景</th><th>推荐产品</th><th>推荐理由</th></tr></thead>
+        <tbody>
+          <tr><td>🔒 稳健保守</td><td><a class="product-link" onclick="showProductDetail('万年青星河尊享2')">永明·万年青星河尊享2</a></td><td>保证IRR 1%最高，保证13年回本</td></tr>
+          <tr><td>🚀 高预期回报</td><td><a class="product-link" onclick="showProductDetail('启航创富(卓越版)')">忠意·启航创富(卓越版)</a></td><td>20年IRR 6.15%全港最高</td></tr>
+          <tr><td>⚡ 快速回本</td><td><a class="product-link" onclick="showProductDetail('宏挚传承')">宏利·宏挚传承</a></td><td>5年缴6年回本，10年IRR 4.29%</td></tr>
+          <tr><td>👴 养老提领</td><td><a class="product-link" onclick="showProductDetail('富饶万家')">万通·富饶万家</a></td><td>终身年金转换权(12种)</td></tr>
+          <tr><td>🏥 保障+储蓄</td><td><a class="product-link" onclick="showProductDetail('万年青星河尊享2')">永明·万年青星河尊享2</a></td><td>唯一附医疗保障</td></tr>
+          <tr><td>🌍 多币种配置</td><td><a class="product-link" onclick="showProductDetail('盛利2')">安盛·盛利2</a></td><td>12种货币，提领后IRR反升</td></tr>
+          <tr><td>🏛️ 家族传承</td><td><a class="product-link" onclick="showProductDetail('传承首创V·丰成')">安达·传承首创V·丰成</a></td><td>四大全优评级，30年6.5%</td></tr>
+          <tr><td>🏦 品牌信赖</td><td><a class="product-link" onclick="showProductDetail('环宇盈活')">友邦·环宇盈活</a></td><td>品牌第一，分红最稳</td></tr>
+          <tr><td>📊 分红确定性</td><td><a class="product-link" onclick="showProductDetail('匠心传承2')">周大福·匠心传承2</a></td><td>连续9年100%达标</td></tr>
+          <tr><td>🇨🇳 人民币保单</td><td><a class="product-link" onclick="showProductDetail('傲珑盛世')">国寿·傲珑盛世</a></td><td>人民币保单全港最优</td></tr>
+          <tr><td>💎 极致安全</td><td><a class="product-link" onclick="showProductDetail('传承首创V·丰足')">安达·传承首创V·丰足</a></td><td>保证7年回本全港最快</td></tr>
+          <tr><td>💰 短期保证</td><td><a class="product-link" onclick="showProductDetail('智选储蓄保')">立桥·智选储蓄保</a></td><td>保证单利4.75%，0-80岁</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 以上产品信息基于公开数据整理，IRR/单利均基于100%分红实现率假设。实际收益取决于保险公司分红表现。购买前请查阅保险公司官网最新产品说明书，并咨询专业保险顾问。不构成投资建议。</div>
+</div>
+
+<!-- ============ TAB: 保险公司 ============ -->
+<div id="tab-companies" class="tab-content">
+  <h2 class="section-title">20大保险公司档案</h2>
+
+  <div class="filter-bar">
+    <input type="text" id="company-search" class="search-box" placeholder="搜索公司名称…">
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-val" id="stat-company-count">20</div><div class="stat-label">保险公司</div></div>
+    <div class="stat-card"><div class="stat-val">AA</div><div class="stat-label">最高标普评级</div></div>
+    <div class="stat-card"><div class="stat-val">3,309亿</div><div class="stat-label">2025年新单保费(HKD)</div></div>
+    <div class="stat-card"><div class="stat-val">50.6%</div><div class="stat-label">同比增速</div></div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="company-table">
+        <thead>
+          <tr><th>#</th><th>公司</th><th>英文名</th><th>标普评级</th><th>穆迪评级</th><th>核心优势</th><th>热门产品线</th><th>分红实现率</th><th>官网</th></tr>
+        </thead>
+        <tbody id="company-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin:20px 0 12px;font-size:1.05rem;color:var(--primary);">信用评级速查</h3>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>公司</th><th>标普</th><th>穆迪</th><th>惠誉</th><th>A.M.Best</th><th>综合评价</th></tr></thead>
+        <tbody>
+          <tr class="best"><td>安达人寿</td><td>AA</td><td>Aa3</td><td>AA</td><td>A++</td><td>⭐⭐ 二大全优</td></tr>
+          <tr class="best"><td>永明金融</td><td>AA</td><td>Aa3</td><td>—</td><td>—</td><td>⭐ 最高(传统口径)</td></tr>
+          <tr><td>友邦保险</td><td>AA-</td><td>Aa2</td><td>—</td><td>—</td><td>⭐ 顶级</td></tr>
+          <tr><td>宏利</td><td>AA-</td><td>A1</td><td>—</td><td>—</td><td>优秀</td></tr>
+          <tr><td>汇丰人寿</td><td>A+</td><td>—</td><td>—</td><td>—</td><td>优秀</td></tr>
+          <tr><td>安盛保险</td><td>A+</td><td>—</td><td>—</td><td>—</td><td>优秀</td></tr>
+          <tr><td>恒生保险</td><td>A+</td><td>—</td><td>—</td><td>—</td><td>优秀(汇丰集团)</td></tr>
+          <tr><td>万通保险</td><td>—</td><td>—</td><td>—</td><td>A++</td><td>良好</td></tr>
+          <tr><td>保诚保险</td><td>—</td><td>A2</td><td>—</td><td>—</td><td>良好</td></tr>
+          <tr><td>中国太平</td><td>BBB+</td><td>—</td><td>A-</td><td>—</td><td>央企背景补强</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 评级数据可能随时间变化，请以各评级机构最新发布为准。</div>
+</div>
+
+<!-- ============ TAB: 医疗/危疾险 ============ -->
+<div id="tab-health" class="tab-content">
+  <h2 class="section-title">高端医疗险对比</h2>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-medical-company"></div>
+    <label>保险产品：</label>
+    <div class="ms-dropdown" id="ms-medical-product"></div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="health-medical-table">
+        <thead><tr><th>产品</th><th>公司</th><th>终身保障限额</th><th>垫底费选项</th><th>保障地区</th><th>核心标签</th></tr></thead>
+        <tbody id="health-medical-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:24px;">VHIS自愿医保对比</h2>
+  <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">保费以非吸烟男性为例，实际保费因年龄、性别、吸烟状况而异</p>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-vhis-company"></div>
+    <label>保险产品：</label>
+    <div class="ms-dropdown" id="ms-vhis-product"></div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="health-vhis-table">
+        <thead><tr><th>公司</th><th>计划名称</th><th>30岁年保费</th><th>50岁年保费</th><th>年度保障额</th><th>核心特色</th></tr></thead>
+        <tbody id="health-vhis-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:24px;">危疾险（重疾险）对比</h2>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-ci-company"></div>
+    <label>保险产品：</label>
+    <div class="ms-dropdown" id="ms-ci-product"></div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="health-ci-table">
+        <thead><tr><th>产品</th><th>公司</th><th>保障疾病数</th><th>最高总赔付</th><th>癌症赔付</th><th>核心标签</th></tr></thead>
+        <tbody id="health-ci-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 保费为估算参考，实际保费因年龄、性别、吸烟状况、保额及缴费年期而异。不构成投资建议。</div>
+</div>
+
+<!-- ============ TAB: 分红实现率 ============ -->
+<div id="tab-dividend" class="tab-content">
+  <h2 class="section-title">分红实现率深度对比</h2>
+  <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">数据截止：2024年度(2025年1月披露) | 历史数据不构成对未来保证</p>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-dividend-company"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-val">98.4%</div><div class="stat-label">安盛平均(最高)</div></div>
+    <div class="stat-card"><div class="stat-val">96.8%</div><div class="stat-label">宏利平均</div></div>
+    <div class="stat-card"><div class="stat-val">95.8%</div><div class="stat-label">友邦平均</div></div>
+    <div class="stat-card"><div class="stat-val">91.8%</div><div class="stat-label">保诚平均(最低)</div></div>
+  </div>
+
+  <div class="card">
+    <h3 id="dividend-overview-title">公司分红实现率总览</h3>
+    <div class="table-wrap">
+      <table id="dividend-table">
+        <thead><tr><th>公司</th><th>产品数量</th><th>平均比率</th><th>最低值</th><th>最高值</th><th>≥95%产品比例</th><th>波动性</th></tr></thead>
+        <tbody id="dividend-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 id="dividend-trend-title">公司历史趋势（2019-2024年分红实现率/总现金价值比率）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>公司</th><th>2019</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>趋势</th></tr></thead>
+        <tbody>
+          <tr><td>友邦保险</td><td>96%</td><td>95%</td><td>96%</td><td>95%</td><td>96%</td><td>95.8%</td><td><span class="tag tag-green">➡️ 稳定</span></td></tr>
+          <tr><td>宏利</td><td>95%</td><td>96%</td><td>97%</td><td>96%</td><td>97%</td><td>96.8%</td><td><span class="tag tag-green">↗️ 稳中有升</span></td></tr>
+          <tr><td>安盛保险</td><td>97%</td><td>98%</td><td>99%</td><td>98%</td><td>99%</td><td>98.4%</td><td><span class="tag tag-green">↗️ 稳中有升</span></td></tr>
+          <tr><td>保诚保险</td><td>94%</td><td>93%</td><td>92%</td><td>91%</td><td>92%</td><td>91.8%</td><td><span class="tag tag-red">↘️ 略有下降</span></td></tr>
+          <tr><td>周大福人寿</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td><span class="tag tag-green">➡️ 连续100%</span></td></tr>
+          <tr><td>万通保险</td><td>~103%</td><td>~104%</td><td>~105%</td><td>~104%</td><td>~105%</td><td>105%</td><td><span class="tag tag-green">↗️ 持续超100%</span></td></tr>
+          <tr><td>永明金融</td><td>~99%</td><td>~100%</td><td>~100%</td><td>~100%</td><td>~100%</td><td>~100%</td><td><span class="tag tag-green">➡️ 稳定</span></td></tr>
+          <tr><td>太寿香港</td><td>~92%</td><td>~93%</td><td>~94%</td><td>~95%</td><td>95%+</td><td>95%+</td><td><span class="tag tag-green">↗️ 稳步提升</span></td></tr>
+          <tr><td>忠意人寿</td><td>~98%</td><td>~99%</td><td>~100%</td><td>~100%</td><td>~100%</td><td>~100%</td><td><span class="tag tag-green">↗️ 稳中有升</span></td></tr>
+          <tr><td>安达人寿</td><td>~96%</td><td>~97%</td><td>~98%</td><td>~83%</td><td>~84%</td><td>~83.6%</td><td><span class="tag tag-orange">↘️ 终期红利波动</span></td></tr>
+          <tr><td>太保寿险香港</td><td>—</td><td>—</td><td>~90%</td><td>~93%</td><td>95%+</td><td>95%+</td><td><span class="tag tag-green">↗️ 快速提升</span></td></tr>
+          <tr><td>中国人寿(海外)</td><td>~94%</td><td>~95%</td><td>~96%</td><td>~95%</td><td>~96%</td><td>—</td><td><span class="tag tag-blue">➡️ 稳定(部分数据待披露)</span></td></tr>
+          <tr><td>汇丰人寿</td><td>~97%</td><td>~98%</td><td>~99%</td><td>~98%</td><td>~99%</td><td>—</td><td><span class="tag tag-blue">➡️ 稳定(部分数据待披露)</span></td></tr>
+          <tr><td>中银人寿</td><td>~80%</td><td>~75%</td><td>~82%</td><td>~78%</td><td>~85%</td><td>52%-102%</td><td><span class="tag tag-red">↔️ 波动较大</span></td></tr>
+          <tr><td>富卫人寿</td><td>—</td><td>—</td><td>~92%</td><td>~93%</td><td>~94%</td><td>—</td><td><span class="tag tag-blue">➡️ 逐步改善(部分数据待披露)</span></td></tr>
+          <tr><td>恒生保险</td><td>~96%</td><td>~97%</td><td>~97%</td><td>~96%</td><td>~97%</td><td>—</td><td><span class="tag tag-blue">➡️ 稳定(部分数据待披露)</span></td></tr>
+          <tr><td>香港年金公司</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td><span class="tag tag-green">✅ 政府保证</span></td></tr>
+          <tr><td>香港富邦人寿</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="tag tag-blue">📋 数据待披露</span></td></tr>
+          <tr><td>香港人寿</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="tag tag-blue">📋 数据待披露</span></td></tr>
+          <tr><td>立桥人寿</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td>保证</td><td><span class="tag tag-green">✅ 保证收益</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>投资组合风格对比（分红波动根源）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>公司</th><th>固定收益(债券)</th><th>股票</th><th>房地产/另类</th><th>风格</th></tr></thead>
+        <tbody>
+          <tr><td>友邦保险</td><td class="highlight">55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>宏利</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>安盛保险</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>保诚保险</td><td>45-55%</td><td class="danger">30-40%</td><td>5-10%</td><td><span class="tag tag-red">偏进取</span></td></tr>
+          <tr><td>周大福人寿</td><td>55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>万通保险</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>永明金融</td><td class="highlight">55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>中国人寿(海外)</td><td class="highlight">65-75%</td><td>15-25%</td><td>5-10%</td><td><span class="tag tag-green">偏保守(固收为主)</span></td></tr>
+          <tr><td>太寿香港</td><td>60-70%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>忠意人寿</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>安达人寿</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>太保寿险香港</td><td>60-70%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>中银人寿</td><td>55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>汇丰人寿</td><td>55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>富卫人寿</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>恒生保险</td><td>55-65%</td><td>20-30%</td><td>5-10%</td><td><span class="tag tag-green">偏保守</span></td></tr>
+          <tr><td>苏黎世人寿</td><td>30-100%</td><td class="highlight">0-70%</td><td>—</td><td><span class="tag tag-blue">灵活配置型</span></td></tr>
+          <tr><td>香港富邦人寿</td><td>50-60%</td><td>25-35%</td><td>5-10%</td><td><span class="tag tag-blue">平衡型</span></td></tr>
+          <tr><td>立桥人寿</td><td class="highlight">100%</td><td>0%</td><td>0%</td><td><span class="tag tag-green">保证型(无分红)</span></td></tr>
+          <tr><td>保泰人寿</td><td>—</td><td>—</td><td>—</td><td><span class="tag tag-green">纯保障型(无储蓄)</span></td></tr>
+          <tr><td>香港年金公司</td><td class="highlight">100%</td><td>0%</td><td>0%</td><td><span class="tag tag-green">保证型(政府背景)</span></td></tr>
+          <tr><td>恒安标准人寿</td><td>—</td><td>—</td><td>—</td><td><span class="tag tag-blue">投资相连型(客户自选)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 分红实现率为历史数据，不构成对未来表现的保证。IRR 6.5%实现率100% > IRR 7%实现率85%。</div>
+</div>
+
+<!-- ============ TAB: 优惠信息 ============ -->
+<div id="tab-promotions" class="tab-content">
+  <h2 class="section-title">2026年5月保险公司优惠</h2>
+  <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">优惠信息随时可能变更，请以保险公司官方最新公告为准</p>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-promo-company"></div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-val">8%</div><div class="stat-label">最高预缴利率(万通)</div></div>
+    <div class="stat-card"><div class="stat-val">50%</div><div class="stat-label">最高保费折扣(太保)</div></div>
+    <div class="stat-card"><div class="stat-val">12%</div><div class="stat-label">安盛2年缴首90天利率</div></div>
+    <div class="stat-card"><div class="stat-val">72%</div><div class="stat-label">永明5年缴综合优惠</div></div>
+  </div>
+
+  <div class="card">
+    <h3>预缴利率横向对比</h3>
+    <div class="table-wrap">
+      <table id="promo-prepay-table">
+        <thead><tr><th>保险公司</th><th>最高预缴保证利率</th><th>适用条件</th></tr></thead>
+        <tbody id="promo-prepay-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>保费折扣力度横向对比</h3>
+    <div class="table-wrap">
+      <table id="promo-discount-table">
+        <thead><tr><th>保险公司</th><th>最高保费折扣</th><th>适用产品/条件</th></tr></thead>
+        <tbody id="promo-discount-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 优惠信息基于2026年5月公开数据，各保险公司可能随时调整。投保前请确认最新优惠详情。</div>
+</div>
+
+<!-- ============ TAB: 保费测算 ============ -->
+<div id="tab-premium" class="tab-content">
+  <h2 class="section-title">保费测算模拟</h2>
+
+  <div class="filter-bar">
+    <label>保险公司：</label>
+    <div class="ms-dropdown" id="ms-premium-company"></div>
+    <label>保险产品：</label>
+    <div class="ms-dropdown" id="ms-premium-product"></div>
+  </div>
+
+  <div class="card">
+    <h3>储蓄险 — 现金价值增长模拟</h3>
+    <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">条件：30岁男性，5年缴，年缴$20,000美元（总保费$100,000），100%分红实现率</p>
+    <div class="table-wrap">
+      <table id="premium-savings-table">
+        <thead>
+          <tr><th>保单年度</th><th>年龄</th><th>已缴保费</th><th>保证现金价值</th><th>预期总现金价值</th><th>预期IRR</th><th>预期单利</th></tr>
+        </thead>
+        <tbody id="premium-savings-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>分红实现率对收益的影响</h3>
+    <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">以总保费$100,000美元、30年后为例</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>分红实现率</th><th>30年后预期总现金价值</th><th>实际IRR</th><th>与100%差额</th></tr></thead>
+        <tbody>
+          <tr class="best"><td>100%</td><td>~$595,000</td><td>~7.25%</td><td>—</td></tr>
+          <tr><td>95%</td><td>~$565,000</td><td>~6.85%</td><td class="danger">-$30,000</td></tr>
+          <tr><td>90%</td><td>~$535,000</td><td>~6.45%</td><td class="danger">-$60,000</td></tr>
+          <tr><td>85%</td><td>~$505,000</td><td>~6.05%</td><td class="danger">-$90,000</td></tr>
+          <tr><td>80%</td><td>~$475,000</td><td>~5.65%</td><td class="danger">-$120,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:8px;font-size:0.82rem;color:var(--accent);">💡 分红实现率每下降5%，30年后现金价值约减少$30,000（3%总保费）</p>
+  </div>
+
+  <div class="disclaimer">⚠️ 以上模拟均为估算，实际数值以保险公司建议书为准。不构成投资建议。</div>
+</div>
+
+<!-- ============ TAB: 市场趋势 ============ -->
+<div id="tab-market" class="tab-content">
+  <h2 class="section-title">2025-2026年香港保险市场趋势</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-val">3,309亿</div><div class="stat-label">2025年新单保费(HKD)</div></div>
+    <div class="stat-card"><div class="stat-val">+50.6%</div><div class="stat-label">同比增速</div></div>
+    <div class="stat-card"><div class="stat-val">62.1%</div><div class="stat-label">储蓄+终身寿占比</div></div>
+    <div class="stat-card"><div class="stat-val">87.4%</div><div class="stat-label">前10家市场份额</div></div>
+  </div>
+
+  <div class="card">
+    <h3>三大核心监管政策</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>政策</th><th>生效日期</th><th>核心内容</th><th>影响</th></tr></thead>
+        <tbody>
+          <tr class="best"><td>分红演示利率上限</td><td>2025年7月1日</td><td>港元6.0% / 非港元6.5%</td><td>终结"演示利率军备竞赛"</td></tr>
+          <tr><td>转介费50%封顶</td><td>2025年10月1日</td><td>转介费≤佣金50%</td><td>推动行业进入"顾问时代"</td></tr>
+          <tr><td>RBC制度深化</td><td>持续</td><td>按风险类型配置资本</td><td>资本充足率低的公司承压</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>行业三大转变</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>维度</th><th>过去</th><th>现在/未来</th></tr></thead>
+        <tbody>
+          <tr><td>产品竞争</td><td>演示利率内卷</td><td class="highlight">分红实现率竞争</td></tr>
+          <tr><td>渠道模式</td><td>通道返佣模式</td><td class="highlight">专业顾问服务</td></tr>
+          <tr><td>客户需求</td><td>单纯买保障</td><td class="highlight">全球资产配置</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>新产品发布时间线</h3>
+    <div class="timeline">
+      <div class="timeline-item"><div class="date">2024年1月</div><div class="desc">友邦 · 盈御多元货币3 — 多元货币储蓄险</div></div>
+      <div class="timeline-item"><div class="date">2025年2月</div><div class="desc">保诚 · 信守明天多元货币 — 多元货币储蓄险</div></div>
+      <div class="timeline-item"><div class="date">2025年7月</div><div class="desc">永明 · 永越多元货币2 / 中国太平 · 颐年乐享2</div></div>
+      <div class="timeline-item"><div class="date">2025年11月</div><div class="desc">富卫 · 盈聚天下2 — 储蓄险</div></div>
+      <div class="timeline-item"><div class="date">2026年4月</div><div class="desc">中银 · 薪粹传承 — 传承型储蓄险</div></div>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ 市场分析基于公开数据，不构成投资建议。市场环境随时可能变化。</div>
+</div>
+
+<!-- ============ TAB: FNA录入 ============ -->
+<div id="tab-fna-input" class="tab-content">
+  <h2 class="section-title">FNA财务需求分析 — 客户信息录入</h2>
+  <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">基于香港保监局GL30指引 · 保险代理人专用录入表</p>
+
+  <div class="fna-form" id="fna-form">
+    <!-- 基本信息 -->
+    <div class="fna-group">
+      <h4>👤 基本信息</h4>
+      <div class="fna-field">
+        <label>客户代号 <span class="required">*</span></label>
+        <input type="text" id="fna-name" placeholder="如：客户A">
+      </div>
+      <div class="fna-field">
+        <label>年龄 <span class="required">*</span></label>
+        <input type="number" id="fna-age" min="18" max="80" placeholder="18-80岁">
+      </div>
+      <div class="fna-field">
+        <label>性别 <span class="required">*</span></label>
+        <select id="fna-gender">
+          <option value="">请选择</option>
+          <option value="male">男</option>
+          <option value="female">女</option>
+        </select>
+      </div>
+      <div class="fna-field">
+        <label>婚姻状况</label>
+        <select id="fna-marital">
+          <option value="">请选择</option>
+          <option value="single">未婚</option>
+          <option value="married">已婚</option>
+          <option value="divorced">离异</option>
+        </select>
+      </div>
+      <div class="fna-field">
+        <label>子女数量</label>
+        <input type="number" id="fna-children" min="0" max="10" value="0">
+      </div>
+      <div class="fna-field">
+        <label>子女年龄（逗号分隔）</label>
+        <input type="text" id="fna-children-age" placeholder="如：5,8,12">
+      </div>
+    </div>
+
+    <!-- 财务信息 -->
+    <div class="fna-group">
+      <h4>💰 财务信息</h4>
+      <div class="fna-field">
+        <label>年家庭收入 (HKD) <span class="required">*</span></label>
+        <input type="number" id="fna-income" min="0" placeholder="如：800000">
+      </div>
+      <div class="fna-field">
+        <label>年家庭支出 (HKD) <span class="required">*</span></label>
+        <input type="number" id="fna-expense" min="0" placeholder="如：500000">
+      </div>
+      <div class="fna-field">
+        <label>年净收入（自动计算）</label>
+        <div class="computed" id="fna-net-income">—</div>
+      </div>
+      <div class="fna-field">
+        <label>现有储蓄/投资 (HKD)</label>
+        <input type="number" id="fna-savings" min="0" placeholder="如：2000000">
+      </div>
+      <div class="fna-field">
+        <label>负债总额 (HKD)</label>
+        <input type="number" id="fna-debt" min="0" placeholder="如：3000000（房贷等）">
+      </div>
+    </div>
+
+    <!-- 保障现状 -->
+    <div class="fna-group">
+      <h4>🛡️ 保障现状</h4>
+      <div class="fna-field">
+        <label>已有寿险保额 (HKD)</label>
+        <input type="number" id="fna-life-cover" min="0" placeholder="如：1000000">
+      </div>
+      <div class="fna-field">
+        <label>已有危疾保额 (HKD)</label>
+        <input type="number" id="fna-ci-cover" min="0" placeholder="如：500000">
+      </div>
+      <div class="fna-field">
+        <label>已有医疗保障</label>
+        <select id="fna-medical">
+          <option value="none">无</option>
+          <option value="social">仅社保</option>
+          <option value="vhis">VHIS自愿医保</option>
+          <option value="highend">高端医疗险</option>
+        </select>
+      </div>
+      <div class="fna-field">
+        <label>已有储蓄险年缴 (HKD)</label>
+        <input type="number" id="fna-exist-premium" min="0" placeholder="如：50000">
+      </div>
+    </div>
+
+    <!-- 已有保险明细 -->
+    <div class="fna-group" style="grid-column:1/-1;">
+      <h4>📋 已有保险明细（可添加多条）</h4>
+      <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:12px;">填写客户已持有的保单信息，便于分析保障缺口</p>
+      <div id="fna-existing-policies">
+        <div class="fna-policy-row" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px;">
+          <div class="fna-field" style="margin-bottom:0;">
+            <label>产品名称</label>
+            <input type="text" class="fna-policy-name" placeholder="如：友邦·盈御多元货币3">
+          </div>
+          <div class="fna-field" style="margin-bottom:0;">
+            <label>保险类型</label>
+            <select class="fna-policy-type">
+              <option value="">请选择</option>
+              <option value="储蓄分红">储蓄/分红险</option>
+              <option value="危疾">危疾/重疾险</option>
+              <option value="医疗">医疗险</option>
+              <option value="VHIS">VHIS自愿医保</option>
+              <option value="寿险">人寿保险</option>
+              <option value="意外">意外险</option>
+              <option value="年金">年金</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+          <div class="fna-field" style="margin-bottom:0;">
+            <label>保额 (HKD)</label>
+            <input type="number" class="fna-policy-amount" min="0" placeholder="如：500000">
+          </div>
+          <div class="fna-field" style="margin-bottom:0;">
+            <label>年缴保费 (HKD)</label>
+            <input type="number" class="fna-policy-premium" min="0" placeholder="如：25000">
+          </div>
+          <button type="button" onclick="removePolicyRow(this)" style="padding:8px 12px;background:#fff;color:var(--danger);border:1px solid var(--danger);border-radius:6px;cursor:pointer;font-size:0.82rem;height:34px;align-self:end;">删除</button>
+        </div>
+      </div>
+      <button type="button" onclick="addPolicyRow()" style="padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:0.82rem;margin-top:4px;">+ 添加保单</button>
+    </div>
+
+    <!-- 风险偏好 -->
+    <div class="fna-group">
+      <h4>📊 风险偏好与需求</h4>
+      <div class="fna-field">
+        <label>期望保费预算 (HKD)</label>
+        <input type="number" id="fna-budget" min="0" placeholder="如：100000">
+      </div>
+      <div class="fna-field">
+        <label>保费占净收入比例（自动计算）</label>
+        <div class="computed" id="fna-premium-ratio">—</div>
+      </div>
+      <div class="fna-field">
+        <label>风险承受能力 <span class="required">*</span></label>
+        <div class="fna-radio-group" id="fna-risk-group">
+          <label><input type="radio" name="fna-risk" value="conservative"> 保守</label>
+          <label><input type="radio" name="fna-risk" value="moderate"> 稳健</label>
+          <label><input type="radio" name="fna-risk" value="balanced"> 平衡</label>
+          <label><input type="radio" name="fna-risk" value="aggressive"> 进取</label>
+        </div>
+      </div>
+      <div class="fna-field">
+        <label>投资经验</label>
+        <select id="fna-invest-exp">
+          <option value="">请选择</option>
+          <option value="none">无</option>
+          <option value="bank">银行存款</option>
+          <option value="fund">基金</option>
+          <option value="stock">股票</option>
+          <option value="multi">多元投资</option>
+        </select>
+      </div>
+      <div class="fna-field">
+        <label>主要保障目的 <span class="required">*</span></label>
+        <div class="fna-checkbox-group">
+          <label><input type="checkbox" value="health"> 健康</label>
+          <label><input type="checkbox" value="savings"> 储蓄</label>
+          <label><input type="checkbox" value="retirement"> 养老</label>
+          <label><input type="checkbox" value="legacy"> 传承</label>
+          <label><input type="checkbox" value="education"> 教育</label>
+        </div>
+      </div>
+      <div class="fna-field">
+        <label>预计保障年期</label>
+        <select id="fna-term">
+          <option value="">请选择</option>
+          <option value="5">5年</option>
+          <option value="10">10年</option>
+          <option value="20">20年</option>
+          <option value="30">30年</option>
+          <option value="life">终身</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; display:flex; gap:12px;">
+    <button onclick="calculateFNA()" style="padding:10px 32px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:600;">🔍 生成分析报告</button>
+    <button onclick="resetFNA()" style="padding:10px 24px; background:#fff; color:var(--text-secondary); border:1px solid var(--border); border-radius:8px; font-size:1rem; cursor:pointer;">重置</button>
+  </div>
+
+  <div id="fna-result-area" style="display:none; margin-top:20px;"></div>
+</div>
+
+<!-- ============ TAB: FNA结论 ============ -->
+<div id="tab-fna" class="tab-content">
+  <h2 class="section-title">FNA财务需求分析 — 推荐</h2>
+  <p style="margin-bottom:12px;font-size:0.85rem;color:var(--text-secondary);">基于香港保监局GL30指引 · 所有寿险销售必经流程</p>
+
+  <div class="card">
+    <h3>保障需求优先级</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>优先级</th><th>保障类型</th><th>判断标准</th></tr></thead>
+        <tbody>
+          <tr class="best"><td><span class="tag tag-red">P0 最紧急</span></td><td>医疗保障</td><td>无任何医疗保障，或仅有社保</td></tr>
+          <tr><td><span class="tag tag-orange">P1 紧急</span></td><td>危疾保障</td><td>家庭唯一经济支柱，无重疾保障</td></tr>
+          <tr><td><span class="tag tag-blue">P2 重要</span></td><td>寿险保障</td><td>有房贷/车贷，或未成年子女</td></tr>
+          <tr><td><span class="tag tag-green">P3 中期</span></td><td>储蓄/退休</td><td>保障类已充分，有闲置资金</td></tr>
+          <tr><td><span class="tag tag-purple">P4 长期</span></td><td>传承/年金</td><td>高净值客户，有财富传承需求</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>常见客户画像与推荐方案</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <h4>画像1：内地中产家庭</h4>
+        <div class="company">30-40岁 · 年收入30-60万RMB</div>
+        <div class="meta">
+          <div class="meta-item"><span class="label">主要担忧</span><span class="value">健康+资产贬值</span></div>
+          <div class="meta-item"><span class="label">保障缺口</span><span class="value">重疾不足、无全球医疗</span></div>
+          <div class="meta-item"><span class="label">推荐方案</span><span class="value">VHIS+危疾+储蓄险</span></div>
+          <div class="meta-item"><span class="label">年保费预算</span><span class="value">5-15万HKD</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <h4>画像2：高净值企业家</h4>
+        <div class="company">40-55岁 · 年收入200万+RMB</div>
+        <div class="meta">
+          <div class="meta-item"><span class="label">主要担忧</span><span class="value">财富传承+税务</span></div>
+          <div class="meta-item"><span class="label">保障缺口</span><span class="value">传承方案缺失</span></div>
+          <div class="meta-item"><span class="label">推荐方案</span><span class="value">大额储蓄+高端医疗+危疾</span></div>
+          <div class="meta-item"><span class="label">年保费预算</span><span class="value">30-100万HKD</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <h4>画像3：年轻专业人士</h4>
+        <div class="company">25-30岁 · 年收入15-25万RMB</div>
+        <div class="meta">
+          <div class="meta-item"><span class="label">主要担忧</span><span class="value">健康+强制储蓄</span></div>
+          <div class="meta-item"><span class="label">保障缺口</span><span class="value">几乎无商业保险</span></div>
+          <div class="meta-item"><span class="label">推荐方案</span><span class="value">VHIS+储蓄险+定期寿险</span></div>
+          <div class="meta-item"><span class="label">年保费预算</span><span class="value">2-5万HKD</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <h4>画像4：退休规划族</h4>
+        <div class="company">50-60岁 · 年收入20-40万RMB</div>
+        <div class="meta">
+          <div class="meta-item"><span class="label">主要担忧</span><span class="value">养老金不足+医疗</span></div>
+          <div class="meta-item"><span class="label">保障缺口</span><span class="value">退休收入断裂</span></div>
+          <div class="meta-item"><span class="label">推荐方案</span><span class="value">高端医疗+年金+储蓄</span></div>
+          <div class="meta-item"><span class="label">年保费预算</span><span class="value">10-25万HKD</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>保障缺口量化公式</h3>
+    <div style="font-size:0.88rem;">
+      <p style="margin-bottom:8px;"><strong>寿险缺口</strong> = 遗属生活费总额 + 子女教育金 + 负债总额 + 身故费用 - 已有保障 - 可变现资产</p>
+      <p style="margin-bottom:8px;"><strong>危疾保额需求</strong> = 治疗费用(3-5年) + 收入补偿(3-5年年收入) + 康复费用 - 已有危疾保障</p>
+      <p style="margin-bottom:8px;"><strong>退休缺口</strong> = 期望退休年支出 × 退休后年数 × 通胀系数 - 现有储蓄/投资 - 已有年金</p>
+      <p><strong>保费可负担性</strong>：保障类 ≤ 年结余10-20% | 含储蓄类 ≤ 年结余30-40%</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">⚠️ FNA为辅助分析工具，不构成保险购买建议。实际投保应咨询香港持牌保险顾问。</div>
+</div>
+
+</div><!-- /main -->
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="product-modal-overlay">
+  <div class="modal" id="product-modal">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-product-name"></h2>
+        <div class="modal-company" id="modal-product-company"></div>
+      </div>
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-product-body"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>香港保险新产品对比分析 · 数据仅供参考，不构成投资建议 · 请以保险公司官方最新信息为准</p>
+  <p style="margin-top:4px;" id="footer-info">数据截止：2025年Q3-2026年5月 | 保险公司 · 9大功能模块</p>
+</div>
+
+<script>
+// ============ DATA (Dynamic + Fallback) ============
+
+// ── Fallback：网络不可用时使用内嵌数据 ──
+let savingsProducts = [
+  {name:"宏挚传承",company:"宏利",payPeriod:5,irr10:"4.29%",irr20:"6.00%",irr30:"6.16%",simple20:"8.5%",simple30:"13.5%",paybackE:"6年",paybackG:"18年",currency:"7种",tag:"前期IRR之王",irr10v:4.29,irr20v:6.00,irr30v:6.16,simple20v:8.5,simple30v:13.5,paybackEv:6,paybackGv:18},
+  {name:"启航创富(卓越版)",company:"忠意人寿",payPeriod:5,irr10:"3.75%",irr20:"6.15%",irr30:"6.16%",simple20:"8.8%",simple30:"13.5%",paybackE:"7年",paybackG:"14年",currency:"6种",tag:"中期收益天花板",irr10v:3.75,irr20v:6.15,irr30v:6.16,simple20v:8.8,simple30v:13.5,paybackEv:7,paybackGv:14},
+  {name:"环宇盈活",company:"友邦保险",payPeriod:5,irr10:"3.47%",irr20:"5.67%",irr30:"6.50%",simple20:"7.8%",simple30:"15.0%",paybackE:"7年",paybackG:"18年",currency:"9种",tag:"长期6.5%最快达阵",irr10v:3.47,irr20v:5.67,irr30v:6.50,simple20v:7.8,simple30v:15.0,paybackEv:7,paybackGv:18},
+  {name:"信守明天多元货币",company:"保诚保险",payPeriod:5,irr10:"3.11%",irr20:"5.81%",irr30:"6.50%",simple20:"8.1%",simple30:"15.0%",paybackE:"8年",paybackG:"18年",currency:"6种",tag:"长期6.5%/28年达阵",irr10v:3.11,irr20v:5.81,irr30v:6.50,simple20v:8.1,simple30v:15.0,paybackEv:8,paybackGv:18},
+  {name:"盛利2",company:"安盛保险",payPeriod:5,irr10:"3.52%",irr20:"5.82%",irr30:"6.50%",simple20:"8.1%",simple30:"15.0%",paybackE:"7年",paybackG:"25年",currency:"12种",tag:"提领后IRR反升",irr10v:3.52,irr20v:5.82,irr30v:6.50,simple20v:8.1,simple30v:15.0,paybackEv:7,paybackGv:25},
+  {name:"盈聚天下2",company:"富卫人寿",payPeriod:3,irr10:"3.53%",irr20:"6.00%",irr30:"6.50%",simple20:"9.3%",simple30:"16.1%",paybackE:"6年",paybackG:"17年",currency:"9种",tag:"6年回本/婴儿奖赏",irr10v:3.53,irr20v:6.00,irr30v:6.50,simple20v:9.3,simple30v:16.1,paybackEv:6,paybackGv:17},
+  {name:"富饶万家",company:"万通保险",payPeriod:5,irr10:"3.05%",irr20:"6.00%",irr30:"6.50%",simple20:"8.5%",simple30:"15.0%",paybackE:"7年",paybackG:"13年",currency:"7种",tag:"年金转换/养老规划",irr10v:3.05,irr20v:6.00,irr30v:6.50,simple20v:8.5,simple30v:15.0,paybackEv:7,paybackGv:13},
+  {name:"万年青星河尊享2",company:"永明金融",payPeriod:5,irr10:"3.10%",irr20:"5.72%",irr30:"6.37%",simple20:"7.9%",simple30:"14.4%",paybackE:"7年",paybackG:"13年",currency:"6种",tag:"综合冠军/保证IRR1%",irr10v:3.10,irr20v:5.72,irr30v:6.37,simple20v:7.9,simple30v:14.4,paybackEv:7,paybackGv:13},
+  {name:"匠心传承2",company:"周大福人寿",payPeriod:5,irr10:"3.04%",irr20:"5.71%",irr30:"6.30%",simple20:"7.9%",simple30:"14.1%",paybackE:"7年",paybackG:"13年",currency:"6种",tag:"连续9年分红100%",irr10v:3.04,irr20v:5.71,irr30v:6.30,simple20v:7.9,simple30v:14.1,paybackEv:7,paybackGv:13},
+  {name:"傲珑盛世",company:"中国人寿(海外)",payPeriod:2,irr10:"3.30%",irr20:"5.64%",irr30:"6.50%",simple20:"8.8%",simple30:"16.7%",paybackE:"7年",paybackG:"18年",currency:"5种",tag:"人民币保单最优",irr10v:3.30,irr20v:5.64,irr30v:6.50,simple20v:8.8,simple30v:16.7,paybackEv:7,paybackGv:18},
+  {name:"盈御多元货币3",company:"友邦保险",payPeriod:5,irr10:"2.76%",irr20:"5.65%",irr30:"6.09%",simple20:"7.8%",simple30:"13.2%",paybackE:"8年",paybackG:"18年",currency:"9种",tag:"多币种/品牌保障",irr10v:2.76,irr20v:5.65,irr30v:6.09,simple20v:7.8,simple30v:13.2,paybackEv:8,paybackGv:18},
+  {name:"世代悦享3",company:"太保寿险香港",payPeriod:5,irr10:"—",irr20:"6.1%",irr30:"6.5%",simple20:"8.7%",simple30:"15.0%",paybackE:"6年",paybackG:"13年",currency:"7种",tag:"央企/稳健派全维度第一",irr10v:0,irr20v:6.1,irr30v:6.5,simple20v:8.7,simple30v:15.0,paybackEv:6,paybackGv:13},
+  {name:"传承守创2",company:"安达人寿",payPeriod:3,irr10:"~3.0%",irr20:"~5.6%",irr30:"~6.0%",simple20:"8.3%",simple30:"13.7%",paybackE:"5年",paybackG:"—",currency:"仅美元",tag:"极致安全/四大全优",irr10v:3.0,irr20v:5.6,irr30v:6.0,simple20v:8.3,simple30v:13.7,paybackEv:5,paybackGv:99},
+  {name:"传承首创V·丰足",company:"安达人寿",payPeriod:1,irr10:"3.82%",irr20:"—",irr30:"—",simple20:"—",simple30:"—",paybackE:"缴费期满",paybackG:"7年",currency:"仅美元",tag:"保证回本全港最快",irr10v:3.82,irr20v:0,irr30v:0,simple20v:0,simple30v:0,paybackEv:5,paybackGv:7},
+  {name:"传承首创V·丰成",company:"安达人寿",payPeriod:5,irr10:"—",irr20:"~6.0%",irr30:"6.5%",simple20:"8.5%",simple30:"15.0%",paybackE:"7年",paybackG:"17年",currency:"仅美元",tag:"30年达6.5%",irr10v:0,irr20v:6.0,irr30v:6.5,simple20v:8.5,simple30v:15.0,paybackEv:7,paybackGv:17},
+  {name:"智选储蓄保",company:"立桥人寿",payPeriod:1,irr10:"—",irr20:"—",irr30:"—",simple20:"4.75%保证",simple30:"—",paybackE:"保证即回",paybackG:"保证即回",currency:"美元/港币",tag:"保证单利4.75%",irr10v:0,irr20v:0,irr30v:0,simple20v:4.75,simple30v:0,paybackEv:0,paybackGv:0},
+  {name:"月悦出息",company:"中银人寿",payPeriod:3,irr10:"—",irr20:"—",irr30:"~5.64%",simple20:"—",simple30:"12.2%",paybackE:"7年",paybackG:"—",currency:"多种",tag:"5%年派息(全分红)",irr10v:0,irr20v:0,irr30v:5.64,simple20v:0,simple30v:12.2,paybackEv:7,paybackGv:99},
+  {name:"薪粹传承",company:"中银人寿",payPeriod:5,irr10:"~2.8%",irr20:"~5.5%",irr30:"~6.2%",simple20:"7.5%",simple30:"13.6%",paybackE:"7年",paybackG:"18年",currency:"6种",tag:"银保渠道/货币转换",irr10v:2.8,irr20v:5.5,irr30v:6.2,simple20v:7.5,simple30v:13.6,paybackEv:7,paybackGv:18},
+  {name:"汇承世代",company:"汇丰人寿",payPeriod:5,irr10:"~2.9%",irr20:"~5.6%",irr30:"~6.3%",simple20:"7.7%",simple30:"14.1%",paybackE:"7年",paybackG:"18年",currency:"6种",tag:"银行客户/传承规划",irr10v:2.9,irr20v:5.6,irr30v:6.3,simple20v:7.7,simple30v:14.1,paybackEv:7,paybackGv:18},
+  {name:"瑞盈储蓄",company:"苏黎世人寿",payPeriod:5,irr10:"~3.5%",irr20:"~5.8%",irr30:"~6.2%",simple20:"8.1%",simple30:"13.6%",paybackE:"6年",paybackG:"—",currency:"美元",tag:"15年IRR破6%/回本最快",irr10v:3.5,irr20v:5.8,irr30v:6.2,simple20v:8.1,simple30v:13.6,paybackEv:6,paybackGv:99},
+  {name:"瑞骏(尊尚版)",company:"苏黎世人寿",payPeriod:1,irr10:"—",irr20:"—",irr30:"—",simple20:"—",simple30:"—",paybackE:"—",paybackG:"—",currency:"美元",tag:"IUL万用寿险/保底3%上不封顶",irr10v:0,irr20v:0,irr30v:0,simple20v:0,simple30v:0,paybackEv:0,paybackGv:0},
+  {name:"颐年乐享2",company:"太寿香港",payPeriod:5,irr10:"~2.5%",irr20:"~5.4%",irr30:"~6.0%",simple20:"7.3%",simple30:"12.8%",paybackE:"8年",paybackG:"18年",currency:"3种",tag:"央企/跨境养老生态",irr10v:2.5,irr20v:5.4,irr30v:6.0,simple20v:7.3,simple30v:12.8,paybackEv:8,paybackGv:18},
+];
+
+
+let companiesData = [];
+let companies = [
+  {rank:1,name:"汇丰人寿",en:"HSBC Life",sp:"A+",moody:"—",advantage:"银行系巨头，高净值客户资源庞大",products:"汇承世代、汇溢保险计划、盈达年金",dividend:"连续多年95%-105%",url:"https://life.hsbc.com.hk/"},
+  {rank:2,name:"中银人寿",en:"BOC Group Life",sp:"A",moody:"—",advantage:"中资银行系，银保渠道优势明显",products:"薪粹传承、守跃储蓄、月悦出息",dividend:"周年红利52%-102%，波动较大",url:"https://www.bocgroup.com.hk/"},
+  {rank:3,name:"友邦保险",en:"AIA",sp:"AA-",moody:"Aa2",advantage:"亚太最大独立上市寿险集团，品牌认知度最高",products:"盈御多元货币3、环宇盈活、财富源源",dividend:"连续多年95%-105%，波动性极低",url:"https://www.aia.com.hk/"},
+  {rank:4,name:"中国人寿(海外)",en:"China Life Overseas",sp:"A",moody:"—",advantage:"中资央企，固收投资为主",products:"傲珑盛世、裕满人生、创世传承",dividend:"稳居第一梯队",url:"https://www.chinalife.com.hk/zh-hk"},
+  {rank:5,name:"宏利",en:"Manulife",sp:"AA-",moody:"A1",advantage:"万亿资产，回本速度快，重疾预支终期红利",products:"宏挚传承、宏达储蓄计划、创富传承",dividend:"平均96.8%，终期红利平均107%",url:"https://www.manulife.com.hk/zh-hk/individual.html"},
+  {rank:6,name:"保诚保险",en:"Prudential",sp:"—",moody:"A2",advantage:"全球化布局，产品线最丰富",products:"信守明天多元货币、隽富多元货币",dividend:"平均91.8%，波动最大",url:"https://www.prudential.com.hk/tc/"},
+  {rank:7,name:"富卫人寿",en:"FWD Life",sp:"—",moody:"—",advantage:"数字化优先，经纪渠道爆发式增长",products:"盈聚天下2、智优储蓄",dividend:"—",url:"https://www.fwd.com.hk/zh/"},
+  {rank:8,name:"恒生保险",en:"Hang Seng Insurance",sp:"A+",moody:"—",advantage:"银行系分销网络，恒生银行本地客户优势",products:"储蓄寿险、医疗险、退休保障",dividend:"—",url:"https://www.hangseng.com/insurance/"},
+  {rank:9,name:"永明金融",en:"Sun Life Hong Kong",sp:"AA",moody:"Aa3",advantage:"标普AA顶级评级，长期履约能力最强",products:"万年青星河尊享2、永越多元货币2",dividend:"超10年产品总现金价值率连续多年超100%",url:"https://www.sunlife.com.hk/"},
+  {rank:10,name:"安盛保险",en:"AXA",sp:"A+",moody:"—",advantage:"分红实现率平均值最高(98.4%)，12种货币转换",products:"盛利2、安进传承、挚汇",dividend:"平均98.4%（四大中最高）",url:"https://www.axa.com.hk/zh"},
+  {rank:11,name:"周大福人寿",en:"CTF Life",sp:"—",moody:"—",advantage:"连续9年分红100%达标，首创567提领模式",products:"匠心传承2、传家宝2、守护168",dividend:"三大皇牌连续9年100%达标",url:"https://corpweb.ctflife.com.hk/sc"},
+  {rank:12,name:"太寿香港",en:"China Taiping Life HK",sp:"BBB+",moody:"—",advantage:"央企背景，跨境养老生态",products:"颐年乐享2、喜裕储蓄",dividend:"12款产品分红实现率均达95%+",url:"https://tplhk.cntaiping.com/sc/"},
+  {rank:13,name:"安达人寿",en:"Chubb Life",sp:"AA",moody:"Aa3",advantage:"四大评级机构全优(AA/Aa3/A++)",products:"传承守创2、传承首创V系列",dividend:"增保红利连续多年100%；2024年均约83.6%",url:"https://www.chubblifehk.com/zh/"},
+  {rank:14,name:"万通保险",en:"YF Life",sp:"—",moody:"—",advantage:"近十年储蓄产品平均分红实现率105%",products:"富饶千秋Plus、富饶万家",dividend:"近十年储蓄产品平均105%",url:"https://www.yflife.com/sc/"},
+  {rank:15,name:"太保寿险香港",en:"CPIC Life HK",sp:"—",moody:"—",advantage:"央企实力，中前期收益全维度第一梯队",products:"世代悦享3、鑫相伴",dividend:"2023-2024年稳居第一梯队",url:"https://www.cpiclifehk.com.hk/sc/homePage"},
+  {rank:16,name:"香港年金公司",en:"HKMC Annuity",sp:"—",moody:"—",advantage:"政府背景，终身固定年金",products:"香港年金计划、可扣税延期年金",dividend:"—",url:"https://www.hkmc.com.hk/"},
+  {rank:17,name:"忠意人寿",en:"Generali Life",sp:"—",moody:"—",advantage:"中短期收益突出，10年IRR可达5%",products:"启航创富(卓越版)、无限保危疾",dividend:"大部分产品100%达成",url:"https://www.generali.com.hk/ZH_CN/"},
+  {rank:18,name:"香港富邦人寿",en:"Fubon Life HK",sp:"—",moody:"—",advantage:"台资金融集团，产品线涵盖储蓄/万用寿险",products:"储蓄计划、万用寿险、终身寿险",dividend:"—",url:"https://www.fubonlife.com.hk/"},
+  {rank:19,name:"香港人寿",en:"Hong Kong Life",sp:"—",moody:"—",advantage:"在港经营25年，本地化服务",products:"储蓄保险、人寿保障、退休规划",dividend:"—",url:"https://www.hklife.com.hk/sc/home/index.html"},
+  {rank:20,name:"立桥人寿",en:"Well Link Life",sp:"—",moody:"—",advantage:"短期保证储蓄险，5年保证单利4.75%",products:"智选储蓄保、息享年年3",dividend:"收益写入合同",url:"https://www.wli.com.hk/"},
+  {rank:21,name:"苏黎世人寿",en:"Zurich Life HK",sp:"A+",moody:"Aa3",advantage:"瑞士保险巨头150年+历史，2020年在港成立寿险公司",products:"瑞盈储蓄、瑞骏尊尚版万用寿险",dividend:"新公司暂无历史数据",url:"https://life.zurich.com.hk/sc/"},
+  {rank:22,name:"保泰人寿",en:"Bowtie Life",sp:"—",moody:"—",advantage:"香港首家虚拟保险公司，零佣金纯保障",products:"自愿医保(标准/灵活/升级)、定期寿险",dividend:"—",url:"https://www.bowtie.com.hk/"},
+  {rank:23,name:"恒安标准人寿(亚洲)",en:"Heng An Standard Life Asia",sp:"—",moody:"—",advantage:"主营投资相连保险，300+基金选择",products:"投资相连保险、保障计划",dividend:"—",url:"https://www.hengansl.com.hk/tc"},
+];
+
+
+let medicalProducts = [
+  {name:"至尊明珠医疗计划5",company:"友邦保险",limit:"HKD 5,000万",deductible:"$0/$16K/$25K/$50K",region:"全球/全球(不含美)",tag:"全数赔偿",tagClass:"tag-green"},
+  {name:"PRUmyhealth prestige",company:"保诚保险",limit:"HKD 5,000万",deductible:"多种可选",region:"全球",tag:"门诊/产科/牙科可选",tagClass:"tag-blue"},
+  {name:"环宇特选II",company:"安盛保险",limit:"HKD 2,000-3,000万/年",deductible:"可选",region:"亚洲/全球",tag:"免健康申报",tagClass:"tag-green"},
+  {name:"GlobalReach",company:"安盛保险",limit:"无限额",deductible:"多种可选",region:"全球",tag:"终身无限额",tagClass:"tag-orange",isBest:true},
+  {name:"港卓越医疗保",company:"永明金融",limit:"HKD 4,000万",deductible:"可选",region:"亚洲",tag:"癌症豁免保费",tagClass:"tag-purple"},
+  {name:"晋领医疗保障(卓越)",company:"宏利",limit:"HKD 5,000万/全额",deductible:"$0/$25K/$50K/$100K",region:"全球",tag:"多重现金保障",tagClass:"tag-blue"},
+  {name:"晋领医疗保障(优越)",company:"宏利",limit:"HKD 2,500万",deductible:"$0/$25K/$50K/$100K",region:"全球(不含美)",tag:"代缴住院费",tagClass:"tag-green"},
+  {name:"卓越医疗保",company:"汇丰人寿",limit:"HKD 5,000万",deductible:"可选",region:"全球/亚洲",tag:"银行客户便捷",tagClass:"tag-blue"},
+];
+
+
+let vhisProducts = [
+  {company:"保泰",name:"自愿医保-灵活",prem30:"~$2,800",prem50:"~$6,800",cover:"$1,000,000",tag:"全网操作",tagClass:"tag-blue"},
+  {company:"友邦保险",name:"尊显",prem30:"~$4,500",prem50:"~$11,500",cover:"$10,000,000",tag:"出院免找数",tagClass:"tag-green"},
+  {company:"保柏",name:"Hero",prem30:"~$4,200",prem50:"~$10,800",cover:"$30,000,000",tag:"癌症保障极高",tagClass:"tag-orange"},
+  {company:"富卫人寿",name:"更卫您",prem30:"~$3,100",prem50:"~$7,900",cover:"$8,000,000",tag:"App理赔简单",tagClass:"tag-blue"},
+  {company:"安盛保险",name:"智尊",prem30:"~$4,300",prem50:"~$11,200",cover:"$20,000,000",tag:"预防性检查",tagClass:"tag-purple"},
+  {company:"保诚保险",name:"自主医保",prem30:"~$4,400",prem50:"~$11,400",cover:"$12,000,000",tag:"Wellness奖赏",tagClass:"tag-green"},
+  {company:"宏利",name:"晋悦",prem30:"~$4,600",prem50:"~$11,800",cover:"$10,000,000",tag:"代理人服务",tagClass:"tag-blue"},
+  {company:"汇丰人寿",name:"汇丰自愿医保",prem30:"~$3,800",prem50:"~$9,500",cover:"$5,000,000",tag:"银行客户方便",tagClass:"tag-blue"},
+  {company:"安达人寿",name:"自顾医保(挚裕)",prem30:"~$4,000",prem50:"~$10,500",cover:"$10,000,000",tag:"全数赔偿",tagClass:"tag-green"},
+  {company:"万通保险",name:"「税」优选医疗",prem30:"~$3,500",prem50:"~$8,800",cover:"$8,000,000",tag:"扣税优惠",tagClass:"tag-purple"},
+  {company:"中银人寿",name:"中银灵活自愿医保",prem30:"~$3,600",prem50:"~$9,200",cover:"$5,000,000",tag:"额外重症保障",tagClass:"tag-blue"},
+  {company:"苏黎世人寿",name:"苏黎世自愿医保",prem30:"~$3,900",prem50:"~$9,800",cover:"$8,000,000",tag:"瑞士品牌保障",tagClass:"tag-green"},
+  {company:"恒生保险",name:"恒生自愿医保",prem30:"~$3,700",prem50:"~$9,400",cover:"$5,000,000",tag:"银行渠道便捷",tagClass:"tag-blue"},
+];
+
+
+let ciProducts = [
+  {name:"爱伴航2",company:"友邦保险",diseases:"115种",maxPay:"1100%",cancer:"多次+100个月现金",tag:"脑退化年金",tagClass:"tag-green"},
+  {name:"诚保一生",company:"保诚保险",diseases:"127种",maxPay:"1100%",cancer:"多次赔付",tag:"疾病覆盖最广",tagClass:"tag-blue"},
+  {name:"活耀人生PRO",company:"宏利",diseases:"123种",maxPay:"1000%",cancer:"最高9次",tag:"癌症次数最多",tagClass:"tag-orange",cancerHL:true},
+  {name:"MultiPro Plus",company:"安盛保险",diseases:"130+种",maxPay:"1300%",cancer:"多次+4年现金",tag:"总赔付最高",tagClass:"tag-red",isBest:true,diseasesHL:true,maxPayHL:true},
+  {name:"危疾保护+",company:"永明金融",diseases:"100+种",maxPay:"1000%",cancer:"多次赔付",tag:"性价比高",tagClass:"tag-purple"},
+  {name:"自主拣",company:"富卫人寿",diseases:"62种",maxPay:"800%",cancer:"多次赔付",tag:"额外医疗保障",tagClass:"tag-blue"},
+  {name:"安心守护危疾保障",company:"安达人寿",diseases:"82种",maxPay:"500%",cancer:"癌症/心脏病/中风4次",tag:"限期缴付选项",tagClass:"tag-blue"},
+  {name:"守护168(加强版)",company:"周大福人寿",diseases:"168种",maxPay:"500%",cancer:"多次赔付",tag:"器官功能损害首创保障",tagClass:"tag-green"},
+  {name:"守护家倍198",company:"周大福人寿",diseases:"198种",maxPay:"600%",cancer:"多次赔付",tag:"疾病数市场最多",tagClass:"tag-orange"},
+  {name:"卫您守护危疾多重保",company:"中国人寿(海外)",diseases:"194种",maxPay:"980%",cancer:"8次危疾赔付",tag:"三高慢性病保障",tagClass:"tag-purple"},
+  {name:"跨越无限保",company:"忠意人寿",diseases:"110+种",maxPay:"无限次",cancer:"癌症/中风/心脏病无限次",tag:"无限次赔偿",tagClass:"tag-red"},
+  {name:"常安心危疾保",company:"太保寿险香港",diseases:"100+种",maxPay:"600%",cancer:"3次100%赔付",tag:"海内外特药1200万",tagClass:"tag-green"},
+  {name:"瑞安护危疾保障",company:"苏黎世人寿",diseases:"82种(11早期+71严重)",maxPay:"500%",cancer:"深切治疗赔偿",tag:"瑞士品牌/150年历史",tagClass:"tag-blue"},
+];
+
+
+let dividendData = [
+  {company:"安盛保险",products:"42款",avg:"98.4%",min:"84%",max:"104%",above95:"~90%",volatility:"低",volClass:"tag-green"},
+  {company:"宏利",products:"37款",avg:"96.8%",min:"69%",max:"102%",above95:"97%",volatility:"中",volClass:"tag-blue"},
+  {company:"友邦保险",products:"75款",avg:"95.8%",min:"91%",max:"111%",above95:"~98%",volatility:"低",volClass:"tag-green"},
+  {company:"周大福人寿",products:"—",avg:"100%",min:"100%",max:"100%",above95:"100%",volatility:"极低",volClass:"tag-green"},
+  {company:"万通保险",products:"—",avg:"105%",min:"—",max:"—",above95:"—",volatility:"低",volClass:"tag-green"},
+  {company:"永明金融",products:"—",avg:"~100%",min:"—",max:"—",above95:"—",volatility:"低",volClass:"tag-green"},
+  {company:"太寿香港",products:"12款",avg:"95%+",min:"—",max:"—",above95:"100%",volatility:"低",volClass:"tag-green"},
+  {company:"忠意人寿",products:"—",avg:"~100%",min:"—",max:"—",above95:"—",volatility:"低",volClass:"tag-green"},
+  {company:"安达人寿",products:"—",avg:"~100%",min:"—",max:"—",above95:"—",volatility:"低",volClass:"tag-green"},
+  {company:"太保寿险香港",products:"—",avg:"95%+",min:"—",max:"—",above95:"—",volatility:"低",volClass:"tag-green"},
+  {company:"中国人寿(海外)",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"保诚保险",products:"69款",avg:"91.8%",min:"68%",max:"160%",above95:"~60%",volatility:"高",volClass:"tag-red"},
+  {company:"汇丰人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"中银人寿",products:"—",avg:"—",min:"52%",max:"102%",above95:"—",volatility:"高",volClass:"tag-red"},
+  {company:"富卫人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"恒生保险",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"香港年金公司",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"保证",volClass:"tag-green"},
+  {company:"香港富邦人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"香港人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"—",volClass:"tag-blue"},
+  {company:"立桥人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"保证",volClass:"tag-green"},
+  {company:"苏黎世人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"新公司",volClass:"tag-blue"},
+  {company:"保泰人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"纯保障型",volClass:"tag-blue"},
+  {company:"恒安标准人寿",products:"—",avg:"—",min:"—",max:"—",above95:"—",volatility:"投连险为主",volClass:"tag-blue"},
+];
+
+
+let promoPrepay = [
+  {company:"万通保险",rate:"8%",condition:"仅首年保证(其余3.2%非保证)，5年缴美元",isBest:true},
+  {company:"安盛保险",rate:"12%/8%",condition:"盛利II 2年缴：首90天12%，后续8%"},
+  {company:"中银人寿",rate:"6%",condition:"薪火传承环球2/3年缴"},
+  {company:"永明金融",rate:"5%",condition:"5年缴首年5%，第2-4年4.3%"},
+  {company:"宏利",rate:"5%",condition:"≥8万美元+投保危疾/人寿"},
+  {company:"中国人寿(海外)",rate:"5%",condition:"2年缴傲珑盛世"},
+  {company:"忠意人寿",rate:"4.8%",condition:"启航创富(卓越版)"},
+  {company:"周大福人寿",rate:"4.5%",condition:"≥8万美元匠心飞越"},
+  {company:"富卫人寿",rate:"4.5%",condition:"2/3/5年缴美元保单"},
+  {company:"保诚保险",rate:"4.5%",condition:"≥10万美元信守明天"},
+  {company:"太保寿险香港",rate:"4.5%",condition:"世代悦享3"},
+  {company:"友邦保险",rate:"4.3%",condition:"盈御3/环宇盈活预缴1年"},
+  {company:"安达人寿",rate:"4%",condition:"传承守创V·丰足"},
+  {company:"苏黎世人寿",rate:"4.5%",condition:"瑞盈储蓄(5年缴)"},
+  {company:"汇丰人寿",rate:"4%",condition:"汇承世代(5年缴)"},
+  {company:"太寿香港",rate:"3.5%",condition:"颐年乐享2(5年缴)"},
+];
+
+
+let promoDiscount = [
+  {company:"太保寿险香港",rate:"50%",condition:"世代悦享3(5年缴)首年20%+次年30%",isBest:true},
+  {company:"富卫人寿",rate:"45%",condition:"盈聚天下2(3年缴)首年"},
+  {company:"友邦保险",rate:"36%",condition:"环宇盈活+危疾组合"},
+  {company:"宏利",rate:"31%",condition:"宏挚传承(10/15年缴)首两年"},
+  {company:"保诚保险",rate:"31%",condition:"信守明天+启耀未来组合回赠"},
+  {company:"安盛保险",rate:"30%",condition:"盛利II-至尊(10年缴)回赠+额外"},
+  {company:"永明金融",rate:"30%",condition:"万年青·星河尊享II(5年缴)回赠"},
+  {company:"万通保险",rate:"28%",condition:"富饶万家BIS(10年缴)首年+次年"},
+  {company:"忠意人寿",rate:"25%",condition:"启航创富(卓越版)5年缴回赠"},
+  {company:"安达人寿",rate:"10%",condition:"传承守创V·丰足首年"},
+  {company:"苏黎世人寿",rate:"18%",condition:"瑞盈储蓄第2年保费折扣"},
+  {company:"中银人寿",rate:"15%",condition:"薪粹传承首年回赠"},
+];
+
+
+
+// ── 状态变量 ────────────────────────────────────────
+let dataVersion   = 'unknown';
+let dataLoadTime  = null;
+let dataIsLoading = false;
+let _periodicTimer = null;
+
+// ── 从服务器加载 JSON（Promise.allSettled 容错） ──
+async function loadDataFromServer() {
+  const FILES = {
+    savings:   '/data/savings.json',
+    companies: '/data/companies.json',
+    medical:   '/data/medical.json',
+    vhis:      '/data/vhis.json',
+    ci:        '/data/ci.json',
+    premium:   '/data/premium.json',
+    dividend:  '/data/dividend.json',
+    promotions:'/data/promotions.json',
+    metadata:  '/data/metadata.json',
+  };
+
+  let ok = 0;
+  const result = {};
+  await Promise.allSettled(
+    Object.entries(FILES).map(async ([key, url]) => {
+      try {
+        const r = await fetch(url + '?_t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        result[key] = await r.json();
+        ok++;
+      } catch (e) {
+        console.warn('[数据] 加载失败: ' + url, e.message);
+        result[key] = null;
+      }
+    })
+  );
+
+  // 覆盖到全局变量（null 则保留 fallback）
+  if (result.savings)   savingsProducts   = result.savings.products   || result.savings;
+  if (result.companies) { const arr = result.companies.companies || result.companies; companiesData = Array.isArray(arr) ? arr : (companiesData || companies); companies = companiesData; }
+  if (result.medical)   medicalProducts   = result.medical.products   || result.medical;
+  if (result.vhis)      vhisProducts      = result.vhis.products      || result.vhis;
+  if (result.ci)        ciProducts        = result.ci.products        || result.ci;
+  if (result.premium)   premiumProducts   = result.premium.data       || result.premium;
+  if (result.dividend)  dividendData      = result.dividend.products  || result.dividend;
+  if (result.promotions){
+    promoPrepay  = result.promotions.prepay  || promoPrepay;
+    promoDiscount = result.promotions.discount || promoDiscount;
+  }
+  if (result.metadata) {
+    dataVersion  = result.metadata.version  || dataVersion;
+    dataLoadTime = result.metadata.generatedAt || dataLoadTime;
+  }
+
+  updateVersionUI();
+  console.log('[数据] 完成，' + ok + '/' + Object.keys(FILES).length + ' 个文件来自服务器');
+}
+
+// ── 用户手动刷新 ────────────────────────────────────
+async function userRefreshData() {
+  if (dataIsLoading) return;
+  dataIsLoading = true;
+  const btn = document.getElementById('btn-refresh-data');
+  if (btn) btn.disabled = true;
+  showDataToast('正在刷新数据…', 'info');
+  try {
+    await loadDataFromServer();
+    initAllSelects();
+    renderAllTabs();
+    showDataToast('数据已刷新 ✓', 'success');
+    hideUpdateBanner();
+  } catch (e) {
+    showDataToast('刷新失败：' + e.message, 'error');
+  } finally {
+    dataIsLoading = false;
+    if (btn) btn.disabled = false;
+  }
+}
+
+// ── 定时检查更新（每5分钟） ─────────────────────────
+function startPeriodicCheck() {
+  if (_periodicTimer) clearInterval(_periodicTimer);
+  checkForUpdates();
+  _periodicTimer = setInterval(checkForUpdates, 5 * 60 * 1000);
+}
+function stopPeriodicCheck() {
+  if (_periodicTimer) { clearInterval(_periodicTimer); _periodicTimer = null; }
+}
+async function checkForUpdates() {
+  try {
+    const r = await fetch('/data/metadata.json?_t=' + Date.now());
+    if (!r.ok) return;
+    const meta = await r.json();
+    if (dataVersion !== 'unknown' && meta.version !== dataVersion) {
+      showUpdateBanner(meta.version, meta.generatedAt);
+    }
+    dataVersion  = meta.version  || dataVersion;
+    dataLoadTime = meta.generatedAt || dataLoadTime;
+    updateVersionUI();
+  } catch (e) {}
+}
+
+// ── UI 辅助函数 ─────────────────────────────────────
+function showDataToast(msg, type) {
+  const el = document.getElementById('data-toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'data-toast show ' + (type || '');
+  setTimeout(() => { el.className = 'data-toast'; }, 3000);
+}
+function showUpdateBanner(ver) {
+  const el = document.getElementById('data-update-banner');
+  if (!el) return;
+  el.innerHTML =
+    '<span>发现新数据版本 <b>' + (ver||'') + '</b></span>' +
+    '<button onclick="userRefreshData()" class="btn-update-now">立即更新</button>' +
+    '<button onclick="hideUpdateBanner()" class="btn-dismiss">×</button>';
+  el.style.display = 'flex';
+}
+function hideUpdateBanner() {
+  const el = document.getElementById('data-update-banner');
+  if (el) el.style.display = 'none';
+}
+function updateVersionUI() {
+  const el = document.getElementById('data-version');
+  if (!el) return;
+  let txt = '数据版本：' + dataVersion;
+  if (dataLoadTime) txt += '（' + new Date(dataLoadTime).toLocaleString('zh-CN') + '）';
+  el.textContent = txt;
+}
+
+// ── 初始化所有多选下拉 ──────────────────────────────
+function initAllSelects() {
+  const names = (companies.length > 0 ? companies : (companiesData && companiesData.length > 0 ? companiesData : [])).map(c => c.name);
+  // 初始化储蓄险公司筛选
+  if (typeof msSavingsCompany !== 'undefined' && typeof msSavingsCompany.setOptions === 'function') {
+    msSavingsCompany.setOptions(names);
+    if (msSavingsCompany.getSelected().length === 0) msSavingsCompany.setSelected(names);
+  }
+  // 初始化保费测算公司筛选
+  if (typeof msPremiumCompany !== 'undefined' && typeof msPremiumCompany.setOptions === 'function') {
+    msPremiumCompany.setOptions(names);
+    if (msPremiumCompany.getSelected().length === 0) msPremiumCompany.setSelected(names);
+  }
+  // 初始化分红实现率公司筛选
+  if (typeof msDividendCompany !== 'undefined' && typeof msDividendCompany.setOptions === 'function') {
+    msDividendCompany.setOptions(names);
+    if (msDividendCompany.getSelected().length === 0) msDividendCompany.setSelected(names.slice(0,6));
+  }
+}
+
+// ── 渲染全部 Tab ────────────────────────────────────
+function renderAllTabs() {
+  if (typeof renderSavingsTable  === 'function') renderSavingsTable(getFilteredSortedSavings());
+  if (typeof renderCompanyTable  === 'function') renderCompanyTable(companiesData || companies || []);
+  if (typeof renderHealthTables  === 'function') renderHealthTables();
+  if (typeof renderDividendTable === 'function') renderDividendTable();
+  if (typeof renderPromoTables   === 'function') renderPromoTables();
+  if (typeof renderPremiumTable  === 'function') renderPremiumTable();
+}
+
+// premiumProducts 供第6页使用（如果从 JSON 加载）
+let premiumProducts = [];
+
+// 保费测算原始数据（渲染 premium 表格用）
+let premiumData = {
+  "aia-global": [
+    {year:5,age:35,paid:"$100,000",guarantee:"~$72,000",expected:"~$103,000",irr:"~1.0%",simple:"~0.6%"},
+    {year:10,age:40,paid:"$100,000",guarantee:"~$82,000",expected:"~$140,000",irr:"~3.5%",simple:"~4.0%"},
+    {year:15,age:45,paid:"$100,000",guarantee:"~$92,000",expected:"~$196,000",irr:"~4.8%",simple:"~6.4%"},
+    {year:20,age:50,paid:"$100,000",guarantee:"~$105,000",expected:"~$280,000",irr:"~5.7%",simple:"~9.0%"},
+    {year:25,age:55,paid:"$100,000",guarantee:"~$120,000",expected:"~$400,000",irr:"~6.2%",simple:"~12.0%"},
+    {year:30,age:60,paid:"$100,000",guarantee:"~$138,000",expected:"~$570,000",irr:"~6.5%",simple:"~15.7%"},
+  ],
+  "manulife-hz": [
+    {year:6,age:36,paid:"$100,000",guarantee:"~$76,000",expected:"~$106,000",irr:"~1.5%",simple:"~1.0%"},
+    {year:10,age:40,paid:"$100,000",guarantee:"~$86,000",expected:"~$152,000",irr:"~4.3%",simple:"~5.2%"},
+    {year:15,age:45,paid:"$100,000",guarantee:"~$96,000",expected:"~$215,000",irr:"~5.4%",simple:"~7.7%"},
+    {year:20,age:50,paid:"$100,000",guarantee:"~$108,000",expected:"~$305,000",irr:"~6.0%",simple:"~10.3%"},
+    {year:25,age:55,paid:"$100,000",guarantee:"~$122,000",expected:"~$435,000",irr:"~6.1%",simple:"~13.4%"},
+    {year:30,age:60,paid:"$100,000",guarantee:"~$138,000",expected:"~$530,000",irr:"~6.2%",simple:"~14.3%"},
+  ],
+  "axa-sl": [
+    {year:5,age:35,paid:"$100,000",guarantee:"~$68,000",expected:"~$103,000",irr:"~1.0%",simple:"~0.6%"},
+    {year:10,age:40,paid:"$100,000",guarantee:"~$78,000",expected:"~$143,000",irr:"~3.5%",simple:"~4.3%"},
+    {year:15,age:45,paid:"$100,000",guarantee:"~$88,000",expected:"~$205,000",irr:"~5.0%",simple:"~7.0%"},
+    {year:20,age:50,paid:"$100,000",guarantee:"~$100,000",expected:"~$300,000",irr:"~5.8%",simple:"~10.0%"},
+    {year:25,age:55,paid:"$100,000",guarantee:"~$112,000",expected:"~$435,000",irr:"~6.3%",simple:"~13.4%"},
+    {year:30,age:60,paid:"$100,000",guarantee:"~$128,000",expected:"~$600,000",irr:"~6.5%",simple:"~16.7%"},
+  ],
+  "generali-qh": [
+    {year:5,age:35,paid:"$100,000",guarantee:"~$72,000",expected:"~$104,000",irr:"~1.2%",simple:"~0.8%"},
+    {year:10,age:40,paid:"$100,000",guarantee:"~$86,000",expected:"~$148,000",irr:"~3.8%",simple:"~4.8%"},
+    {year:15,age:45,paid:"$100,000",guarantee:"~$98,000",expected:"~$225,000",irr:"~5.5%",simple:"~8.3%"},
+    {year:20,age:50,paid:"$100,000",guarantee:"~$112,000",expected:"~$320,000",irr:"~6.2%",simple:"~11.0%"},
+    {year:25,age:55,paid:"$100,000",guarantee:"~$126,000",expected:"~$410,000",irr:"~6.2%",simple:"~12.4%"},
+    {year:30,age:60,paid:"$100,000",guarantee:"~$140,000",expected:"~$510,000",irr:"~6.2%",simple:"~13.7%"},
+  ],
+  "sunlife-wnx": [
+    {year:5,age:35,paid:"$100,000",guarantee:"~$74,000",expected:"~$102,000",irr:"~0.8%",simple:"~0.4%"},
+    {year:10,age:40,paid:"$100,000",guarantee:"~$88,000",expected:"~$138,000",irr:"~3.1%",simple:"~3.8%"},
+    {year:15,age:45,paid:"$100,000",guarantee:"~$100,000",expected:"~$195,000",irr:"~4.7%",simple:"~6.3%"},
+    {year:20,age:50,paid:"$100,000",guarantee:"~$115,000",expected:"~$280,000",irr:"~5.7%",simple:"~9.0%"},
+    {year:25,age:55,paid:"$100,000",guarantee:"~$132,000",expected:"~$400,000",irr:"~6.2%",simple:"~12.0%"},
+    {year:30,age:60,paid:"$100,000",guarantee:"~$152,000",expected:"~$560,000",irr:"~6.4%",simple:"~15.3%"},
+  ],
+};
+
+
+
+
+// ============ DATA LOAD END ============
+
+// ============ MULTI-SELECT DROPDOWN CLASS ============
+class MultiSelect {
+  constructor(containerId, options, config = {}) {
+    this.container = document.getElementById(containerId);
+    this.options = options; // [{value, label}]
+    this.selected = new Set(options.map(o => o.value));
+    this.config = { placeholder: '选择...', search: true, ...config };
+    this.onChange = config.onChange || (() => {});
+    this.isOpen = false;
+    this.searchText = '';
+    this.render();
+    this.bindEvents();
+  }
+
+  render() {
+    this.container.innerHTML = '';
+    // Button
+    const btn = document.createElement('div');
+    btn.className = 'ms-btn';
+    btn.innerHTML = `<span>${this.config.placeholder}</span><span>▼</span>`;
+    btn.addEventListener('click', (e) => { e.stopPropagation(); this.toggle(); });
+    this.btn = btn;
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'ms-panel';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'ms-header';
+    const selectAllBtn = document.createElement('button');
+    selectAllBtn.textContent = '全选';
+    selectAllBtn.addEventListener('click', (e) => { e.stopPropagation(); this.selectAll(); });
+    const deselectAllBtn = document.createElement('button');
+    deselectAllBtn.textContent = '全不选';
+    deselectAllBtn.addEventListener('click', (e) => { e.stopPropagation(); this.deselectAll(); });
+    header.appendChild(selectAllBtn);
+    header.appendChild(deselectAllBtn);
+
+    // Search
+    if (this.config.search) {
+      const searchInput = document.createElement('input');
+      searchInput.className = 'ms-search';
+      searchInput.placeholder = '搜索…';
+      searchInput.value = this.searchText;
+      searchInput.addEventListener('input', (e) => { e.stopPropagation(); this.searchText = e.target.value; this.renderList(); });
+      searchInput.addEventListener('click', (e) => e.stopPropagation());
+      this.searchInput = searchInput;
+      panel.appendChild(searchInput);
+    }
+
+    panel.appendChild(header);
+
+    // List
+    const list = document.createElement('div');
+    list.className = 'ms-list';
+    this.listEl = list;
+    panel.appendChild(list);
+
+    this.panel = panel;
+    this.container.appendChild(btn);
+    this.container.appendChild(panel);
+    this.renderList();
+  }
+
+  renderList() {
+    const q = this.searchText.toLowerCase();
+    const filtered = this.options.filter(o => o.label.toLowerCase().includes(q));
+    this.listEl.innerHTML = filtered.map(o => {
+      const checked = this.selected.has(o.value);
+      return `<div class="ms-item ${checked ? 'selected' : ''}" data-value="${o.value}">
+        <input type="checkbox" ${checked ? 'checked' : ''}> ${o.label}
+      </div>`;
+    }).join('');
+
+    this.listEl.querySelectorAll('.ms-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = item.dataset.value;
+        if (this.selected.has(val)) this.selected.delete(val);
+        else this.selected.add(val);
+        this.updateUI();
+        this.renderList();
+        this.onChange(this.getSelected());
+      });
+    });
+  }
+
+  updateUI() {
+    // No count display needed
+  }
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+    this.panel.classList.toggle('show', this.isOpen);
+    if (this.isOpen && this.searchInput) {
+      setTimeout(() => this.searchInput.focus(), 50);
+    }
+  }
+
+  close() {
+    this.isOpen = false;
+    this.panel.classList.remove('show');
+  }
+
+  selectAll() {
+    this.options.forEach(o => this.selected.add(o.value));
+    this.updateUI();
+    this.renderList();
+    this.onChange(this.getSelected());
+  }
+
+  deselectAll() {
+    this.selected.clear();
+    this.updateUI();
+    this.renderList();
+    this.onChange(this.getSelected());
+  }
+
+  getSelected() {
+    return [...this.selected];
+  }
+
+  setSelected(values) {
+    this.selected = new Set(values);
+    this.updateUI();
+    this.renderList();
+  }
+
+  bindEvents() {
+    document.addEventListener('click', (e) => {
+      if (!this.container.contains(e.target)) this.close();
+    });
+  }
+}
+
+// ============ HELPER: Get unique company names from product list ============
+function getCompanyOptions() {
+  return companies.map(c => ({ value: c.name, label: c.name }));
+}
+
+function getSavingsProductOptions() {
+  return savingsProducts.map(p => ({ value: p.name, label: p.name, company: p.company }));
+}
+
+// ============ INIT MULTI-SELECTS ============
+// Savings page
+const msSavingsCompany = new MultiSelect('ms-savings-company', getCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => { updateSavingsProductFilter(); renderSavingsTable(getFilteredSortedSavings()); }
+});
+
+const msSavingsProduct = new MultiSelect('ms-savings-product', getSavingsProductOptions(), {
+  placeholder: '保险产品',
+  search: true,
+  onChange: () => renderSavingsTable(getFilteredSortedSavings())
+});
+
+const payPeriodOptions = [
+  { value: '1', label: '1年缴' },
+  { value: '2', label: '2年缴' },
+  { value: '3', label: '3年缴' },
+  { value: '5', label: '5年缴' },
+];
+const msSavingsPayPeriod = new MultiSelect('ms-savings-payperiod', payPeriodOptions, {
+  placeholder: '缴费年限',
+  onChange: () => renderSavingsTable(getFilteredSortedSavings())
+});
+
+function updateSavingsProductFilter() {
+  const selectedCompanies = msSavingsCompany.getSelected();
+  const filteredProducts = savingsProducts.filter(p => selectedCompanies.includes(p.company));
+  const newOptions = filteredProducts.map(p => ({ value: p.name, label: p.name, company: p.company }));
+  // Rebuild product multi-select
+  msSavingsProduct.options = newOptions;
+  msSavingsProduct.selected = new Set(newOptions.map(o => o.value));
+  msSavingsProduct.render();
+  msSavingsProduct.bindEvents();
+}
+
+// Health page — 3 independent filter groups
+// Medical
+function getMedicalCompanyOptions() {
+  return [...new Set(medicalProducts.map(p => p.company))].sort().map(c => ({ value: c, label: c }));
+}
+function getMedicalProductOptions() {
+  return medicalProducts.map(p => ({ value: p.name, label: p.name, company: p.company }));
+}
+const msMedicalCompany = new MultiSelect('ms-medical-company', getMedicalCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => { updateMedicalProductFilter(); renderHealthTables(); }
+});
+const msMedicalProduct = new MultiSelect('ms-medical-product', getMedicalProductOptions(), {
+  placeholder: '保险产品',
+  search: true,
+  onChange: () => renderHealthTables()
+});
+function updateMedicalProductFilter() {
+  const selectedCompanies = msMedicalCompany.getSelected();
+  const filtered = medicalProducts.filter(p => selectedCompanies.includes(p.company));
+  const newOptions = filtered.map(p => ({ value: p.name, label: p.name, company: p.company }));
+  msMedicalProduct.options = newOptions;
+  msMedicalProduct.selected = new Set(newOptions.map(o => o.value));
+  msMedicalProduct.render();
+  msMedicalProduct.bindEvents();
+}
+
+// VHIS
+function getVhisCompanyOptions() {
+  return [...new Set(vhisProducts.filter(p => p.name && p.name !== '—').map(p => p.company))].sort().map(c => ({ value: c, label: c }));
+}
+function getVhisProductOptions() {
+  return vhisProducts.filter(p => p.name && p.name !== '—').map(p => ({ value: p.name, label: p.name, company: p.company }));
+}
+const msVhisCompany = new MultiSelect('ms-vhis-company', getVhisCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => { updateVhisProductFilter(); renderHealthTables(); }
+});
+const msVhisProduct = new MultiSelect('ms-vhis-product', getVhisProductOptions(), {
+  placeholder: '保险产品',
+  search: true,
+  onChange: () => renderHealthTables()
+});
+function updateVhisProductFilter() {
+  const selectedCompanies = msVhisCompany.getSelected();
+  const filtered = vhisProducts.filter(p => p.name && p.name !== '—' && selectedCompanies.includes(p.company));
+  const newOptions = filtered.map(p => ({ value: p.name, label: p.name, company: p.company }));
+  msVhisProduct.options = newOptions;
+  msVhisProduct.selected = new Set(newOptions.map(o => o.value));
+  msVhisProduct.render();
+  msVhisProduct.bindEvents();
+}
+
+// CI
+function getCiCompanyOptions() {
+  return [...new Set(ciProducts.map(p => p.company))].sort().map(c => ({ value: c, label: c }));
+}
+function getCiProductOptions() {
+  return ciProducts.map(p => ({ value: p.name, label: p.name, company: p.company }));
+}
+const msCiCompany = new MultiSelect('ms-ci-company', getCiCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => { updateCiProductFilter(); renderHealthTables(); }
+});
+const msCiProduct = new MultiSelect('ms-ci-product', getCiProductOptions(), {
+  placeholder: '保险产品',
+  search: true,
+  onChange: () => renderHealthTables()
+});
+function updateCiProductFilter() {
+  const selectedCompanies = msCiCompany.getSelected();
+  const filtered = ciProducts.filter(p => selectedCompanies.includes(p.company));
+  const newOptions = filtered.map(p => ({ value: p.name, label: p.name, company: p.company }));
+  msCiProduct.options = newOptions;
+  msCiProduct.selected = new Set(newOptions.map(o => o.value));
+  msCiProduct.render();
+  msCiProduct.bindEvents();
+}
+
+// Dividend page
+const msDividendCompany = new MultiSelect('ms-dividend-company', getCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => renderDividendTable()
+});
+
+// Promotions page
+const promoCompanyOptions = [...new Set([...promoPrepay, ...promoDiscount].map(p => p.company))].map(c => ({ value: c, label: c }));
+const msPromoCompany = new MultiSelect('ms-promo-company', promoCompanyOptions, {
+  placeholder: '保险公司',
+  onChange: () => renderPromoTables()
+});
+
+// Premium page
+const msPremiumCompany = new MultiSelect('ms-premium-company', getCompanyOptions(), {
+  placeholder: '保险公司',
+  onChange: () => { updatePremiumProductFilter(); renderPremiumTable(); }
+});
+
+const premiumProductOptions = Object.keys(premiumData).map(k => {
+  const label = {'aia-hyyy':'友邦·环宇盈活','manulife-hz':'宏利·宏挚传承','axa-sl':'安盛·盛利2','generali-qh':'忠意·启航创富','sunlife-wnx':'永明·万年青星河尊享2','prudential-xsm':'保诚·信守明天','fwd-yjtx2':'富卫·盈聚天下2','yflife-frwj':'万通·富饶万家','ctf-jxcc2':'周大福·匠心传承2','clice-alss':'国寿海外·傲珑盛世','cpic-sdyx3':'太保·世代悦享3','chubb-ccsc2':'安达·传承守创2','hsbc-hcsd':'汇丰·汇承世代','boc-xccc':'中银·薪粹传承','zurich-ry':'苏黎世·瑞盈储蓄','tplhk-ynlx2':'太寿·颐年乐享2'}[k] || k;
+  return { value: k, label };
+});
+
+const msPremiumProduct = new MultiSelect('ms-premium-product', premiumProductOptions, {
+  placeholder: '保险产品',
+  onChange: () => renderPremiumTable()
+});
+
+function updatePremiumProductFilter() {
+  const selectedCompanies = msPremiumCompany.getSelected();
+  const companyProductMap = {'aia-hyyy':'友邦保险','manulife-hz':'宏利','axa-sl':'安盛保险','generali-qh':'忠意人寿','sunlife-wnx':'永明金融','prudential-xsm':'保诚保险','fwd-yjtx2':'富卫人寿','yflife-frwj':'万通保险','ctf-jxcc2':'周大福人寿','clice-alss':'中国人寿(海外)','cpic-sdyx3':'太保寿险香港','chubb-ccsc2':'安达人寿','hsbc-hcsd':'汇丰人寿','boc-xccc':'中银人寿','zurich-ry':'苏黎世人寿','tplhk-ynlx2':'太寿香港'};
+  const filtered = premiumProductOptions.filter(o => selectedCompanies.includes(companyProductMap[o.value] || ''));
+  msPremiumProduct.options = filtered;
+  msPremiumProduct.selected = new Set(filtered.map(o => o.value));
+  msPremiumProduct.render();
+  msPremiumProduct.bindEvents();
+}
+
+// ============ RENDER FUNCTIONS ============
+
+function renderSavingsTable(data) {
+  const tbody = document.getElementById('savings-tbody');
+  tbody.innerHTML = data.map(p => {
+    const isBest30 = p.irr30v >= 6.5;
+    const isBest10 = p.irr10v >= 4.0;
+    return `<tr ${isBest30?'class="best"':''}>
+      <td><a class="product-link" onclick="showProductDetail('${p.name}')">${p.name}</a></td>
+      <td>${p.company}</td>
+      <td>${p.payPeriod}年缴</td>
+      <td class="${isBest10?'highlight':''}">${p.irr10}</td>
+      <td>${p.irr20}</td>
+      <td class="${isBest30?'highlight':''}">${p.irr30}</td>
+      <td>${p.simple20}</td>
+      <td>${p.simple30}</td>
+      <td>${p.paybackE}</td>
+      <td>${p.paybackG}</td>
+      <td>${p.currency}</td>
+      <td><span class="tag tag-blue">${p.tag}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function getFilteredSortedSavings() {
+  let data = [...savingsProducts];
+
+  // Multi-select filters
+  const selectedCompanies = msSavingsCompany.getSelected();
+  const selectedProducts = msSavingsProduct.getSelected();
+  const selectedPayPeriods = msSavingsPayPeriod.getSelected();
+
+  if (selectedCompanies.length > 0) {
+    data = data.filter(p => selectedCompanies.includes(p.company));
+  }
+  if (selectedProducts.length > 0) {
+    data = data.filter(p => selectedProducts.includes(p.name));
+  }
+  if (selectedPayPeriods.length > 0) {
+    data = data.filter(p => selectedPayPeriods.includes(String(p.payPeriod)));
+  }
+
+  // Quick filter
+  const filter = document.getElementById('savings-filter').value;
+  if (filter === '6.5') data = data.filter(p => p.irr30v >= 6.5);
+  else if (filter === '6.0') data = data.filter(p => p.irr30v >= 6.0);
+  else if (filter === 'fast') data = data.filter(p => p.paybackEv > 0 && p.paybackEv <= 6);
+  else if (filter === 'guarantee13') data = data.filter(p => p.paybackGv > 0 && p.paybackGv <= 13);
+
+  // Sort
+  const sort = document.getElementById('savings-sort').value;
+  if (sort === 'irr30') data.sort((a,b) => b.irr30v - a.irr30v);
+  else if (sort === 'irr20') data.sort((a,b) => b.irr20v - a.irr20v);
+  else if (sort === 'irr10') data.sort((a,b) => b.irr10v - a.irr10v);
+  else if (sort === 'simple30') data.sort((a,b) => b.simple30v - a.simple30v);
+  else if (sort === 'simple20') data.sort((a,b) => b.simple20v - a.simple20v);
+  else if (sort === 'payback') data.sort((a,b) => a.paybackEv - b.paybackEv);
+
+  return data;
+}
+
+function renderCompanyTable(data) {
+  const tbody = document.getElementById('company-tbody');
+  tbody.innerHTML = data.map(c => `<tr>
+    <td>${c.rank}</td>
+    <td><strong>${c.name}</strong></td>
+    <td style="font-size:0.75rem;">${c.en}</td>
+    <td>${c.sp}</td>
+    <td>${c.moody}</td>
+    <td style="font-size:0.75rem;">${c.advantage}</td>
+    <td style="font-size:0.75rem;">${c.products}</td>
+    <td style="font-size:0.75rem;">${c.dividend}</td>
+    <td><a href="${c.url}" target="_blank" style="color:var(--primary);font-size:0.75rem;">官网↗</a></td>
+  </tr>`).join('');
+}
+
+function renderHealthTables() {
+  // Medical — uses its own company + product filters
+  const medCompanies = msMedicalCompany.getSelected();
+  const medProducts = msMedicalProduct.getSelected();
+  let medData = [...medicalProducts];
+  if (medCompanies.length > 0) medData = medData.filter(p => medCompanies.includes(p.company));
+  if (medProducts.length > 0) medData = medData.filter(p => medProducts.includes(p.name));
+  document.getElementById('health-medical-tbody').innerHTML = medData.map(p => `<tr ${p.isBest?'class="best"':''}><td><a class="product-link" onclick="showProductDetail('${p.name}')">${p.name}</a></td><td>${p.company}</td><td ${p.limit==='无限额'?'class="highlight"':''}>${p.limit}</td><td>${p.deductible}</td><td>${p.region}</td><td><span class="tag ${p.tagClass}">${p.tag}</span></td></tr>`).join('');
+
+  // VHIS — uses its own company + product filters
+  const vhisCompanies = msVhisCompany.getSelected();
+  const vhisSelectedProducts = msVhisProduct.getSelected();
+  let vhisData = [...vhisProducts].filter(p => p.name && p.name !== '—');
+  if (vhisCompanies.length > 0) vhisData = vhisData.filter(p => vhisCompanies.includes(p.company));
+  if (vhisSelectedProducts.length > 0) vhisData = vhisData.filter(p => vhisSelectedProducts.includes(p.name));
+  document.getElementById('health-vhis-tbody').innerHTML = vhisData.map(p => `<tr><td>${p.company}</td><td><a class="product-link" onclick="showProductDetail('${p.name}')">${p.name}</a></td><td>${p.prem30}</td><td>${p.prem50}</td><td>${p.cover}</td><td><span class="tag ${p.tagClass}">${p.tag}</span></td></tr>`).join('');
+
+  // CI — uses its own company + product filters
+  const ciCompanies = msCiCompany.getSelected();
+  const ciProductsSel = msCiProduct.getSelected();
+  let ciData = [...ciProducts];
+  if (ciCompanies.length > 0) ciData = ciData.filter(p => ciCompanies.includes(p.company));
+  if (ciProductsSel.length > 0) ciData = ciData.filter(p => ciProductsSel.includes(p.name));
+  document.getElementById('health-ci-tbody').innerHTML = ciData.map(p => `<tr ${p.isBest?'class="best"':''}><td><a class="product-link" onclick="showProductDetail('${p.name}')">${p.name}</a></td><td>${p.company}</td><td class="${p.diseasesHL?'highlight':''}">${p.diseases}</td><td class="${p.maxPayHL?'highlight':''}">${p.maxPay}</td><td class="${p.cancerHL?'highlight':''}">${p.cancer}</td><td><span class="tag ${p.tagClass}">${p.tag}</span></td></tr>`).join('');
+}
+
+function renderDividendTable() {
+  const selectedCompanies = msDividendCompany.getSelected();
+  let data = [...dividendData];
+  if (selectedCompanies.length > 0) {
+    data = data.filter(d => selectedCompanies.includes(d.company));
+  }
+  const tbody = document.getElementById('dividend-tbody');
+  tbody.innerHTML = data.map(d => {
+    const isBest = d.avg === '98.4%' || d.avg === '100%' || d.avg === '105%';
+    return `<tr ${isBest?'class="best"':''}>
+      <td><strong>${d.company}</strong></td>
+      <td>${d.products}</td>
+      <td class="${isBest?'highlight':''}">${d.avg}</td>
+      <td>${d.min}</td>
+      <td>${d.max}</td>
+      <td>${d.above95}</td>
+      <td><span class="tag ${d.volClass}">${d.volatility}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPromoTables() {
+  const selectedCompanies = msPromoCompany.getSelected();
+
+  // Prepay
+  let prepayData = [...promoPrepay];
+  if (selectedCompanies.length > 0) {
+    prepayData = prepayData.filter(p => selectedCompanies.includes(p.company));
+  }
+  document.getElementById('promo-prepay-tbody').innerHTML = prepayData.map(p => `<tr ${p.isBest?'class="best"':''}><td>${p.company}</td><td class="${p.isBest?'highlight':''}">${p.rate}</td><td>${p.condition}</td></tr>`).join('');
+
+  // Discount
+  let discountData = [...promoDiscount];
+  if (selectedCompanies.length > 0) {
+    discountData = discountData.filter(p => selectedCompanies.includes(p.company));
+  }
+  document.getElementById('promo-discount-tbody').innerHTML = discountData.map(p => `<tr ${p.isBest?'class="best"':''}><td>${p.company}</td><td class="${p.isBest?'highlight':''}">${p.rate}</td><td>${p.condition}</td></tr>`).join('');
+}
+
+function renderPremiumTable() {
+  const selectedProducts = msPremiumProduct.getSelected();
+  const allKeys = Object.keys(premiumData);
+
+  // Show first selected product's data in the main table
+  const activeKey = selectedProducts.length > 0 ? selectedProducts[0] : allKeys[0];
+  const data = premiumData[activeKey] || [];
+  const tbody = document.getElementById('premium-savings-tbody');
+  tbody.innerHTML = data.map(r => `<tr>
+    <td>第${r.year}年</td><td>${r.age}岁</td><td>${r.paid}</td><td>${r.guarantee}</td>
+    <td class="highlight">${r.expected}</td><td>${r.irr}</td><td>${r.simple}</td>
+  </tr>`).join('');
+
+  // If multiple products selected, show comparison
+  if (selectedProducts.length > 1) {
+    const label = {'aia-global':'友邦·环宇盈活','manulife-hz':'宏利·宏挚传承','axa-sl':'安盛·盛利2','generali-qh':'忠意·启航创富','sunlife-wnx':'永明·万年青星河尊享2'};
+    // Add a comparison note
+    const note = document.createElement('div');
+    note.style.cssText = 'margin-top:8px;font-size:0.82rem;color:var(--accent);';
+    note.textContent = `💡 当前显示：${label[activeKey] || activeKey}。已选${selectedProducts.length}款产品，点击其他产品切换查看。`;
+  }
+}
+
+// ============ FNA CALCULATION ============
+function calculateFNA() {
+  const age = parseInt(document.getElementById('fna-age').value) || 0;
+  const gender = document.getElementById('fna-gender').value;
+  const marital = document.getElementById('fna-marital').value;
+  const children = parseInt(document.getElementById('fna-children').value) || 0;
+  const income = parseFloat(document.getElementById('fna-income').value) || 0;
+  const expense = parseFloat(document.getElementById('fna-expense').value) || 0;
+  const savings = parseFloat(document.getElementById('fna-savings').value) || 0;
+  const debt = parseFloat(document.getElementById('fna-debt').value) || 0;
+  const lifeCover = parseFloat(document.getElementById('fna-life-cover').value) || 0;
+  const ciCover = parseFloat(document.getElementById('fna-ci-cover').value) || 0;
+  const medical = document.getElementById('fna-medical').value;
+  const existPremium = parseFloat(document.getElementById('fna-exist-premium').value) || 0;
+  const budget = parseFloat(document.getElementById('fna-budget').value) || 0;
+  const risk = document.querySelector('input[name="fna-risk"]:checked')?.value || '';
+  const purposes = [...document.querySelectorAll('.fna-checkbox-group input:checked')].map(c => c.value);
+  const term = document.getElementById('fna-term').value;
+
+  // Validation
+  if (!age || !gender || !income || !expense || !risk || purposes.length === 0) {
+    alert('请填写必填项：年龄、性别、家庭收入、家庭支出、风险承受能力、保障目的');
+    return;
+  }
+
+  const netIncome = income - expense;
+  const premiumRatio = netIncome > 0 ? (budget / netIncome * 100) : 0;
+
+  // Calculate gaps
+  const lifeNeed = debt + (netIncome * 10) + (children * 500000);
+  const lifeGap = Math.max(0, lifeNeed - lifeCover - savings);
+
+  const ciNeed = (income * 5) + 1000000; // 5yr income + treatment
+  const ciGap = Math.max(0, ciNeed - ciCover);
+
+  const retireNeed = expense * 20 * 1.03; // 20yr with 3% inflation
+  const retireGap = Math.max(0, retireNeed - savings);
+
+  // Medical gap
+  let medGap = 0;
+  let medPriority = 'P0';
+  if (medical === 'none') { medGap = 1; medPriority = 'P0'; }
+  else if (medical === 'social') { medGap = 2; medPriority = 'P0'; }
+  else if (medical === 'vhis') { medGap = 0; medPriority = 'P3'; }
+  else { medGap = 0; medPriority = 'P4'; }
+
+  // Determine persona
+  let persona = '';
+  let personaDesc = '';
+  if (age <= 30 && income <= 300000) {
+    persona = '年轻专业人士';
+    personaDesc = '25-30岁 · 年收入15-25万RMB';
+  } else if (age >= 30 && age <= 45 && income >= 300000 && income <= 800000) {
+    persona = '内地中产家庭';
+    personaDesc = '30-40岁 · 年收入30-60万RMB';
+  } else if (age >= 40 && income >= 2000000) {
+    persona = '高净值企业家';
+    personaDesc = '40-55岁 · 年收入200万+RMB';
+  } else if (age >= 50) {
+    persona = '退休规划族';
+    personaDesc = '50-60岁 · 年收入20-40万RMB';
+  } else {
+    persona = '一般家庭';
+    personaDesc = `${age}岁 · 年收入${(income/10000).toFixed(0)}万HKD`;
+  }
+
+  // Recommend products based on risk & purposes
+  const recommendations = [];
+  if (medGap > 0) recommendations.push({ type: '医疗', product: 'VHIS自愿医保或高端医疗', priority: 'P0' });
+  if (ciGap > 0) recommendations.push({ type: '危疾', product: '安盛MultiPro Plus / 宏利活耀人生PRO / 忠意跨越无限保', priority: 'P1' });
+  if (lifeGap > 0) recommendations.push({ type: '寿险', product: '定期寿险/终身寿险', priority: 'P2' });
+  if (purposes.includes('savings')) {
+    const savingsRec = risk === 'conservative' ? '永明万年青星河尊享2 / 立桥智选储蓄保' :
+                       risk === 'aggressive' ? '忠意启航创富(卓越版) / 安盛盛利2' :
+                       '友邦环宇盈活 / 万通富饶万家';
+    recommendations.push({ type: '储蓄', product: savingsRec, priority: 'P3' });
+  }
+  if (purposes.includes('retirement')) {
+    recommendations.push({ type: '养老', product: '万通富饶万家(年金转换) / 永明万年青', priority: 'P3' });
+  }
+  if (purposes.includes('legacy')) {
+    recommendations.push({ type: '传承', product: '安达传承首创V·丰成 / 友邦环宇盈活', priority: 'P4' });
+  }
+  if (purposes.includes('education')) {
+    recommendations.push({ type: '教育', product: '安盛盛利2(12种货币) / 周大福匠心传承2', priority: 'P3' });
+  }
+
+  // Premium affordability
+  let affordClass = 'ok-val';
+  let affordMsg = '✅ 保费占比合理';
+  if (premiumRatio > 30) { affordClass = 'danger-val'; affordMsg = '⚠️ 保费占比过高，建议不超过30%'; }
+  else if (premiumRatio > 20) { affordClass = 'warn-val'; affordMsg = '⚡ 保费占比偏高，建议控制在20%以内'; }
+
+  // Get existing policies
+  const existingPolicies = getExistingPolicies();
+  const totalExistingPremium = existingPolicies.reduce((sum, p) => sum + p.premium, 0);
+  const totalExistingCover = existingPolicies.reduce((sum, p) => sum + p.amount, 0);
+
+  // Build existing policies HTML
+  let policiesHtml = '';
+  if (existingPolicies.length > 0) {
+    policiesHtml = `
+    <div class="card">
+      <h3>📋 已有保单明细</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>产品名称</th><th>保险类型</th><th>保额(HKD)</th><th>年缴保费(HKD)</th></tr></thead>
+          <tbody>
+            ${existingPolicies.map(p => `<tr><td>${p.name || '—'}</td><td>${p.type || '—'}</td><td>${p.amount > 0 ? (p.amount/10000).toFixed(1)+'万' : '—'}</td><td>${p.premium > 0 ? (p.premium/10000).toFixed(1)+'万' : '—'}</td></tr>`).join('')}
+            <tr style="font-weight:700;border-top:2px solid var(--primary);"><td>合计</td><td>${existingPolicies.length}份</td><td>${totalExistingCover > 0 ? (totalExistingCover/10000).toFixed(1)+'万' : '—'}</td><td>${totalExistingPremium > 0 ? (totalExistingPremium/10000).toFixed(1)+'万' : '—'}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  }
+
+  // Render result
+  const area = document.getElementById('fna-result-area');
+  area.style.display = 'block';
+  area.innerHTML = `
+    <div class="card">
+      <h3>📋 分析报告 — ${document.getElementById('fna-name').value || '客户'}</h3>
+      <div class="product-grid">
+        <div class="product-card" style="border-top-color:var(--accent);">
+          <h4>客户画像：${persona}</h4>
+          <div class="company">${personaDesc}</div>
+          <div class="meta">
+            <div class="meta-item"><span class="label">年龄</span><span class="value">${age}岁 / ${gender==='male'?'男':'女'}</span></div>
+            <div class="meta-item"><span class="label">家庭结构</span><span class="value">${marital||'未填'} · ${children}子女</span></div>
+            <div class="meta-item"><span class="label">年净收入</span><span class="value">HKD ${(netIncome/10000).toFixed(1)}万</span></div>
+            <div class="meta-item"><span class="label">风险偏好</span><span class="value">${{conservative:'保守',moderate:'稳健',balanced:'平衡',aggressive:'进取'}[risk]}</span></div>
+          </div>
+        </div>
+        <div class="product-card" style="border-top-color:var(--danger);">
+          <h4>🛡️ 保障缺口</h4>
+          <div class="fna-result">
+            <div class="fna-result-item"><div class="gap-label">医疗保障缺口</div><div class="gap-value ${medGap>0?'positive':'zero'}">${medGap>0?'⚠️ 需要补充':'✅ 已覆盖'}</div></div>
+            <div class="fna-result-item"><div class="gap-label">危疾保障缺口</div><div class="gap-value ${ciGap>0?'positive':'zero'}">HKD ${(ciGap/10000).toFixed(0)}万</div></div>
+            <div class="fna-result-item"><div class="gap-label">寿险保障缺口</div><div class="gap-value ${lifeGap>0?'positive':'zero'}">HKD ${(lifeGap/10000).toFixed(0)}万</div></div>
+            <div class="fna-result-item"><div class="gap-label">退休准备缺口</div><div class="gap-value ${retireGap>0?'positive':'zero'}">HKD ${(retireGap/10000).toFixed(0)}万</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${policiesHtml}
+    <div class="card">
+      <h3>💡 推荐方案（按优先级排序）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>优先级</th><th>保障类型</th><th>推荐产品</th></tr></thead>
+          <tbody>
+            ${recommendations.map(r => `<tr ${r.priority==='P0'?'class="best"':''}><td><span class="tag ${r.priority==='P0'?'tag-red':r.priority==='P1'?'tag-orange':r.priority==='P2'?'tag-blue':'tag-green'}">${r.priority}</span></td><td>${r.type}</td><td>${r.product}</td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>💰 保费可负担性评估</h3>
+      <div style="font-size:0.92rem;">
+        <p>期望年保费预算：<strong>HKD ${(budget/10000).toFixed(1)}万</strong></p>
+        <p>年净收入：<strong>HKD ${(netIncome/10000).toFixed(1)}万</strong></p>
+        <p>保费占净收入比例：<strong class="${affordClass}">${premiumRatio.toFixed(1)}%</strong></p>
+        <p style="margin-top:4px;font-weight:600;" class="${affordClass}">${affordMsg}</p>
+      </div>
+    </div>
+    <div class="disclaimer">⚠️ 本分析基于您输入的信息生成，仅供参考，不构成保险购买建议。实际投保方案应咨询香港持牌保险顾问，并以保险公司正式建议书为准。</div>
+  `;
+}
+
+// Policy row management
+function addPolicyRow(name='', type='', amount='', premium='') {
+  const container = document.getElementById('fna-existing-policies');
+  const row = document.createElement('div');
+  row.className = 'fna-policy-row';
+  row.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px;';
+  row.innerHTML = `
+    <div class="fna-field" style="margin-bottom:0;">
+      <label>产品名称</label>
+      <input type="text" class="fna-policy-name" placeholder="如：友邦·盈御多元货币3" value="${name}">
+    </div>
+    <div class="fna-field" style="margin-bottom:0;">
+      <label>保险类型</label>
+      <select class="fna-policy-type">
+        <option value="" ${!type?'selected':''}>请选择</option>
+        <option value="储蓄分红" ${type==='储蓄分红'?'selected':''}>储蓄/分红险</option>
+        <option value="危疾" ${type==='危疾'?'selected':''}>危疾/重疾险</option>
+        <option value="医疗" ${type==='医疗'?'selected':''}>医疗险</option>
+        <option value="VHIS" ${type==='VHIS'?'selected':''}>VHIS自愿医保</option>
+        <option value="寿险" ${type==='寿险'?'selected':''}>人寿保险</option>
+        <option value="意外" ${type==='意外'?'selected':''}>意外险</option>
+        <option value="年金" ${type==='年金'?'selected':''}>年金</option>
+        <option value="其他" ${type==='其他'?'selected':''}>其他</option>
+      </select>
+    </div>
+    <div class="fna-field" style="margin-bottom:0;">
+      <label>保额 (HKD)</label>
+      <input type="number" class="fna-policy-amount" min="0" placeholder="如：500000" value="${amount}">
+    </div>
+    <div class="fna-field" style="margin-bottom:0;">
+      <label>年缴保费 (HKD)</label>
+      <input type="number" class="fna-policy-premium" min="0" placeholder="如：25000" value="${premium}">
+    </div>
+    <button type="button" onclick="removePolicyRow(this)" style="padding:8px 12px;background:#fff;color:var(--danger);border:1px solid var(--danger);border-radius:6px;cursor:pointer;font-size:0.82rem;height:34px;align-self:end;">删除</button>
+  `;
+  container.appendChild(row);
+}
+
+function removePolicyRow(btn) {
+  const rows = document.querySelectorAll('.fna-policy-row');
+  if (rows.length > 1) {
+    btn.closest('.fna-policy-row').remove();
+  } else {
+    // Clear the last remaining row instead of removing it
+    const row = btn.closest('.fna-policy-row');
+    row.querySelector('.fna-policy-name').value = '';
+    row.querySelector('.fna-policy-type').selectedIndex = 0;
+    row.querySelector('.fna-policy-amount').value = '';
+    row.querySelector('.fna-policy-premium').value = '';
+  }
+}
+
+function getExistingPolicies() {
+  const rows = document.querySelectorAll('.fna-policy-row');
+  const policies = [];
+  rows.forEach(row => {
+    const name = row.querySelector('.fna-policy-name').value.trim();
+    const type = row.querySelector('.fna-policy-type').value;
+    const amount = parseFloat(row.querySelector('.fna-policy-amount').value) || 0;
+    const premium = parseFloat(row.querySelector('.fna-policy-premium').value) || 0;
+    if (name || type || amount || premium) {
+      policies.push({ name, type, amount, premium });
+    }
+  });
+  return policies;
+}
+
+function resetFNA() {
+  document.querySelectorAll('#fna-form input[type="text"], #fna-form input[type="number"]').forEach(i => i.value = '');
+  document.querySelectorAll('#fna-form select').forEach(s => s.selectedIndex = 0);
+  document.querySelectorAll('#fna-form input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('#fna-form input[type="checkbox"]').forEach(c => c.checked = false);
+  document.getElementById('fna-net-income').textContent = '—';
+  document.getElementById('fna-net-income').className = 'computed';
+  document.getElementById('fna-premium-ratio').textContent = '—';
+  document.getElementById('fna-premium-ratio').className = 'computed';
+  document.getElementById('fna-result-area').style.display = 'none';
+  // Reset policy rows to single empty row
+  const container = document.getElementById('fna-existing-policies');
+  container.innerHTML = '';
+  addPolicyRow();
+}
+
+// FNA real-time calculation
+function updateFNACalc() {
+  const income = parseFloat(document.getElementById('fna-income').value) || 0;
+  const expense = parseFloat(document.getElementById('fna-expense').value) || 0;
+  const budget = parseFloat(document.getElementById('fna-budget').value) || 0;
+  const net = income - expense;
+  const netEl = document.getElementById('fna-net-income');
+  netEl.textContent = net > 0 ? `HKD ${(net/10000).toFixed(1)}万` : net < 0 ? '⚠️ 支出超过收入！' : '—';
+  netEl.className = 'computed' + (net < 0 ? ' danger-val' : net > 0 ? ' ok-val' : '');
+
+  const ratioEl = document.getElementById('fna-premium-ratio');
+  if (net > 0 && budget > 0) {
+    const ratio = (budget / net * 100).toFixed(1);
+    ratioEl.textContent = `${ratio}%`;
+    ratioEl.className = 'computed ' + (ratio > 30 ? 'danger-val' : ratio > 20 ? 'warn-val' : 'ok-val');
+  } else {
+    ratioEl.textContent = '—';
+    ratioEl.className = 'computed';
+  }
+}
+
+document.getElementById('fna-income').addEventListener('input', updateFNACalc);
+document.getElementById('fna-expense').addEventListener('input', updateFNACalc);
+document.getElementById('fna-budget').addEventListener('input', updateFNACalc);
+
+// ============ EVENT HANDLERS ============
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Savings filter & sort
+document.getElementById('savings-sort').addEventListener('change', () => renderSavingsTable(getFilteredSortedSavings()));
+document.getElementById('savings-filter').addEventListener('change', () => renderSavingsTable(getFilteredSortedSavings()));
+
+// Company search
+document.getElementById('company-search').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  const filtered = companies.filter(c => c.name.toLowerCase().includes(q) || c.en.toLowerCase().includes(q) || c.advantage.toLowerCase().includes(q));
+  renderCompanyTable(filtered);
+});
+
+// ============ PRODUCT DETAIL DATA ============
+const productDetails = {
+  "宏挚传承": {
+    fullName: "宏利·宏挚传承",
+    company: "宏利",
+    type: "储蓄分红险",
+    currency: "7种货币(美元/港元/人民币/英镑/加元/澳元/新加坡元)",
+    payPeriod: "1/3/5年缴",
+    minPremium: "$2,500/年(5年缴)",
+    irr10: "4.29%", irr20: "6.00%", irr30: "6.16%",
+    simple20: "~9.9%", simple30: "~10.5%",
+    paybackE: "6年(预期)", paybackG: "18年(保证)",
+    features: ["前期IRR之王", "5年缴6年预期回本", "终期红利锁定选项", "重疾预支终期红利", "7种货币自由转换"],
+    highlights: "10年IRR 4.29%全港最高，5年缴6年预期回本，适合追求前期高回报的客户",
+    suitable: "追求前期高回报、快速回本的客户",
+    risk: "终期红利非保证，前期退保可能亏损"
+  },
+  "启航创富(卓越版)": {
+    fullName: "忠意·启航创富(卓越版)",
+    company: "忠意人寿",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "3/5年缴",
+    minPremium: "$2,000/年(5年缴)",
+    irr10: "3.75%", irr20: "6.15%", irr30: "6.16%",
+    simple20: "~10.3%", simple30: "~10.5%",
+    paybackE: "7年(预期)", paybackG: "14年(保证)",
+    features: ["中期收益天花板", "20年IRR 6.15%全港最高", "保证14年回本", "6种货币转换", "10年IRR可达5%(3年缴)"],
+    highlights: "20年IRR 6.15%全港最高，保证14年回本，中短期收益突出",
+    suitable: "追求中期高收益、10-20年投资的客户",
+    risk: "公司无国际评级，分红实现率需持续关注"
+  },
+  "环宇盈活": {
+    fullName: "友邦·环宇盈活",
+    company: "友邦保险",
+    type: "储蓄分红险",
+    currency: "9种货币",
+    payPeriod: "3/5/10年缴",
+    minPremium: "$2,000/年(5年缴)",
+    irr10: "3.47%", irr20: "5.67%", irr30: "6.50%",
+    simple20: "~9.0%", simple30: "11.7%",
+    paybackE: "7年(预期)", paybackG: "18年(保证)",
+    features: ["长期6.5%最快达阵", "9种货币自由转换", "品牌认知度最高", "分红波动性极低", "终期红利锁定"],
+    highlights: "30年IRR 6.5%，亚太最大独立上市寿险集团，品牌信赖度高",
+    suitable: "重视品牌和稳定性的长期投资者",
+    risk: "保证回本期较长(18年)，前期IRR不高"
+  },
+  "信守明天多元货币": {
+    fullName: "保诚·信守明天多元货币",
+    company: "保诚保险",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "5年缴",
+    minPremium: "$2,500/年",
+    irr10: "3.11%", irr20: "5.81%", irr30: "6.50%",
+    simple20: "~9.4%", simple30: "11.7%",
+    paybackE: "8年(预期)", paybackG: "18年(保证)",
+    features: ["长期6.5%/28年达阵", "6种货币转换", "全球化投资布局", "产品线最丰富", "终期红利锁定"],
+    highlights: "30年IRR 6.5%，全球化投资，产品线丰富选择多",
+    suitable: "长期投资、全球化资产配置需求的客户",
+    risk: "分红实现率波动较大(91.8%均值)，前期IRR偏低"
+  },
+  "盛利2": {
+    fullName: "安盛·盛利2",
+    company: "安盛保险",
+    type: "储蓄分红险",
+    currency: "12种货币",
+    payPeriod: "3/5年缴",
+    minPremium: "$2,500/年(5年缴)",
+    irr10: "3.52%", irr20: "5.82%", irr30: "6.50%",
+    simple20: "~9.5%", simple30: "11.7%",
+    paybackE: "7年(预期)", paybackG: "25年(保证)",
+    features: ["提领后IRR反升", "12种货币(全港最多)", "分红实现率均值98.4%(最高)", "灵活提领方案", "终期红利锁定"],
+    highlights: "12种货币全港最多，提领后IRR不降反升，分红实现率最高(98.4%)",
+    suitable: "多币种配置、灵活提领需求的客户",
+    risk: "保证回本期长(25年)，保证部分偏低"
+  },
+  "盈聚天下2": {
+    fullName: "富卫·盈聚天下2",
+    company: "富卫人寿",
+    type: "储蓄分红险",
+    currency: "9种货币",
+    payPeriod: "3年缴",
+    minPremium: "$3,000/年",
+    irr10: "3.53%", irr20: "6.00%", irr30: "6.50%",
+    simple20: "~9.9%", simple30: "11.7%",
+    paybackE: "6年(预期)", paybackG: "17年(保证)",
+    features: ["6年回本/婴儿奖赏", "3年缴6年预期回本", "9种货币转换", "婴儿特别奖赏", "数字化理赔便捷"],
+    highlights: "3年缴6年预期回本，婴儿特别奖赏，数字化体验优",
+    suitable: "年轻家庭、短期缴费需求的客户",
+    risk: "公司无国际评级，品牌知名度待提升"
+  },
+  "富饶万家": {
+    fullName: "万通·富饶万家",
+    company: "万通保险",
+    type: "储蓄分红险",
+    currency: "7种货币",
+    payPeriod: "5年缴",
+    minPremium: "$2,500/年",
+    irr10: "3.05%", irr20: "6.00%", irr30: "6.50%",
+    simple20: "~9.9%", simple30: "11.7%",
+    paybackE: "7年(预期)", paybackG: "13年(保证)",
+    features: ["年金转换/养老规划", "12种终身年金转换选择", "保证13年回本", "近十年分红实现率105%", "7种货币"],
+    highlights: "唯一提供12种终身年金转换，保证13年回本，分红实现率105%",
+    suitable: "养老规划、退休提领需求的客户",
+    risk: "公司规模较小，前期IRR偏低"
+  },
+  "万年青星河尊享2": {
+    fullName: "永明·万年青星河尊享2",
+    company: "永明金融",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "5年缴",
+    minPremium: "$2,500/年",
+    irr10: "3.10%", irr20: "5.72%", irr30: "6.37%",
+    simple20: "~9.2%", simple30: "~10.8%",
+    paybackE: "7年(预期)", paybackG: "13年(保证)",
+    features: ["综合冠军/保证IRR1%", "标普AA顶级评级", "唯一附医疗保障", "保证IRR 1%全港最高", "保证13年回本"],
+    highlights: "综合冠军，标普AA评级，唯一附医疗保障，保证IRR 1%全港最高",
+    suitable: "追求保证收益、稳健保守型客户",
+    risk: "预期IRR不是最高，适合稳健型"
+  },
+  "匠心传承2": {
+    fullName: "周大福·匠心传承2",
+    company: "周大福人寿",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "5年缴",
+    minPremium: "$2,000/年",
+    irr10: "3.04%", irr20: "5.71%", irr30: "6.30%",
+    simple20: "~9.1%", simple30: "~10.6%",
+    paybackE: "7年(预期)", paybackG: "13年(保证)",
+    features: ["连续9年分红100%达标", "首创567提领模式", "保证13年回本", "3大皇牌产品连续9年100%", "6种货币"],
+    highlights: "连续9年分红实现率100%达标，确定性全港最强",
+    suitable: "追求分红确定性、稳健型客户",
+    risk: "公司规模中等，品牌知名度有限"
+  },
+  "傲珑盛世": {
+    fullName: "国寿海外·傲珑盛世",
+    company: "中国人寿(海外)",
+    type: "储蓄分红险",
+    currency: "5种货币(含人民币)",
+    payPeriod: "2/3/5年缴",
+    minPremium: "人民币5万/年",
+    irr10: "3.30%", irr20: "5.64%", irr30: "6.50%",
+    simple20: "~8.9%", simple30: "11.7%",
+    paybackE: "7年(预期)", paybackG: "18年(保证)",
+    features: ["人民币保单最优", "中资央企背景", "5种货币含人民币", "2年缴短供选择", "固收投资为主分红稳健"],
+    highlights: "人民币保单全港最优，央企背景，2年缴短供",
+    suitable: "人民币资产配置、央企信赖的客户",
+    risk: "人民币保单受汇率波动影响"
+  },
+  "盈御多元货币3": {
+    fullName: "友邦·盈御多元货币3",
+    company: "友邦保险",
+    type: "储蓄分红险",
+    currency: "9种货币",
+    payPeriod: "5/10年缴",
+    minPremium: "$2,000/年",
+    irr10: "2.76%", irr20: "5.65%", irr30: "6.09%",
+    simple20: "~9.0%", simple30: "~10.1%",
+    paybackE: "8年(预期)", paybackG: "18年(保证)",
+    features: ["多币种/品牌保障", "9种货币自由转换", "友邦旗舰产品", "3代传承选项", "终期红利锁定"],
+    highlights: "友邦经典旗舰，9种货币，3代传承，品牌保障",
+    suitable: "友邦品牌信赖者、多币种需求",
+    risk: "前期IRR偏低，10年IRR仅2.76%"
+  },
+  "世代悦享3": {
+    fullName: "太保寿险香港·世代悦享3",
+    company: "太保寿险香港",
+    type: "储蓄分红险",
+    currency: "7种货币",
+    payPeriod: "5年缴",
+    minPremium: "$2,500/年",
+    irr10: "—", irr20: "6.1%", irr30: "6.5%",
+    simple20: "~10.2%", simple30: "11.7%",
+    paybackE: "6年(预期)", paybackG: "13年(保证)",
+    features: ["央企/稳健派全维度第一", "保证13年回本", "6年预期回本", "7种货币", "央企实力背景"],
+    highlights: "央企背景，中前期收益全维度第一，保证13年回本",
+    suitable: "央企信赖、追求中前期收益的客户",
+    risk: "公司规模较小，香港市场品牌认知待提升"
+  },
+  "传承守创2": {
+    fullName: "安达·传承守创2",
+    company: "安达人寿",
+    type: "储蓄分红险",
+    currency: "仅美元",
+    payPeriod: "3年缴",
+    minPremium: "$3,000/年",
+    irr10: "~3.0%", irr20: "~5.6%", irr30: "~6.0%",
+    simple20: "~8.9%", simple30: "~9.9%",
+    paybackE: "5年(预期)", paybackG: "—",
+    features: ["极致安全/四大全优", "AA/Aa3/A++四大评级全优", "3年缴5年预期回本", "增保红利连续多年100%", "仅美元保单"],
+    highlights: "四大评级机构全优(AA/Aa3/A++)，安全性全港最高",
+    suitable: "追求极致安全、评级信赖的客户",
+    risk: "仅美元保单，货币选择受限"
+  },
+  "传承首创V·丰足": {
+    fullName: "安达·传承首创V·丰足",
+    company: "安达人寿",
+    type: "储蓄分红险",
+    currency: "仅美元",
+    payPeriod: "1年缴(整付)",
+    minPremium: "$10,000(整付)",
+    irr10: "3.82%", irr20: "—", irr30: "—",
+    simple20: "—", simple30: "—",
+    paybackE: "缴费期满", paybackG: "7年(保证)",
+    features: ["保证回本全港最快", "整付7年保证回本", "10年IRR 3.82%", "四大评级全优", "仅美元"],
+    highlights: "保证7年回本全港最快，整付适合短期配置",
+    suitable: "一次性缴费、追求保证回本的客户",
+    risk: "仅整付方式，IRR数据有限"
+  },
+  "传承首创V·丰成": {
+    fullName: "安达·传承首创V·丰成",
+    company: "安达人寿",
+    type: "储蓄分红险",
+    currency: "仅美元",
+    payPeriod: "5年缴",
+    minPremium: "$2,500/年",
+    irr10: "—", irr20: "~6.0%", irr30: "6.5%",
+    simple20: "~9.9%", simple30: "11.7%",
+    paybackE: "7年(预期)", paybackG: "17年(保证)",
+    features: ["30年达6.5%", "四大评级全优", "5年缴7年预期回本", "保证17年回本", "仅美元"],
+    highlights: "30年IRR达6.5%，四大评级全优，保证17年回本",
+    suitable: "追求长期6.5%且重视评级的客户",
+    risk: "仅美元保单，10年IRR数据待更新"
+  },
+  "智选储蓄保": {
+    fullName: "立桥·智选储蓄保",
+    company: "立桥人寿",
+    type: "保证储蓄险",
+    currency: "美元/港币",
+    payPeriod: "1年缴(整付)",
+    minPremium: "$5,000(整付)",
+    irr10: "—", irr20: "—", irr30: "—",
+    simple20: "4.75%保证", simple30: "—",
+    paybackE: "保证即回", paybackG: "保证即回",
+    features: ["保证单利4.75%", "0-80岁可投保", "保证收益写入合同", "整付即回本", "无分红不确定性"],
+    highlights: "保证单利4.75%，收益写入合同，0-80岁可投，零分红风险",
+    suitable: "追求确定收益、零风险偏好的客户",
+    risk: "仅保证收益，无分红增长空间"
+  },
+  "月悦出息": {
+    fullName: "中银·月悦出息",
+    company: "中银人寿",
+    type: "储蓄分红险",
+    currency: "多种",
+    payPeriod: "3年缴",
+    minPremium: "$3,000/年",
+    irr10: "—", irr20: "—", irr30: "~5.64%",
+    simple20: "—", simple30: "~8.5%",
+    paybackE: "7年(预期)", paybackG: "—",
+    features: ["5%年派息(全分红)", "3年缴7年预期回本", "月度派息", "中资银行系背景", "银保渠道优势"],
+    highlights: "5%年派息(全分红)，月度派息适合现金流需求",
+    suitable: "追求稳定派息、现金流的客户",
+    risk: "保证回本期长，IRR偏低"
+  },
+  "薪粹传承": {
+    fullName: "中银·薪粹传承",
+    company: "中银人寿",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "3/5年缴",
+    minPremium: "$5,000/年",
+    irr10: "~2.8%", irr20: "~5.5%", irr30: "~6.2%",
+    simple20: "~8.8%", simple30: "~10.0%",
+    paybackE: "7年(预期)", paybackG: "18年(保证)",
+    features: ["6种货币转换", "5年缴7年预期回本", "银保渠道", "财富传承规划", "保单分拆"],
+    highlights: "中银新品储蓄险，6种货币转换，银保渠道优势",
+    suitable: "中银客户、需要多币种传承规划的客户",
+    risk: "IRR处于市场中档"
+  },
+  "汇承世代": {
+    fullName: "汇丰·汇承世代",
+    company: "汇丰人寿",
+    type: "储蓄分红险",
+    currency: "6种货币",
+    payPeriod: "3/5年缴",
+    minPremium: "$5,000/年",
+    irr10: "~2.9%", irr20: "~5.6%", irr30: "~6.3%",
+    simple20: "~9.0%", simple30: "~10.5%",
+    paybackE: "7年(预期)", paybackG: "18年(保证)",
+    features: ["6种货币转换", "银行客户便捷", "传承规划", "保单分拆", "汇丰全球网络"],
+    highlights: "汇丰旗舰储蓄险，银行客户投保便捷，全球网络支持",
+    suitable: "汇丰银行高净值客户",
+    risk: "需为汇丰客户"
+  },
+  "瑞盈储蓄": {
+    fullName: "苏黎世·瑞盈储蓄",
+    company: "苏黎世人寿",
+    type: "储蓄分红险",
+    currency: "美元",
+    payPeriod: "2/5年缴",
+    minPremium: "$5,000/年",
+    irr10: "~3.5%", irr20: "~5.8%", irr30: "~6.2%",
+    simple20: "~9.5%", simple30: "~10.4%",
+    paybackE: "6年(预期)", paybackG: "—",
+    features: ["15年IRR破6%", "5年缴6年预期回本", "2年缴5年预期回本", "声影传情心意(市场首创)", "终期红利锁定选项"],
+    highlights: "苏黎世首款分红储蓄险，15年IRR破6%市场最快，回本最快",
+    suitable: "追求中短期快速增值的客户",
+    risk: "新公司暂无历史分红数据"
+  },
+  "瑞骏(尊尚版)": {
+    fullName: "苏黎世·瑞骏(尊尚版)",
+    company: "苏黎世人寿",
+    type: "IUL万用寿险",
+    currency: "美元",
+    payPeriod: "趸缴/年缴",
+    minPremium: "$50,000起",
+    irr10: "—", irr20: "—", irr30: "—",
+    simple20: "—", simple30: "—",
+    paybackE: "—", paybackG: "—",
+    features: ["IUL指数型万用寿险", "保底利率3%现行派息", "收益上不封顶", "桥水全天候策略", "月度派息"],
+    highlights: "全港唯一非分红IUL，3%保底+上不封顶，桥水策略加持",
+    suitable: "追求保底+上行潜力的中高端客户",
+    risk: "IUL产品复杂，需理解指数挂钩机制"
+  },
+  "颐年乐享2": {
+    fullName: "太寿·颐年乐享2",
+    company: "太寿香港",
+    type: "储蓄分红险",
+    currency: "3种货币",
+    payPeriod: "5年缴",
+    minPremium: "$3,000/年",
+    irr10: "~2.5%", irr20: "~5.4%", irr30: "~6.0%",
+    simple20: "~8.5%", simple30: "~9.8%",
+    paybackE: "8年(预期)", paybackG: "18年(保证)",
+    features: ["央企背景", "跨境养老生态", "3种货币", "分红实现率95%+", "财富传承"],
+    highlights: "央企背景储蓄险，分红稳居第一梯队，跨境养老生态独特",
+    suitable: "偏好央企背景、关注跨境养老的客户",
+    risk: "IRR处于市场中下档"
+  }
+};
+
+// Health product details
+const healthProductDetails = {
+  "至尊明珠医疗计划5": { fullName:"友邦·至尊明珠医疗计划5", company:"友邦保险", type:"高端医疗险", cover:"HKD 5,000万/年", deductible:"$0/$16K/$25K/$50K可选", region:"全球/全球(不含美)", features:["全数赔偿","住院+手术+门诊","第二医疗意见","出院免找数","全球医疗保障"], highlights:"友邦旗舰高端医疗，全数赔偿，出院免找数", suitable:"追求全面医疗保障的高净值客户", risk:"保费较高" },
+  "PRUmyhealth prestige": { fullName:"保诚·PRUmyhealth prestige", company:"保诚保险", type:"高端医疗险", cover:"HKD 5,000万/年", deductible:"多种可选", region:"全球", features:["门诊/产科/牙科可选","全球保障","健康体检","第二医疗意见","灵活自选组合"], highlights:"保诚旗舰医疗，门诊/产科/牙科可选，灵活组合", suitable:"需要定制化医疗保障的客户", risk:"附加保障增加保费" },
+  "环宇特选II": { fullName:"安盛·环宇特选II", company:"安盛保险", type:"高端医疗险", cover:"HKD 2,000-3,000万/年", deductible:"可选", region:"亚洲/全球", features:["免健康申报","亚洲/全球两个计划","癌症保障","出院免找数","续保保证"], highlights:"安盛旗舰医疗，免健康申报，灵活选择区域", suitable:"有既往症或需要免健康申报的客户", risk:"免健康申报可能影响保障范围" },
+  "GlobalReach": { fullName:"安盛·GlobalReach", company:"安盛保险", type:"高端医疗险", cover:"终身无限额", deductible:"多种可选", region:"全球", features:["终身无限额","全球保障","多种自付额","第二医疗意见","出院免找数"], highlights:"全港唯一终身无限额高端医疗，全球保障", suitable:"追求终身无限保障的高净值客户", risk:"保费最高" },
+  "港卓越医疗保": { fullName:"永明·港卓越医疗保", company:"永明金融", type:"高端医疗险", cover:"HKD 4,000万/年", deductible:"可选", region:"亚洲", features:["癌症豁免保费","亚洲保障","住院+手术","免找数服务","标普AA公司出品"], highlights:"永明旗舰医疗，癌症豁免保费，AA评级", suitable:"关注癌症保障的客户", risk:"仅限亚洲区域" },
+  "晋领医疗保障(卓越)": { fullName:"宏利·晋领医疗保障(卓越)", company:"宏利", type:"高端医疗险", cover:"HKD 5,000万/全额", deductible:"$0/$25K/$50K/$100K可选", region:"全球", features:["多重现金保障","代缴住院费","全球保障","无索偿折扣","癌症治疗保障"], highlights:"宏利旗舰高端医疗，全额保障，多重现金保障", suitable:"追求全球全额医疗保障的客户", risk:"卓越计划保费最高" },
+  "晋领医疗保障(优越)": { fullName:"宏利·晋领医疗保障(优越)", company:"宏利", type:"高端医疗险", cover:"HKD 2,500万/年", deductible:"$0/$25K/$50K/$100K可选", region:"全球(不含美)", features:["代缴住院费","2,500万年度限额","无索偿折扣","出院免找数","灵活自付额"], highlights:"宏利高端医疗优越计划，代缴住院费，灵活自付额", suitable:"需要全球医疗保障但不含美国的客户", risk:"不含美国区域" },
+  "卓越医疗保": { fullName:"汇丰·卓越医疗保", company:"汇丰人寿", type:"高端医疗险", cover:"HKD 5,000万/年", deductible:"可选", region:"全球/亚洲", features:["银行客户便捷","5,000万保障额","全球紧急医疗","住院+手术","汇丰网点服务"], highlights:"汇丰旗舰高端医疗，银行客户投保便捷", suitable:"汇丰银行高净值客户", risk:"需为汇丰客户" },
+  "尊显": { fullName:"友邦·尊显(VHIS)", company:"友邦保险", type:"VHIS自愿医保", cover:"$10,000,000/年", prem30:"~$4,500/年", prem50:"~$11,500/年", features:["出院免找数","10万保额","VHIS认证","扣税优惠","全球紧急医疗"], highlights:"友邦VHIS旗舰，出院免找数，扣税优惠", suitable:"需要扣税+医疗保障的客户", risk:"保额相对高端医疗较低" },
+  "Hero": { fullName:"保柏·Hero(VHIS)", company:"保柏", type:"VHIS自愿医保", cover:"$30,000,000/年", prem30:"~$4,200/年", prem50:"~$10,800/年", features:["癌症保障极高","3千万保额","VHIS认证","扣税优惠","预防性检查"], highlights:"保柏VHIS，3千万保额，癌症保障极高", suitable:"关注癌症保障+扣税的客户", risk:"保费偏高" },
+  "更卫您": { fullName:"富卫·更卫您(VHIS)", company:"富卫人寿", type:"VHIS自愿医保", cover:"$8,000,000/年", prem30:"~$3,100/年", prem50:"~$7,900/年", features:["App理赔简单","8百万保额","VHIS认证","扣税优惠","数字化体验"], highlights:"富卫VHIS，App理赔最便捷，保费性价比高", suitable:"年轻数字化人群", risk:"保额中等" },
+  "智尊": { fullName:"安盛·智尊(VHIS)", company:"安盛保险", type:"VHIS自愿医保", cover:"$20,000,000/年", prem30:"~$4,300/年", prem50:"~$11,200/年", features:["预防性检查","2千万保额","VHIS认证","扣税优惠","健康管理服务"], highlights:"安盛VHIS，2千万保额，预防性检查", suitable:"注重预防保健的客户", risk:"保费偏高" },
+  "自主医保": { fullName:"保诚·自主医保(VHIS)", company:"保诚保险", type:"VHIS自愿医保", cover:"$12,000,000/年", prem30:"~$4,400/年", prem50:"~$11,400/年", features:["Wellness奖赏","1.2千万保额","VHIS认证","扣税优惠","健康管理奖励"], highlights:"保诚VHIS，Wellness奖赏计划，健康管理激励", suitable:"注重健康管理的客户", risk:"保费偏高" },
+  "晋悦": { fullName:"宏利·晋悦(VHIS)", company:"宏利", type:"VHIS自愿医保", cover:"$10,000,000/年", prem30:"~$4,600/年", prem50:"~$11,800/年", features:["代理人服务","1千万保额","VHIS认证","扣税优惠","专业理赔支援"], highlights:"宏利VHIS，代理人一对一服务", suitable:"偏好代理人服务的客户", risk:"保费较高" },
+  "爱伴航2": { fullName:"友邦·爱伴航2", company:"友邦保险", type:"危疾险", cover:"115种疾病", maxPay:"1100%", features:["脑退化年金","115种疾病保障","癌症多次赔付+100个月现金","心脏病/中风多次赔付","儿童保障"], highlights:"友邦旗舰危疾，脑退化年金，115种疾病", suitable:"关注脑退化/认知障碍保障的客户", risk:"保费较高" },
+  "诚保一生": { fullName:"保诚·诚保一生", company:"保诚保险", type:"危疾险", cover:"127种疾病", maxPay:"1100%", features:["疾病覆盖最广","127种疾病全港最多","癌症多次赔付","心脏病/中风多次赔付","儿童先天病保障"], highlights:"保诚旗舰危疾，127种疾病全港最多", suitable:"追求最广疾病覆盖的客户", risk:"部分疾病定义较严格" },
+  "活耀人生PRO": { fullName:"宏利·活耀人生PRO", company:"宏利", type:"危疾险", cover:"123种疾病", maxPay:"1000%", features:["癌症次数最多","最高9次癌症赔付","123种疾病","心脏病/中风多次赔付","重疾预支终期红利"], highlights:"宏利旗舰危疾，癌症最高9次赔付全港最多", suitable:"极度关注癌症保障的客户", risk:"保费最高之一" },
+  "MultiPro Plus": { fullName:"安盛·MultiPro Plus", company:"安盛保险", type:"危疾险", cover:"130+种疾病", maxPay:"1300%", features:["总赔付最高","1300%总赔付全港最高","130+种疾病","癌症多次+4年现金","健康管理服务"], highlights:"安盛旗舰危疾，1300%总赔付全港最高", suitable:"追求最高总赔付额的客户", risk:"保费较高" },
+  "危疾保护+": { fullName:"永明·危疾保护+", company:"永明金融", type:"危疾险", cover:"100+种疾病", maxPay:"1000%", features:["性价比高","100+种疾病","癌症多次赔付","心脏病/中风保障","AA评级公司出品"], highlights:"永明危疾，性价比高，AA评级", suitable:"追求性价比的客户", risk:"疾病数量不是最多" },
+  "自主拣": { fullName:"富卫·自主拣", company:"富卫人寿", type:"危疾险", cover:"62种疾病", maxPay:"800%", features:["额外医疗保障","62种核心疾病","癌症多次赔付","数字化理赔","灵活组合"], highlights:"富卫危疾，额外医疗保障，数字化理赔便捷", suitable:"年轻数字化人群", risk:"疾病覆盖面较窄" },
+  "安心守护危疾保障": { fullName:"安达·安心守护危疾保障", company:"安达人寿", type:"危疾险", cover:"82种疾病", maxPay:"500%", features:["限期保费缴付选项","82种疾病保障","癌症/心脏病/中风4次赔付","照顾家人计划特点","AA/Aa3双顶级评级"], highlights:"安达危疾，市场唯一限期缴付选项，四大全优评级", suitable:"追求限期缴付+顶级评级的客户", risk:"总赔付比例较低" },
+  "守护168(加强版)": { fullName:"周大福·守护168(加强版)", company:"周大福人寿", type:"危疾险", cover:"168种疾病", maxPay:"500%", features:["市场首创器官功能损害保障","168种疾病","癌症多次赔付","关爱援助保障","连续9年分红100%达标"], highlights:"周大福危疾，市场首创器官功能损害保障", suitable:"关注器官功能损害保障的客户", risk:"总赔付比例较低" },
+  "守护家倍198": { fullName:"周大福·守护家倍198", company:"周大福人寿", type:"危疾险", cover:"198种疾病", maxPay:"600%", features:["198种疾病市场最多","未知疾病保障","癌症多次赔付","心脏病/中风多次赔付","部分疾病延展保障"], highlights:"周大福危疾旗舰，198种疾病市场最多", suitable:"追求最广疾病覆盖+未知疾病保障的客户", risk:"保费偏高" },
+  "卫您守护危疾多重保": { fullName:"国寿海外·卫您守护危疾多重保", company:"中国人寿(海外)", type:"危疾险", cover:"194种疾病", maxPay:"980%", features:["194种疾病","8次危疾赔付","三高慢性病保障(高血压/高脂血症/糖尿病)","980%总保障","自选3项严重病症额外保障"], highlights:"国寿危疾，194种疾病+三高保障，8次危疾赔付", suitable:"关注三高慢性病+多次危疾保障的客户", risk:"央企背景，跨境服务" },
+  "跨越无限保": { fullName:"忠意·跨越无限保", company:"忠意人寿", type:"危疾险", cover:"110+种疾病", maxPay:"无限次", features:["无限次赔偿","癌症/中风/心脏病无限次赔付","110+种疾病","主要器官功能损害保障","持续康复支援"], highlights:"忠意危疾旗舰，癌症/中风/心脏病无限次赔付全港唯一", suitable:"追求无限次危疾赔付的客户", risk:"无限次赔付有条件限制" },
+  "常安心危疾保": { fullName:"太保·常安心危疾保", company:"太保寿险香港", type:"危疾险", cover:"100+种疾病", maxPay:"600%", features:["3次100%癌症赔付","海内外特药保障1,200万","100+种疾病","额外100%癌症保障","央企背景"], highlights:"太保危疾，海内外特药1,200万保障，精准抗癌", suitable:"关注特药保障+央企背景的客户", risk:"疾病数量不是最多" },
+  "瑞安护危疾保障": { fullName:"苏黎世·瑞安护危疾保障", company:"苏黎世人寿", type:"危疾险", cover:"82种(11早期+71严重)", maxPay:"500%", features:["11种早期危疾+71种严重危疾","深切治疗赔偿","身故赔偿","瑞士品牌150年+历史","A+/Aa3评级"], highlights:"苏黎世危疾，瑞士品牌保障，82种疾病+深切治疗", suitable:"偏好瑞士品牌、关注深切治疗的客户", risk:"新公司香港寿险经验有限" },
+  "自愿医保-灵活": { fullName:"保泰·自愿医保-灵活(VHIS)", company:"保泰", type:"VHIS自愿医保", cover:"$1,000,000/年", prem30:"~$2,800/年", prem50:"~$6,800/年", features:["全网操作","Bowtie纯数字平台","VHIS认证","扣税优惠","即时报价在线投保"], highlights:"保泰Bowtie全网操作VHIS，保费最低，纯数字平台", suitable:"年轻数字原生人群、预算有限的客户", risk:"无代理人服务，保额较低" },
+  "汇丰自愿医保": { fullName:"汇丰·自愿医保(VHIS)", company:"汇丰人寿", type:"VHIS自愿医保", cover:"$5,000,000/年", prem30:"~$3,800/年", prem50:"~$9,500/年", features:["银行客户方便","500万保额","VHIS认证","扣税优惠","汇丰银行网点服务"], highlights:"汇丰VHIS，银行客户投保便捷", suitable:"汇丰银行现有客户", risk:"保额偏低" },
+  "自顾医保(挚裕)": { fullName:"安达·自顾医保(挚裕)(VHIS)", company:"安达人寿", type:"VHIS自愿医保", cover:"$10,000,000/年", prem30:"~$4,000/年", prem50:"~$10,500/年", features:["全数赔偿","1千万保额","VHIS认证","扣税优惠","自付费选项灵活"], highlights:"安达VHIS，全数赔偿，自付费选项灵活", suitable:"追求灵活自付费+扣税的客户", risk:"保费偏高" },
+  "「税」优选医疗": { fullName:"万通·「税」优选医疗(VHIS)", company:"万通保险", type:"VHIS自愿医保", cover:"$8,000,000/年", prem30:"~$3,500/年", prem50:"~$8,800/年", features:["扣税优惠","8百万保额","VHIS认证","额外癌症多重保","住院现金津贴"], highlights:"万通VHIS，扣税优惠，癌症多重保障", suitable:"注重扣税+癌症保障的客户", risk:"保额中等" },
+  "中银灵活自愿医保": { fullName:"中银·灵活自愿医保(VHIS)", company:"中银人寿", type:"VHIS自愿医保", cover:"$5,000,000/年", prem30:"~$3,600/年", prem50:"~$9,200/年", features:["额外严重疾病保障","妊娠并发症保障","VHIS认证","扣税优惠","自选升级保障"], highlights:"中银VHIS，额外重症+妊娠保障，可自选升级", suitable:"中银客户及关注妊娠保障的女性", risk:"保额偏低" },
+};
+
+// ============ MODAL FUNCTIONS ============
+function showProductDetail(productName) {
+  const detail = productDetails[productName] || healthProductDetails[productName];
+  if (!detail) return;
+
+  document.getElementById('modal-product-name').textContent = detail.fullName || productName;
+  document.getElementById('modal-product-company').textContent = detail.company + ' · ' + detail.type;
+
+  let html = '';
+
+  // Core metrics (for savings)
+  if (detail.irr10 || detail.irr20 || detail.irr30) {
+    html += `<div class="modal-section"><h3>📊 核心收益指标</h3><div class="modal-grid-3">`;
+    if (detail.irr10 && detail.irr10 !== '—') html += `<div class="modal-item"><div class="mi-label">10年IRR</div><div class="mi-value">${detail.irr10}</div></div>`;
+    if (detail.irr20 && detail.irr20 !== '—') html += `<div class="modal-item"><div class="mi-label">20年IRR</div><div class="mi-value ${parseFloat(detail.irr20)>=6.0?'highlight-val':''}">${detail.irr20}</div></div>`;
+    if (detail.irr30 && detail.irr30 !== '—') html += `<div class="modal-item"><div class="mi-label">30年IRR</div><div class="mi-value ${parseFloat(detail.irr30)>=6.5?'highlight-val':''}">${detail.irr30}</div></div>`;
+    if (detail.simple20 && detail.simple20 !== '—') html += `<div class="modal-item"><div class="mi-label">20年单利</div><div class="mi-value">${detail.simple20}</div></div>`;
+    if (detail.simple30 && detail.simple30 !== '—') html += `<div class="modal-item"><div class="mi-label">30年单利</div><div class="mi-value">${detail.simple30}</div></div>`;
+    html += `</div></div>`;
+    // Payback
+    html += `<div class="modal-section"><h3>⏱️ 回本期</h3><div class="modal-grid">`;
+    html += `<div class="modal-item"><div class="mi-label">预期回本</div><div class="mi-value">${detail.paybackE}</div></div>`;
+    html += `<div class="modal-item"><div class="mi-label">保证回本</div><div class="mi-value">${detail.paybackG}</div></div>`;
+    html += `</div></div>`;
+  }
+
+  // Cover info (for health/CI)
+  if (detail.cover) {
+    html += `<div class="modal-section"><h3>🛡️ 保障详情</h3><div class="modal-grid">`;
+    html += `<div class="modal-item"><div class="mi-label">保障范围</div><div class="mi-value">${detail.cover}</div></div>`;
+    if (detail.maxPay) html += `<div class="modal-item"><div class="mi-label">最高赔付</div><div class="mi-value highlight-val">${detail.maxPay}</div></div>`;
+    if (detail.deductible) html += `<div class="modal-item"><div class="mi-label">自付额</div><div class="mi-value">${detail.deductible}</div></div>`;
+    if (detail.region) html += `<div class="modal-item"><div class="mi-label">保障区域</div><div class="mi-value">${detail.region}</div></div>`;
+    if (detail.prem30) html += `<div class="modal-item"><div class="mi-label">30岁保费</div><div class="mi-value">${detail.prem30}</div></div>`;
+    if (detail.prem50) html += `<div class="modal-item"><div class="mi-label">50岁保费</div><div class="mi-value">${detail.prem50}</div></div>`;
+    html += `</div></div>`;
+  }
+
+  // Product info
+  html += `<div class="modal-section"><h3>📋 产品信息</h3><div class="modal-grid">`;
+  if (detail.currency) html += `<div class="modal-item"><div class="mi-label">货币选择</div><div class="mi-value">${detail.currency}</div></div>`;
+  if (detail.payPeriod) html += `<div class="modal-item"><div class="mi-label">缴费年限</div><div class="mi-value">${detail.payPeriod}</div></div>`;
+  if (detail.minPremium) html += `<div class="modal-item"><div class="mi-label">最低保费</div><div class="mi-value">${detail.minPremium}</div></div>`;
+  html += `</div></div>`;
+
+  // Features
+  if (detail.features && detail.features.length > 0) {
+    html += `<div class="modal-section"><h3>✨ 核心特色</h3><div class="modal-features">`;
+    detail.features.forEach(f => {
+      const colors = ['tag-green','tag-blue','tag-orange','tag-purple','tag-red'];
+      html += `<span class="modal-feature-tag tag ${colors[detail.features.indexOf(f) % colors.length]}">${f}</span>`;
+    });
+    html += `</div></div>`;
+  }
+
+  // Highlights
+  if (detail.highlights) {
+    html += `<div class="modal-section"><h3>💡 产品亮点</h3><p style="font-size:0.9rem;line-height:1.6;">${detail.highlights}</p></div>`;
+  }
+
+  // Suitable
+  if (detail.suitable) {
+    html += `<div class="modal-section"><h3>👤 适合人群</h3><p style="font-size:0.9rem;">${detail.suitable}</p></div>`;
+  }
+
+  // Risk
+  if (detail.risk) {
+    html += `<div class="modal-section"><h3>⚠️ 注意事项</h3><p style="font-size:0.88rem;color:var(--warning);">${detail.risk}</p></div>`;
+  }
+
+  document.getElementById('modal-product-body').innerHTML = html;
+  document.getElementById('product-modal-overlay').classList.add('show');
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal-overlay').classList.remove('show');
+}
+
+document.getElementById('modal-close-btn').addEventListener('click', closeProductModal);
+document.getElementById('product-modal-overlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('product-modal-overlay')) closeProductModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeProductModal();
+});
+
+// ============ INIT ============
+// Dynamic company count in headers
+const allCompanies = (companiesData && companiesData.length > 0 ? companiesData : companies); const companyCount = allCompanies.length;
+document.getElementById('header-subtitle').textContent = companyCount + '家保险公司 · 储蓄/医疗/危疾全线对比 · IRR+单利双指标';
+document.getElementById('dividend-overview-title').textContent = companyCount + '家公司分红实现率总览';
+document.getElementById('dividend-trend-title').textContent = companyCount + '家公司历史趋势（2019-2024年分红实现率/总现金价值比率）';
+document.getElementById('footer-info').textContent = '数据截止：2025年Q3-2026年5月 | ' + companyCount + '家保险公司 · 9大功能模块';
+document.getElementById('stat-company-count').textContent = companyCount;
+
+// ── 动态数据启动 ────────────────────────────────────
+(async function bootData() {
+  showDataToast('正在加载最新数据…', 'info');
+  try {
+    await loadDataFromServer();
+  } catch (e) {
+    console.warn('[启动] 服务器数据加载失败，使用内嵌数据', e);
+  }
+  // 确保 companies 变量始终有值（兼容原渲染代码）
+  if (typeof companies === 'undefined' || !companies || companies.length === 0) {
+    companies = companiesData || [];
+  }
+  initAllSelects();
+  renderAllTabs();
+  updateVersionUI();
+  startPeriodicCheck();
+  showDataToast('页面加载完成 ✓', 'success');
+})();
+  </script>
+
+
+  <div id="data-update-banner"></div>
+  <div id="data-toast"></div>
+  <button id="btn-refresh-data" onclick="userRefreshData()">🔄 刷新数据</button>
+  <div id="data-version"></div>
+
+  </body>
+</html>

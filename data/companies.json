@@ -1,0 +1,35 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网、港险智、10Life平台、公开市场报告",
+  "updateLog": [
+    {"date": "2026-05-25", "summary": "修正预期单利数据（全量重算），IRR说明改为预期复利/预期单利"},
+    {"date": "2026-05-20", "summary": "新增苏黎世/保泰/恒安标准3家公司，扩展至23家"},
+    {"date": "2026-05-18", "summary": "V8发布，新增医疗/危疾险产品对比"}
+  ],
+  "companies": [
+    {"rank":1,"name":"汇丰人寿","en":"HSBC Life","sp":"A+","moody":"—","advantage":"银行系巨头，高净值客户资源庞大","products":"汇承世代、汇溢保险计划、盈达年金","dividend":"连续多年95%-105%","url":"https://life.hsbc.com.hk/"},
+    {"rank":2,"name":"中银人寿","en":"BOC Group Life","sp":"A","moody":"—","advantage":"中资银行系，银保渠道优势明显","products":"薪粹传承、守跃储蓄、月悦出息","dividend":"周年红利52%-102%，波动较大","url":"https://www.bocgroup.com.hk/"},
+    {"rank":3,"name":"友邦保险","en":"AIA","sp":"AA-","moody":"Aa2","advantage":"亚太最大独立上市寿险集团，品牌认知度最高","products":"盈御多元货币3、环宇盈活、财富源源","dividend":"连续多年95%-105%，波动性极低","url":"https://www.aia.com.hk/"},
+    {"rank":4,"name":"中国人寿(海外)","en":"China Life Overseas","sp":"A","moody":"—","advantage":"中资央企，固收投资为主","products":"傲珑盛世、裕满人生、创世传承","dividend":"稳居第一梯队","url":"https://www.chinalife.com.hk/zh-hk"},
+    {"rank":5,"name":"宏利","en":"Manulife","sp":"AA-","moody":"A1","advantage":"万亿资产，回本速度快，重疾预支终期红利","products":"宏挚传承、宏达储蓄计划、创富传承","dividend":"平均96.8%，终期红利平均107%","url":"https://www.manulife.com.hk/zh-hk/individual.html"},
+    {"rank":6,"name":"保诚保险","en":"Prudential","sp":"—","moody":"A2","advantage":"全球化布局，产品线最丰富","products":"信守明天多元货币、隽富多元货币","dividend":"平均91.8%，波动最大","url":"https://www.prudential.com.hk/tc/"},
+    {"rank":7,"name":"富卫人寿","en":"FWD Life","sp":"—","moody":"—","advantage":"数字化优先，经纪渠道爆发式增长","products":"盈聚天下2、智优储蓄","dividend":"—","url":"https://www.fwd.com.hk/zh/"},
+    {"rank":8,"name":"恒生保险","en":"Hang Seng Insurance","sp":"A+","moody":"—","advantage":"银行系分销网络，恒生银行本地客户优势","products":"储蓄寿险、医疗险、退休保障","dividend":"—","url":"https://www.hangseng.com/insurance/"},
+    {"rank":9,"name":"永明金融","en":"Sun Life Hong Kong","sp":"AA","moody":"Aa3","advantage":"标普AA顶级评级，长期履约能力最强","products":"万年青星河尊享2、永越多元货币2","dividend":"超10年产品总现金价值率连续多年超100%","url":"https://www.sunlife.com.hk/"},
+    {"rank":10,"name":"安盛保险","en":"AXA","sp":"A+","moody":"—","advantage":"分红实现率平均值最高(98.4%)，12种货币转换","products":"盛利2、安进传承、挚汇","dividend":"平均98.4%（四大中最高）","url":"https://www.axa.com.hk/zh"},
+    {"rank":11,"name":"周大福人寿","en":"CTF Life","sp":"—","moody":"—","advantage":"连续9年分红100%达标，首创567提领模式","products":"匠心传承2、传家宝2、守护168","dividend":"三大皇牌连续9年100%达标","url":"https://corpweb.ctflife.com.hk/sc"},
+    {"rank":12,"name":"太寿香港","en":"China Taiping Life HK","sp":"BBB+","moody":"—","advantage":"央企背景，跨境养老生态","products":"颐年乐享2、喜裕储蓄","dividend":"12款产品分红实现率均达95%+","url":"https://tplhk.cntaiping.com/sc"},
+    {"rank":13,"name":"安达人寿","en":"Chubb Life","sp":"AA","moody":"Aa3","advantage":"四大评级机构全优(AA/Aa3/A++)","products":"传承守创2、传承首创V系列","dividend":"增保红利连续多年100%；2024年均约83.6%","url":"https://www.chubblifehk.com/zh/"},
+    {"rank":14,"name":"万通保险","en":"YF Life","sp":"—","moody":"—","advantage":"近十年储蓄产品平均分红实现率105%","products":"富饶千秋Plus、富饶万家","dividend":"近十年储蓄产品平均105%","url":"https://www.yflife.com/sc/"},
+    {"rank":15,"name":"太保寿险香港","en":"CPIC Life HK","sp":"—","moody":"—","advantage":"央企实力，中前期收益全维度第一梯队","products":"世代悦享3、鑫相伴","dividend":"2023-2024年稳居第一梯队","url":"https://www.cpiclifehk.com.hk/sc/homePage"},
+    {"rank":16,"name":"香港年金公司","en":"HKMC Annuity","sp":"—","moody":"—","advantage":"政府背景，终身固定年金","products":"香港年金计划、可扣税延期年金","dividend":"—","url":"https://www.hkmc.com.hk/"},
+    {"rank":17,"name":"忠意人寿","en":"Generali Life","sp":"—","moody":"—","advantage":"中短期收益突出，10年IRR可达5%","products":"启航创富(卓越版)、无限保危疾","dividend":"大部分产品100%达成","url":"https://www.generali.com.hk/ZH_CN/"},
+    {"rank":18,"name":"香港富邦人寿","en":"Fubon Life HK","sp":"—","moody":"—","advantage":"台资金融集团，产品线涵盖储蓄/万用寿险","products":"储蓄计划、万用寿险、终身寿险","dividend":"—","url":"https://www.fubonlife.com.hk/"},
+    {"rank":19,"name":"香港人寿","en":"Hong Kong Life","sp":"—","moody":"—","advantage":"在港经营25年，本地化服务","products":"储蓄保险、人寿保障、退休规划","dividend":"—","url":"https://www.hklife.com.hk/sc/home/index.html"},
+    {"rank":20,"name":"立桥人寿","en":"Well Link Life","sp":"—","moody":"—","advantage":"短期保证储蓄险，5年保证单利4.75%","products":"智选储蓄保、息享年年3","dividend":"收益写入合同","url":"https://www.wli.com.hk/"},
+    {"rank":21,"name":"苏黎世人寿","en":"Zurich Life HK","sp":"A+","moody":"Aa3","advantage":"瑞士保险巨头150年+历史，2020年在港成立寿险公司","products":"瑞盈储蓄、瑞骏尊尚版万用寿险","dividend":"新公司暂无历史数据","url":"https://life.zurich.com.hk/sc/"},
+    {"rank":22,"name":"保泰人寿","en":"Bowtie Life","sp":"—","moody":"—","advantage":"香港首家虚拟保险公司，零佣金纯保障","products":"自愿医保(标准/灵活/升级)、定期寿险","dividend":"—","url":"https://www.bowtie.com.hk/"},
+    {"rank":23,"name":"恒安标准人寿(亚洲)","en":"Heng An Standard Life Asia","sp":"—","moody":"—","advantage":"主营投资相连保险，300+基金选择","products":"投资相连保险、保障计划","dividend":"—","url":"https://www.hengansl.com.hk/tc"}
+  ]
+}

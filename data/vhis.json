@@ -1,0 +1,20 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网、港险智、10Life平台",
+  "products": [
+    {"company":"保泰","name":"自愿医保-灵活","prem30":"~$2,800","prem50":"~$6,800","cover":"$1,000,000","tag":"全网操作","tagClass":"tag-blue"},
+    {"company":"友邦保险","name":"尊显","prem30":"~$4,500","prem50":"~$11,500","cover":"$10,000,000","tag":"出院免找数","tagClass":"tag-green"},
+    {"company":"保柏","name":"Hero","prem30":"~$4,200","prem50":"~$10,800","cover":"$30,000,000","tag":"癌症保障极高","tagClass":"tag-orange"},
+    {"company":"富卫人寿","name":"更卫您","prem30":"~$3,100","prem50":"~$7,900","cover":"$8,000,000","tag":"App理赔简单","tagClass":"tag-blue"},
+    {"company":"安盛保险","name":"智尊","prem30":"~$4,300","prem50":"~$11,200","cover":"$20,000,000","tag":"预防性检查","tagClass":"tag-purple"},
+    {"company":"保诚保险","name":"自主医保","prem30":"~$4,400","prem50":"~$11,400","cover":"$12,000,000","tag":"Wellness奖赏","tagClass":"tag-green"},
+    {"company":"宏利","name":"晋悦","prem30":"~$4,600","prem50":"~$11,800","cover":"$10,000,000","tag":"代理人服务","tagClass":"tag-blue"},
+    {"company":"汇丰人寿","name":"汇丰自愿医保","prem30":"~$3,800","prem50":"~$9,500","cover":"$5,000,000","tag":"银行客户方便","tagClass":"tag-blue"},
+    {"company":"安达人寿","name":"自顾医保(挚裕)","prem30":"~$4,000","prem50":"~$10,500","cover":"$10,000,000","tag":"全数赔偿","tagClass":"tag-green"},
+    {"company":"万通保险","name":"「税」优选医疗","prem30":"~$3,500","prem50":"~$8,800","cover":"$8,000,000","tag":"扣税优惠","tagClass":"tag-purple"},
+    {"company":"中银人寿","name":"中银灵活自愿医保","prem30":"~$3,600","prem50":"~$9,200","cover":"$5,000,000","tag":"额外重症保障","tagClass":"tag-blue"},
+    {"company":"苏黎世人寿","name":"苏黎世自愿医保","prem30":"~$3,900","prem50":"~$9,800","cover":"$8,000,000","tag":"瑞士品牌保障","tagClass":"tag-green"},
+    {"company":"恒生保险","name":"恒生自愿医保","prem30":"~$3,700","prem50":"~$9,400","cover":"$5,000,000","tag":"银行渠道便捷","tagClass":"tag-blue"}
+  ]
+}

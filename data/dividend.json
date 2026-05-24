@@ -1,0 +1,30 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网分红实现率专栏、保单说明书",
+  "products": [
+    {"company":"安盛保险","products":"42款","avg":"98.4%","min":"84%","max":"104%","above95":"~90%","volatility":"低","volClass":"tag-green"},
+    {"company":"宏利","products":"37款","avg":"96.8%","min":"69%","max":"102%","above95":"97%","volatility":"中","volClass":"tag-blue"},
+    {"company":"友邦保险","products":"75款","avg":"95.8%","min":"91%","max":"111%","above95":"~98%","volatility":"低","volClass":"tag-green"},
+    {"company":"周大福人寿","products":"—","avg":"100%","min":"100%","max":"100%","above95":"100%","volatility":"极低","volClass":"tag-green"},
+    {"company":"万通保险","products":"—","avg":"105%","min":"—","max":"—","above95":"—","volatility":"低","volClass":"tag-green"},
+    {"company":"永明金融","products":"—","avg":"~100%","min":"—","max":"—","above95":"—","volatility":"低","volClass":"tag-green"},
+    {"company":"太寿香港","products":"12款","avg":"95%+","min":"—","max":"—","above95":"100%","volatility":"低","volClass":"tag-green"},
+    {"company":"忠意人寿","products":"—","avg":"~100%","min":"—","max":"—","above95":"—","volatility":"低","volClass":"tag-green"},
+    {"company":"安达人寿","products":"—","avg":"~100%","min":"—","max":"—","above95":"—","volatility":"低","volClass":"tag-green"},
+    {"company":"太保寿险香港","products":"—","avg":"95%+","min":"—","max":"—","above95":"—","volatility":"低","volClass":"tag-green"},
+    {"company":"中国人寿(海外)","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"保诚保险","products":"69款","avg":"91.8%","min":"68%","max":"160%","above95":"~60%","volatility":"高","volClass":"tag-red"},
+    {"company":"汇丰人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"中银人寿","products":"—","avg":"—","min":"52%","max":"102%","above95":"—","volatility":"高","volClass":"tag-red"},
+    {"company":"富卫人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"恒生保险","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"香港年金公司","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"保证","volClass":"tag-green"},
+    {"company":"香港富邦人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"香港人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"—","volClass":"tag-blue"},
+    {"company":"立桥人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"保证","volClass":"tag-green"},
+    {"company":"苏黎世人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"新公司","volClass":"tag-blue"},
+    {"company":"保泰人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"纯保障型","volClass":"tag-blue"},
+    {"company":"恒安标准人寿","products":"—","avg":"—","min":"—","max":"—","above95":"—","volatility":"投连险为主","volClass":"tag-blue"}
+  ]
+}

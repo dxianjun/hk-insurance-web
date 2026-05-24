@@ -1,0 +1,135 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网保单说明书、港险智平台",
+  "data": {
+    "aia-hyyy": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$72,000","expected":"~$103,000","irr":"~1.0%","simple":"~0.6%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$82,000","expected":"~$140,000","irr":"~3.5%","simple":"~4.0%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$92,000","expected":"~$196,000","irr":"~4.8%","simple":"~6.4%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$105,000","expected":"~$280,000","irr":"~5.7%","simple":"~9.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$120,000","expected":"~$400,000","irr":"~6.2%","simple":"~12.0%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$138,000","expected":"~$570,000","irr":"~6.5%","simple":"~15.7%"}
+    ],
+    "manulife-hz": [
+      {"year":6,"age":36,"paid":"$100,000","guarantee":"~$76,000","expected":"~$106,000","irr":"~1.5%","simple":"~1.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$86,000","expected":"~$152,000","irr":"~4.3%","simple":"~5.2%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$96,000","expected":"~$215,000","irr":"~5.4%","simple":"~7.7%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$108,000","expected":"~$305,000","irr":"~6.0%","simple":"~10.3%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$122,000","expected":"~$435,000","irr":"~6.1%","simple":"~13.4%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$138,000","expected":"~$530,000","irr":"~6.2%","simple":"~14.3%"}
+    ],
+    "axa-sl": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$68,000","expected":"~$103,000","irr":"~1.0%","simple":"~0.6%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$78,000","expected":"~$143,000","irr":"~3.5%","simple":"~4.3%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$88,000","expected":"~$205,000","irr":"~5.0%","simple":"~7.0%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$100,000","expected":"~$300,000","irr":"~5.8%","simple":"~10.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$112,000","expected":"~$435,000","irr":"~6.3%","simple":"~13.4%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$128,000","expected":"~$600,000","irr":"~6.5%","simple":"~16.7%"}
+    ],
+    "generali-qh": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$72,000","expected":"~$104,000","irr":"~1.2%","simple":"~0.8%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$86,000","expected":"~$148,000","irr":"~3.8%","simple":"~4.8%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$98,000","expected":"~$225,000","irr":"~5.5%","simple":"~8.3%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$112,000","expected":"~$320,000","irr":"~6.2%","simple":"~11.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$126,000","expected":"~$410,000","irr":"~6.2%","simple":"~12.4%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$140,000","expected":"~$510,000","irr":"~6.2%","simple":"~13.7%"}
+    ],
+    "sunlife-wnx": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$74,000","expected":"~$102,000","irr":"~0.8%","simple":"~0.4%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$88,000","expected":"~$138,000","irr":"~3.1%","simple":"~3.8%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$100,000","expected":"~$195,000","irr":"~4.7%","simple":"~6.3%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$115,000","expected":"~$280,000","irr":"~5.7%","simple":"~9.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$132,000","expected":"~$400,000","irr":"~6.2%","simple":"~12.0%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$152,000","expected":"~$560,000","irr":"~6.4%","simple":"~15.3%"}
+    ],
+    "prudential-xsm": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$68,000","expected":"~$100,000","irr":"~0.5%","simple":"~0.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$80,000","expected":"~$137,000","irr":"~3.1%","simple":"~3.7%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$94,000","expected":"~$200,000","irr":"~5.0%","simple":"~6.7%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$108,000","expected":"~$290,000","irr":"~5.8%","simple":"~9.4%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$124,000","expected":"~$410,000","irr":"~6.3%","simple":"~12.6%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$140,000","expected":"~$580,000","irr":"~6.5%","simple":"~16.0%"}
+    ],
+    "fwd-yjtx2": [
+      {"year":6,"age":36,"paid":"$100,000","guarantee":"~$74,000","expected":"~$104,000","irr":"~1.0%","simple":"~0.7%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$84,000","expected":"~$143,000","irr":"~3.5%","simple":"~4.3%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$96,000","expected":"~$210,000","irr":"~5.1%","simple":"~7.3%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$108,000","expected":"~$300,000","irr":"~6.0%","simple":"~10.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$124,000","expected":"~$430,000","irr":"~6.3%","simple":"~13.2%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$142,000","expected":"~$580,000","irr":"~6.5%","simple":"~15.8%"}
+    ],
+    "yflife-frwj": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$70,000","expected":"~$100,000","irr":"~0.5%","simple":"~0.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$84,000","expected":"~$140,000","irr":"~3.1%","simple":"~3.6%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$98,000","expected":"~$210,000","irr":"~5.1%","simple":"~7.3%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$112,000","expected":"~$300,000","irr":"~6.0%","simple":"~9.9%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$130,000","expected":"~$430,000","irr":"~6.3%","simple":"~12.4%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$148,000","expected":"~$580,000","irr":"~6.5%","simple":"~15.7%"}
+    ],
+    "ctf-jxcc2": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$70,000","expected":"~$100,000","irr":"~0.5%","simple":"~0.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$84,000","expected":"~$137,000","irr":"~3.0%","simple":"~3.7%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$98,000","expected":"~$205,000","irr":"~4.9%","simple":"~7.0%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$112,000","expected":"~$285,000","irr":"~5.7%","simple":"~9.1%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$128,000","expected":"~$400,000","irr":"~6.1%","simple":"~12.0%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$146,000","expected":"~$530,000","irr":"~6.3%","simple":"~14.7%"}
+    ],
+    "clife-alss": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$72,000","expected":"~$102,000","irr":"~0.8%","simple":"~0.4%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$86,000","expected":"~$135,000","irr":"~3.3%","simple":"~3.9%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$100,000","expected":"~$190,000","irr":"~4.7%","simple":"~6.0%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$114,000","expected":"~$268,000","irr":"~5.6%","simple":"~8.9%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$130,000","expected":"~$370,000","irr":"~6.0%","simple":"~11.2%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$148,000","expected":"~$500,000","irr":"~6.5%","simple":"~14.0%"}
+    ],
+    "cpic-sdyx3": [
+      {"year":6,"age":36,"paid":"$100,000","guarantee":"~$76,000","expected":"~$108,000","irr":"~1.6%","simple":"~1.3%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$88,000","expected":"~$148,000","irr":"~3.8%","simple":"~4.6%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$100,000","expected":"~$215,000","irr":"~5.3%","simple":"~7.7%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$115,000","expected":"~$305,000","irr":"~6.1%","simple":"~10.2%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$132,000","expected":"~$430,000","irr":"~6.3%","simple":"~13.0%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$150,000","expected":"~$580,000","irr":"~6.5%","simple":"~16.0%"}
+    ],
+    "chubb-ccsc2": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$75,000","expected":"~$105,000","irr":"~1.5%","simple":"~1.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$90,000","expected":"~$134,000","irr":"~3.0%","simple":"~3.4%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$104,000","expected":"~$188,000","irr":"~4.6%","simple":"~5.9%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$118,000","expected":"~$265,000","irr":"~5.6%","simple":"~8.9%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$132,000","expected":"~$370,000","irr":"~5.9%","simple":"~11.2%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$148,000","expected":"~$470,000","irr":"~6.0%","simple":"~13.4%"}
+    ],
+    "hsbc-hcsd": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$70,000","expected":"~$102,000","irr":"~0.8%","simple":"~0.4%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$82,000","expected":"~$140,000","irr":"~3.4%","simple":"~4.0%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$94,000","expected":"~$200,000","irr":"~5.0%","simple":"~6.7%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$108,000","expected":"~$278,000","irr":"~5.6%","simple":"~9.0%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$124,000","expected":"~$390,000","irr":"~6.1%","simple":"~11.6%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$140,000","expected":"~$520,000","irr":"~6.3%","simple":"~14.0%"}
+    ],
+    "boc-xccc": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$68,000","expected":"~$100,000","irr":"~0.5%","simple":"~0.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$82,000","expected":"~$135,000","irr":"~3.1%","simple":"~3.5%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$96,000","expected":"~$195,000","irr":"~4.8%","simple":"~6.3%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$110,000","expected":"~$270,000","irr":"~5.5%","simple":"~8.8%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$126,000","expected":"~$380,000","irr":"~6.0%","simple":"~11.2%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$142,000","expected":"~$500,000","irr":"~6.2%","simple":"~13.6%"}
+    ],
+    "zurich-ry": [
+      {"year":6,"age":36,"paid":"$100,000","guarantee":"~$76,000","expected":"~$108,000","irr":"~1.6%","simple":"~1.3%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$88,000","expected":"~$148,000","irr":"~3.5%","simple":"~4.3%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$100,000","expected":"~$220,000","irr":"~5.5%","simple":"~8.0%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$112,000","expected":"~$300,000","irr":"~5.8%","simple":"~9.5%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$126,000","expected":"~$400,000","irr":"~6.0%","simple":"~12.0%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$142,000","expected":"~$480,000","irr":"~6.2%","simple":"~13.4%"}
+    ],
+    "tplhk-ynlx2": [
+      {"year":5,"age":35,"paid":"$100,000","guarantee":"~$68,000","expected":"~$98,000","irr":"~0.3%","simple":"~0.0%"},
+      {"year":10,"age":40,"paid":"$100,000","guarantee":"~$82,000","expected":"~$130,000","irr":"~2.8%","simple":"~3.0%"},
+      {"year":15,"age":45,"paid":"$100,000","guarantee":"~$96,000","expected":"~$185,000","irr":"~4.4%","simple":"~5.7%"},
+      {"year":20,"age":50,"paid":"$100,000","guarantee":"~$110,000","expected":"~$260,000","irr":"~5.4%","simple":"~8.5%"},
+      {"year":25,"age":55,"paid":"$100,000","guarantee":"~$126,000","expected":"~$360,000","irr":"~5.8%","simple":"~10.8%"},
+      {"year":30,"age":60,"paid":"$100,000","guarantee":"~$142,000","expected":"~$460,000","irr":"~6.0%","simple":"~12.8%"}
+    ]
+  }
+}

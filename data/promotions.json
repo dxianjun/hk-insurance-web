@@ -1,0 +1,37 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网优惠页面、经纪平台",
+  "prepay": [
+    {"company":"万通保险","rate":"8%","condition":"仅首年保证(其余3.2%非保证)，5年缴美元","isBest":true},
+    {"company":"安盛保险","rate":"12%/8%","condition":"盛利II 2年缴：首90天12%，后续8%"},
+    {"company":"中银人寿","rate":"6%","condition":"薪火传承环球2/3年缴"},
+    {"company":"永明金融","rate":"5%","condition":"5年缴首年5%，第2-4年4.3%"},
+    {"company":"宏利","rate":"5%","condition":"≥8万美元+投保危疾/人寿"},
+    {"company":"中国人寿(海外)","rate":"5%","condition":"2年缴傲珑盛世"},
+    {"company":"忠意人寿","rate":"4.8%","condition":"启航创富(卓越版)"},
+    {"company":"周大福人寿","rate":"4.5%","condition":"≥8万美元匠心飞越"},
+    {"company":"富卫人寿","rate":"4.5%","condition":"2/3/5年缴美元保单"},
+    {"company":"保诚保险","rate":"4.5%","condition":"≥10万美元信守明天"},
+    {"company":"太保寿险香港","rate":"4.5%","condition":"世代悦享3"},
+    {"company":"友邦保险","rate":"4.3%","condition":"盈御3/环宇盈活预缴1年"},
+    {"company":"安达人寿","rate":"4%","condition":"传承守创V·丰足"},
+    {"company":"苏黎世人寿","rate":"4.5%","condition":"瑞盈储蓄(5年缴)"},
+    {"company":"汇丰人寿","rate":"4%","condition":"汇承世代(5年缴)"},
+    {"company":"太寿香港","rate":"3.5%","condition":"颐年乐享2(5年缴)"}
+  ],
+  "discount": [
+    {"company":"太保寿险香港","rate":"50%","condition":"世代悦享3(5年缴)首年20%+次年30%","isBest":true},
+    {"company":"富卫人寿","rate":"45%","condition":"盈聚天下2(3年缴)首年"},
+    {"company":"友邦保险","rate":"36%","condition":"环宇盈活+危疾组合"},
+    {"company":"宏利","rate":"31%","condition":"宏挚传承(10/15年缴)首两年"},
+    {"company":"保诚保险","rate":"31%","condition":"信守明天+启耀未来组合回赠"},
+    {"company":"安盛保险","rate":"30%","condition":"盛利II-至尊(10年缴)回赠+额外"},
+    {"company":"永明金融","rate":"30%","condition":"万年青·星河尊享II(5年缴)回赠"},
+    {"company":"万通保险","rate":"28%","condition":"富饶万家BIS(10年缴)首年+次年"},
+    {"company":"忠意人寿","rate":"25%","condition":"启航创富(卓越版)5年缴回赠"},
+    {"company":"安达人寿","rate":"10%","condition":"传承守创V·丰足首年"},
+    {"company":"苏黎世人寿","rate":"18%","condition":"瑞盈储蓄第2年保费折扣"},
+    {"company":"中银人寿","rate":"15%","condition":"薪粹传承首年回赠"}
+  ]
+}

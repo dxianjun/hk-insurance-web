@@ -1,0 +1,6 @@
+.vercel
+node_modules/
+_*.txt
+_*.html
+*.bak
+*.tmp

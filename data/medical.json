@@ -1,0 +1,15 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网、港险智、10Life平台",
+  "products": [
+    {"name":"至尊明珠医疗计划5","company":"友邦保险","limit":"HKD 5,000万","deductible":"$0/$16K/$25K/$50K","region":"全球/全球(不含美)","tag":"全数赔偿","tagClass":"tag-green"},
+    {"name":"PRUmyhealth prestige","company":"保诚保险","limit":"HKD 5,000万","deductible":"多种可选","region":"全球","tag":"门诊/产科/牙科可选","tagClass":"tag-blue"},
+    {"name":"环宇特选II","company":"安盛保险","limit":"HKD 2,000-3,000万/年","deductible":"可选","region":"亚洲/全球","tag":"免健康申报","tagClass":"tag-green"},
+    {"name":"GlobalReach","company":"安盛保险","limit":"无限额","deductible":"多种可选","region":"全球","tag":"终身无限额","tagClass":"tag-orange","isBest":true},
+    {"name":"港卓越医疗保","company":"永明金融","limit":"HKD 4,000万","deductible":"可选","region":"亚洲","tag":"癌症豁免保费","tagClass":"tag-purple"},
+    {"name":"晋领医疗保障(卓越)","company":"宏利","limit":"HKD 5,000万/全额","deductible":"$0/$25K/$50K/$100K","region":"全球","tag":"多重现金保障","tagClass":"tag-blue"},
+    {"name":"晋领医疗保障(优越)","company":"宏利","limit":"HKD 2,500万","deductible":"$0/$25K/$50K/$100K","region":"全球(不含美)","tag":"代缴住院费","tagClass":"tag-green"},
+    {"name":"卓越医疗保","company":"汇丰人寿","limit":"HKD 5,000万","deductible":"可选","region":"全球/亚洲","tag":"银行客户便捷","tagClass":"tag-blue"}
+  ]
+}

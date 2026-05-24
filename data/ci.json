@@ -1,0 +1,20 @@
+{
+  "version": "2026-05-25",
+  "lastUpdated": "2026-05-25T01:00:00+08:00",
+  "source": "各保险公司官网、港险智、10Life平台",
+  "products": [
+    {"name":"爱伴航2","company":"友邦保险","diseases":"115种","maxPay":"1100%","cancer":"多次+100个月现金","tag":"脑退化年金","tagClass":"tag-green"},
+    {"name":"诚保一生","company":"保诚保险","diseases":"127种","maxPay":"1100%","cancer":"多次赔付","tag":"疾病覆盖最广","tagClass":"tag-blue"},
+    {"name":"活耀人生PRO","company":"宏利","diseases":"123种","maxPay":"1000%","cancer":"最高9次","tag":"癌症次数最多","tagClass":"tag-orange","cancerHL":true},
+    {"name":"MultiPro Plus","company":"安盛保险","diseases":"130+种","maxPay":"1300%","cancer":"多次+4年现金","tag":"总赔付最高","tagClass":"tag-red","isBest":true,"diseasesHL":true,"maxPayHL":true},
+    {"name":"危疾保护+","company":"永明金融","diseases":"100+种","maxPay":"1000%","cancer":"多次赔付","tag":"性价比高","tagClass":"tag-purple"},
+    {"name":"自主拣","company":"富卫人寿","diseases":"62种","maxPay":"800%","cancer":"多次赔付","tag":"额外医疗保障","tagClass":"tag-blue"},
+    {"name":"安心守护危疾保障","company":"安达人寿","diseases":"82种","maxPay":"500%","cancer":"癌症/心脏病/中风4次","tag":"限期缴付选项","tagClass":"tag-blue"},
+    {"name":"守护168(加强版)","company":"周大福人寿","diseases":"168种","maxPay":"500%","cancer":"多次赔付","tag":"器官功能损害首创保障","tagClass":"tag-green"},
+    {"name":"守护家倍198","company":"周大福人寿","diseases":"198种","maxPay":"600%","cancer":"多次赔付","tag":"疾病数市场最多","tagClass":"tag-orange"},
+    {"name":"卫您守护危疾多重保","company":"中国人寿(海外)","diseases":"194种","maxPay":"980%","cancer":"8次危疾赔付","tag":"三高慢性病保障","tagClass":"tag-purple"},
+    {"name":"跨越无限保","company":"忠意人寿","diseases":"110+种","maxPay":"无限次","cancer":"癌症/中风/心脏病无限次","tag":"无限次赔偿","tagClass":"tag-red"},
+    {"name":"常安心危疾保","company":"太保寿险香港","diseases":"100+种","maxPay":"600%","cancer":"3次100%赔付","tag":"海内外特药1200万","tagClass":"tag-green"},
+    {"name":"瑞安护危疾保障","company":"苏黎世人寿","diseases":"82种(11早期+71严重)","maxPay":"500%","cancer":"深切治疗赔偿","tag":"瑞士品牌/150年历史","tagClass":"tag-blue"}
+  ]
+}
