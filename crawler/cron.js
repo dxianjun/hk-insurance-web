@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import { crawlPromotions } from './sources/promotions.js';
 import { checkDividendUpdates } from './sources/dividend-checker.js';
 import { checkRatingUpdates } from './sources/ratings.js';
+import { checkProductUpdates } from './sources/products.js';
 import { autoCommit, generateCommitMessage, generateReport } from './utils/gitCommit.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '..', 'data');
@@ -25,12 +26,13 @@ if (!fs.existsSync(REPORT_DIR)) {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
-const onlyPromotions = args.includes('promotions') || args.length === 0; // 默认全跑
+const onlyPromotions = args.includes('promotions') || args.length === 0;
 const onlyDividend = args.includes('dividend') || args.length === 0;
 const onlyRatings = args.includes('ratings') || args.length === 0;
+const onlyProducts = args.includes('products') || args.length === 0;
 
 console.log('╔══════════════════════════════════╗');
-console.log('║  香港保险数据爬虫 v1.1         ║');
+console.log('║  香港保险数据爬虫 v1.2         ║');
 console.log('║  ' + new Date().toISOString() + '     ║');
 console.log('╚══════════════════════════════════╝');
 console.log('模式:', dryRun ? '干跑（不修改文件）' : '正式运行');
@@ -43,22 +45,29 @@ const startTime = Date.now();
 try {
   // ── 1. 优惠信息 ──────────────────────────────────
   if (onlyPromotions) {
-    console.log('▸ 任务 1/3: 优惠信息爬虫');
+    console.log('▸ 任务 1/4: 优惠信息爬虫');
     results.promotions = await crawlPromotions({ dryRun });
     console.log('');
   }
 
   // ── 2. 分红实现率（23家全覆盖）────────────────────
   if (onlyDividend) {
-    console.log('▸ 任务 2/3: 分红实现率检查');
+    console.log('▸ 任务 2/4: 分红实现率检查');
     results.dividend = await checkDividendUpdates({ dryRun });
     console.log('');
   }
 
   // ── 3. 公司评级 ──────────────────────────────────
   if (onlyRatings) {
-    console.log('▸ 任务 3/3: 公司评级检查');
+    console.log('▸ 任务 3/4: 公司评级检查');
     results.ratings = await checkRatingUpdates({ dryRun });
+    console.log('');
+  }
+
+  // ── 4. 产品变更检测 ──────────────────────────────
+  if (onlyProducts) {
+    console.log('▸ 任务 4/4: 产品变更检测');
+    results.products = await checkProductUpdates({ dryRun });
     console.log('');
   }
 } catch (err) {
