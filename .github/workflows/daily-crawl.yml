@@ -17,6 +17,7 @@ on:
           - dividend
           - ratings
           - products
+          - market
 
 jobs:
   crawl:

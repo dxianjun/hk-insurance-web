@@ -11,7 +11,8 @@
     "ci.json",
     "premium.json",
     "dividend.json",
-    "promotions.json"
+    "promotions.json",
+    "market-trends.json"
   ],
   "updateLog": [
     {
@@ -23,7 +24,8 @@
         "前端：页面启动时异步加载数据，内嵌 fallback 确保离线可用",
         "爬虫：Node.js 定时爬取优惠信息 + 分红实现率，GitHub Actions 每天自动运行",
         "缓存：Service Worker 实现离线访问，Network First 策略保证数据新鲜",
-        "UI：新增数据版本号、刷新按钮、Toast 提示、更新横幅"
+        "UI：新增数据版本号、刷新按钮、Toast 提示、更新横幅",
+        "Tab7市场趋势从静态HTML改为JSON动态渲染"
       ]
     },
     {
